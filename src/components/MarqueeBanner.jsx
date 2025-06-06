@@ -1,22 +1,21 @@
 import React from 'react';
-import MarqueeSection from './Marquee';
+import MarqueeSection from './MarqueeSection';
 
-const Banner = () => {
+const MarqueeBanner = () => {
     return (
-        <div className="relative bg-base-200 overflow-hidden">
+        <div className="relative items-center h-screen bg-base-200 overflow-hidden">
 
             {/* Marquee Background with Image & Overlay */}
             <div className="absolute top-0 left-0 w-full z-0 overflow-hidden">
-                {/* Marquee with images */}
-                <MarqueeSection>
+
+                <MarqueeSection className='h-screen'>
                 </MarqueeSection>
 
-                {/* Dark blur overlay */}
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10" />
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-xs z-10" />
             </div>
 
             {/* Foreground Text Content */}
-            <div className="relative h-screen z-20 flex flex-col items-center justify-center text-center px-6 py-16 max-w-4xl mx-auto">
+            <div className="relative z-20 h-screen flex flex-col items-center justify-center text-center px-6 py-16 max-w-4xl mx-auto">
                 <h1 className="text-5xl font-extrabold text-white mb-6 drop-shadow-md">
                     Industrial Solutions, Delivered at Scale.
                 </h1>
@@ -44,4 +43,4 @@ const Banner = () => {
     );
 };
 
-export default Banner;
+export default MarqueeBanner;

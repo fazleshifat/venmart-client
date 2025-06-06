@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import ThemeToggle from '../components/ThemeToggle';
 import { Link } from 'react-router';
+import { AuthContext } from '../AuthProvider/PrivateRoute';
 
 const Navbar = () => {
+
+    const { user } = use(AuthContext);
 
     const links = <>
         <li><Link to='/'>Home</Link></li>
@@ -38,10 +41,56 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <ThemeToggle></ThemeToggle>
-                <Link className="btn">Login</Link>
-                <Link className="btn">Register</Link>
+                {
+                    !user ?
+                        <>
+                            <Link to='/logIn' className="btn">Login</Link>
+                            <Link to='/register' className="btn">Register</Link>
+                        </>
+                        :
+                        <>
+                            <div className="relative inline-block group">
+                                {/* Avatar */}
+                                <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer border border-gray-300">
+                                    <img
+                                        src={user.photoURL}
+                                        alt="User Avatar"
+                                        className="w-full h-full object-cover rounded-full"
+                                    />
+                                </div>
+
+                                {/* Dropdown menu */}
+                                <div
+                                    className="
+          opacity-0 pointer-events-none
+          group-hover:opacity-100 group-hover:pointer-events-auto
+          transition-opacity duration-200
+          absolute right-0 mt-2 min-w-[160px]
+          bg-white dark:bg-gray-800
+          rounded-md shadow-lg p-4
+          z-20
+        "
+                                >
+                                    <p className="text-center text-gray-900 dark:text-white mb-3 font-semibold">
+                                        {user.displayName}
+                                    </p>
+                                    <button
+                                        // onClick={onLogout}
+                                        className="btn btn-primary w-full"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </>
+                }
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -13,7 +13,7 @@ import './Swiper.css';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-const Swipper = () => {
+const SwipperSlider = () => {
     return (
         <div>
             <Swiper
@@ -30,14 +30,14 @@ const Swipper = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide  className='shadow-2xl border-2 border-white rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
-                <SwiperSlide  className='shadow-2xl border-2 border-white rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
-                <SwiperSlide  className='shadow-2xl border-2 border-white rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
-                <SwiperSlide  className='shadow-2xl border-2 border-white rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
-                <SwiperSlide  className='shadow-2xl border-2 border-white rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
+                <SwiperSlide className='shadow-2xl rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
+                <SwiperSlide className='shadow-2xl rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
+                <SwiperSlide className='shadow-2xl rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
+                <SwiperSlide className='shadow-2xl rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
+                <SwiperSlide className='shadow-2xl rounded-3xl'><img src="/assets/image.jpg" alt="banner" /></SwiperSlide>
             </Swiper>
         </div>
     );
 };
 
-export default Swipper;
+export default SwipperSlider;
