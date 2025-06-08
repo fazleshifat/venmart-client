@@ -8,6 +8,9 @@ import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import LogIn from "../pages/LogIn";
 import Register from "../pages/Register";
+import ProductByCategory from "../pages/ProductByCategory";
+import AddProduct from "../pages/AddProduct";
+import AllProducts from "../pages/AllProducts";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +28,20 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 Component: Register,
+            },
+            {
+                path: '/allProducts',
+                loader: () => fetch('http://localhost:3000/allProducts'),
+                Component: AllProducts
+            },
+            {
+                path: `/products/:category`,
+                loader: ({ params }) => fetch(`http://localhost:3000/products/${params.category}`),
+                Component: ProductByCategory
+            },
+            {
+                path: '/addProduct',
+                Component: AddProduct
             }
         ]
     },

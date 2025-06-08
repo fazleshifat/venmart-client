@@ -3,23 +3,23 @@ import SwipperSlider from './slider/SwipperSlider';
 
 const SliderBanner = () => {
     return (
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-[1380px] mx-auto">
             {/* Background Slider - defines full height */}
-            <div className="w-9xl">
-                <SwipperSlider></SwipperSlider>
-            </div>
+
+            <SwipperSlider></SwipperSlider>
+
 
             {/* Overlay and Text Layer */}
-            <div className="absolute inset-0 mx-auto px-6 md:px-16 flex items-center z-20">
+            <div className="absolute inset-0 mx-auto px-10 py-10 md:px-16 flex items-center z-20">
                 {/* Left-side overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10" />
 
                 {/* Text Content */}
                 <div className="relative z-20 max-w-xl space-y-6 text-white text-center md:text-left">
-                    <h1 className="text-5xl font-extrabold leading-tight">
+                    <h1 className="text-xl md:text-5xl font-extrabold leading-tight">
                         Discover Premium Industrial Products
                     </h1>
-                    <p className="text-lg text-gray-200">
+                    <p className="text-sm md:text-lg text-gray-200">
                         Supplying bulk-quality tools, machinery parts, and equipment for construction,
                         logistics, and manufacturing. Get fast delivery, competitive pricing, and scalable supply.
                     </p>

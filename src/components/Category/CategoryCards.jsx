@@ -6,37 +6,37 @@ const categories = [
         title: "Gadgets Equipment",
         description: "Top-grade helmets, gloves, and vests for industrial environments.",
         image: "/assets/gadgets.avif",
-        path: "/category/gadget",
+        path: "/products/gadget",
     },
     {
         title: "Machinery Parts",
         description: "Durable mechanical parts and heavy-duty components.",
         image: "/assets/machinery.avif",
-        path: "/category/machinery",
+        path: "/products/machinery",
     },
     {
         title: "Electrical Tools",
         description: "Reliable tools for electrical installation and maintenance.",
         image: "/assets/electrical.avif",
-        path: "/category/electrical",
+        path: "/products/electrical",
     },
     {
         title: "Apparel Supplies",
         description: "Bulk packaging tapes, wraps, and cartons for logistics.",
         image: "/assets/apparel.avif",
-        path: "/category/apparel",
+        path: "/products/fashion",
     },
     {
         title: "Home Appliance",
         description: "Essential gear and tools for building and repair sites.",
         image: "/assets/appliance.avif",
-        path: "/category/appliance",
+        path: "/products/appliances",
     },
     {
         title: "Fashion",
         description: "Essential gear and tools for building and repair sites.",
         image: "/assets/fashion.avif",
-        path: "/category/fashion",
+        path: "/products/fashion",
     },
 ];
 

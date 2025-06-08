@@ -10,8 +10,8 @@ const Navbar = () => {
     const links = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/'>Categories</Link></li>
-        <li><Link to='/'>All Product</Link></li>
-        <li><Link to='/'>Add Product</Link></li>
+        <li><Link to='/allProducts'>All Product</Link></li>
+        <li><Link to='/addProduct'>Add Product</Link></li>
         <li><Link to='/'>My Product</Link></li>
         <li><Link to='/'>Cart</Link></li>
     </>
