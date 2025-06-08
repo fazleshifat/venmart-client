@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { use } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../AuthProvider/PrivateRoute';
 
 const LogIn = () => {
 
-    const { user, signInUser, setUser, signInGoogle, errorMessage, setErrorMessage } = use(AuthContext);
+    const { user, logInUser, setUser, signInGoogle, errorMessage, setErrorMessage } = use(AuthContext);
 
 
     // const location = useLocation();
@@ -22,7 +23,7 @@ const LogIn = () => {
 
 
         // sign in user with firebase auth
-        signInUser(email, password)
+        logInUser(email, password)
             .then((result) => {
                 // navigate(location?.state || '/');
                 // setUser(result.user);

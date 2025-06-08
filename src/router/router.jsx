@@ -12,6 +12,7 @@ import ProductByCategory from "../pages/ProductByCategory";
 import AddProduct from "../pages/AddProduct";
 import AllProducts from "../pages/AllProducts";
 import ProductDetails from "../pages/ProductDetails";
+import CategoryCards from "../components/Category/CategoryCards";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,11 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:3000/allProducts/${params.id}`),
                 Component: ProductDetails
             },
+            {
+                path: '/categories',
+                Component: CategoryCards
+            }
+            ,
             {
                 path: `/products/:category`,
                 loader: ({ params }) => fetch(`http://localhost:3000/products/${params.category}`),

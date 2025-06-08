@@ -1,8 +1,11 @@
 import React, { use, useEffect, useState } from 'react';
 import ThemeToggle from '../components/ThemeToggle';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../AuthProvider/PrivateRoute';
 import { IoSearchOutline } from "react-icons/io5";
+import Swal from 'sweetalert2';
+import { signOut } from 'firebase/auth';
+import { auth } from '../Firebase/firebase.init';
 
 const Navbar = () => {
 
@@ -10,6 +13,7 @@ const Navbar = () => {
 
     const [showNavbar, setShowNavbar] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    // const [isActive, setIsActive] = useState(false)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -22,21 +26,78 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
 
+    const handleSignOut = () => {
+        Swal.fire({
+            title: "Want to Log out!",
+            text: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                signOut(auth).then(() => {
 
-    const links = <>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>Categories</Link></li>
-        <li><Link to='/allProducts'>All Product</Link></li>
-        <li><Link to='/addProduct'>Add Product</Link></li>
-        <li><Link to='/'>My Product</Link></li>
-        <li><Link to='/'>Cart</Link></li>
-    </>
+                    // navigate('/signIn')
+                }).catch((error) => {
+
+                });
+
+                Swal.fire({
+                    title: "Logged out!",
+                    text: "You has been logged out successfully.",
+                    icon: "success"
+                });
+            }
+        });
+
+    }
+
+
+    const links = (
+        <>
+            {[
+                { to: '/', label: 'Home' },
+                { to: '/categories', label: 'Categories' },
+                { to: '/allProducts', label: 'All Product' },
+                { to: '/addProduct', label: 'Add Product' },
+                { to: '/myProduct', label: 'My Product' },
+                { to: '/cart', label: 'Cart' },
+            ].map(({ to, label }) => (
+                <li key={to}>
+                    <NavLink
+                        to={to}
+                        className={({ isActive }) =>
+                            `group relative px-2 py-1 font-semibold transition duration-300 ${isActive
+                                ? 'text-indigo-400 dark:text-white'
+                                : 'text-zinc-700 dark:text-zinc-300 hover:text-indigo-500 hover:dark:text-white'
+                            }`
+                        }
+                    >
+                        {({ isActive }) => (
+                            <span
+                                className={`
+        relative
+        after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-indigo-600 dark:after:bg-white
+        after:transition-all after:duration-300 after:ease-in-out
+        ${isActive ? 'after:w-full' : 'after:w-0 group-hover:after:w-full'}
+      `}
+                            >
+                                {label}
+                            </span>
+                        )}
+                    </NavLink>
+                </li>
+            ))}
+        </>
+    );
 
     return (
-        <div className={`navbar fixed w-11/12 bg-indigo-500/40 dark:bg-indigo-700/60 backdrop-blur-md shadow-sm px-3 md:px-8 z-50 rounded-full transition-all duration-300
+        <div className={`navbar fixed max-w-11/12 md:max-w-[1380px] bg-black/10 dark:bg-indigo-700/60 backdrop-blur-md shadow-sm px-3 md:px-6 z-50 rounded-full transition-all duration-300
         left-1/2 -translate-x-1/2 
-        top-auto bottom-1 
-        md:top-3 md:bottom-auto 
+        top-auto bottom-2 
+        md:top-2 md:bottom-auto
         ${showNavbar ? 'translate-y-0' : 'md:-translate-y-full'}
     `}>
             <div className="navbar-start">
@@ -46,7 +107,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-0 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bottom-12 md:top-12 h-fit bg-base-100 rounded-box z-1 mt-0 w-52 p-2 shadow">
                         {links}
                     </ul>
                 </div>
@@ -56,7 +117,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="flex gap-8 font-semibold">
+                <ul className="flex md:gap-8 font-semibold">
                     {links}
                 </ul>
             </div>
@@ -71,7 +132,7 @@ const Navbar = () => {
                         :
                         <>
                             <div className="flex gap-1 md:gap-3">
-                                <input type="text" placeholder="Search products" className="hidden md:flex relative input input-bordered w-40 rounded-full lg:w-70" />
+                                <input type="text" placeholder="products" className="hidden  md:flex relative input input-bordered w-full rounded-full lg:w-70" />
                                 <IoSearchOutline className='absolute text-indigo-500 text-3xl md:text-2xl right-26 md:right-36 top-4 md:top-5' />
                                 <ThemeToggle></ThemeToggle>
                                 <div className="dropdown dropdown-hover dropdown-end">
@@ -84,9 +145,9 @@ const Navbar = () => {
                                     </div>
                                     <ul
                                         tabIndex={0}
-                                        className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
+                                        className="menu menu-sm dropdown-content bottom-12 md:top-12 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
                                         <li className='text-md md:text-lg font-semibold'>{user?.displayName}</li>
-                                        <button className='btn btn-accent text-white'>Logout</button>
+                                        <button onClick={handleSignOut} className='btn btn-accent text-white'>Logout</button>
                                     </ul>
                                 </div>
                             </div>
