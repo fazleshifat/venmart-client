@@ -11,6 +11,7 @@ import Register from "../pages/Register";
 import ProductByCategory from "../pages/ProductByCategory";
 import AddProduct from "../pages/AddProduct";
 import AllProducts from "../pages/AllProducts";
+import ProductDetails from "../pages/ProductDetails";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ export const router = createBrowserRouter([
                 path: '/allProducts',
                 loader: () => fetch('http://localhost:3000/allProducts'),
                 Component: AllProducts
+            },
+            {
+                path: '/product/details/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/allProducts/${params.id}`),
+                Component: ProductDetails
             },
             {
                 path: `/products/:category`,
