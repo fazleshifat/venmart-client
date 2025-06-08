@@ -30,12 +30,12 @@ const SwipperSlider = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide className=''><img src="/assets/banner1.jpg" alt="banner" className='min-h-[80vh] md:max-h-[80vh]' /></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner2.png" alt="banner" className='min-h-[80vh] md:max-h-[80vh]' /></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner3.png" alt="banner" className='min-h-[80vh] md:max-h-[80vh]' /></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner6.png" alt="banner" className='min-h-[80vh] md:max-h-[80vh]' /></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner7.png" alt="banner" className='min-h-[80vh] md:max-h-[80vh]' /></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner8.png" alt="banner" className='min-h-[80vh] md:max-h-[80vh]' /></SwiperSlide>
+                <SwiperSlide className=''><img src="/assets/banner1.jpg" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
+                <SwiperSlide className=''><img src="/assets/banner2.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
+                <SwiperSlide className=''><img src="/assets/banner3.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
+                <SwiperSlide className=''><img src="/assets/banner6.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
+                <SwiperSlide className=''><img src="/assets/banner7.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
+                <SwiperSlide className=''><img src="/assets/banner8.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
                 
             </Swiper>
         </div>

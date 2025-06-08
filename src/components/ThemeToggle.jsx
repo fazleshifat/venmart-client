@@ -25,7 +25,7 @@ const ThemeToggle = () => {
 
             {/* sun icon */}
             <svg
-                className="swap-on h-10 w-10 fill-current text-indigo-500"
+                className="swap-on h-9 w-9 md:h-10 md:w-10 fill-current text-indigo-500"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path
@@ -34,7 +34,7 @@ const ThemeToggle = () => {
 
             {/* moon icon */}
             <svg
-                className="swap-off h-10 w-10 fill-current text-indigo-500"
+                className="swap-off h-9 w-9 md:h-10 md:w-10 fill-current text-indigo-500"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path
