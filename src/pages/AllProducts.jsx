@@ -1,10 +1,17 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData, useNavigation } from 'react-router';
+import Spinner from '../components/Spinner';
 
 const AllProducts = () => {
 
     const products = useLoaderData();
     // console.log(products)
+
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
 
     return (
         <section className="min-h-screen bg-gray-50 dark:bg-zinc-900 px-4 py-10">
@@ -47,9 +54,9 @@ const AllProducts = () => {
                                 <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
                                     💲{product.price}
                                 </span>
-                                <button className="btn btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition">
+                                <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition">
                                     ✏️ Update
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

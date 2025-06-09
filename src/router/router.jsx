@@ -13,6 +13,7 @@ import AddProduct from "../pages/AddProduct";
 import AllProducts from "../pages/AllProducts";
 import ProductDetails from "../pages/ProductDetails";
 import CategoryCards from "../components/Category/CategoryCards";
+import UpdateProduct from "../pages/UpdateProduct";
 
 export const router = createBrowserRouter([
     {
@@ -33,12 +34,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/allProducts',
-                loader: () => fetch('http://localhost:3000/allProducts'),
+                loader: async () => await fetch('http://localhost:3000/allProducts'),
                 Component: AllProducts
             },
             {
                 path: '/product/details/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/allProducts/${params.id}`),
+                loader: async ({ params }) => await fetch(`http://localhost:3000/allProducts/${params.id}`),
                 Component: ProductDetails
             },
             {
@@ -48,12 +49,17 @@ export const router = createBrowserRouter([
             ,
             {
                 path: `/products/:category`,
-                loader: ({ params }) => fetch(`http://localhost:3000/products/${params.category}`),
+                loader: async ({ params }) => await fetch(`http://localhost:3000/products/${params.category}`),
                 Component: ProductByCategory
             },
             {
                 path: '/addProduct',
                 Component: AddProduct
+            },
+            {
+                path: '/updateProduct/:id',
+                loader: async ({ params }) => await fetch(`http://localhost:3000/allProducts/${params.id}`),
+                Component: UpdateProduct
             }
         ]
     },

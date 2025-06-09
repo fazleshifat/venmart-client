@@ -3,6 +3,7 @@ import { AuthContext } from '../AuthProvider/PrivateRoute';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
+import { Link } from 'react-router';
 
 const Register = () => {
 
@@ -85,7 +86,8 @@ const Register = () => {
                         <input type="email" name="email" className="input w-full" placeholder="your email" />
                         <label className="label">Password</label>
                         <input type="password" name="password" className="input w-full" placeholder="Password" />
-                        <div><a className="link link-hover">Forgot password?</a></div>
+                        <div><Link className="link link-hover">Forgot password?</Link></div>
+                        <div>Already have an account?<Link className="link link-hover">Login</Link></div>
                         <button className="btn btn-neutral mt-4">Registration</button>
                     </form>
                 </div>

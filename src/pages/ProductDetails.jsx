@@ -2,6 +2,7 @@ import React, { use, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../AuthProvider/PrivateRoute';
 import BuyModal from '../components/BuyModal';
+import CheckOutModal from '../components/CheckOutModal';
 
 const ProductDetails = () => {
 
@@ -23,12 +24,18 @@ const ProductDetails = () => {
                 <p className="text-zinc-600 dark:text-zinc-400 mb-2"><strong>Available Quantity:</strong> {product.mainQty}</p>
                 <p className="text-zinc-600 dark:text-zinc-400 mb-2"><strong>Description:</strong> {product.description}</p>
                 <p className="text-lg font-semibold text-green-600 dark:text-green-400 mt-4">💲{product.price}</p>
-                <button onClick={handleBuyNow} className="mt-6 btn btn-primary">
+                {/* <button onClick={handleBuyNow} className="mt-6 btn btn-primary">
                     🛒 Buy Now
+                </button> */}
+                <button className="btn btn-warning w-full my-5" onClick={() => document.getElementById('my_modal_4').showModal()}>
+                    Buy
                 </button>
             </div>
 
-            {showModal && <BuyModal user={user} product={product} onClose={() => setShowModal(false)} />}
+            {/* {showModal && <BuyModal user={user} product={product} onClose={() => setShowModal(false)} />} */}
+
+            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+            <CheckOutModal user={user} product={product}></CheckOutModal>
         </section>
     );
 };

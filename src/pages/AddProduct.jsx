@@ -29,92 +29,136 @@ const AddProduct = () => {
 
 
     return (
-        <div className="min-h-screen bg-gray-100 dark:bg-zinc-900 flex items-center justify-center flex-col p-3">
-            <h1 className="text-3xl font-bold text-center text-zinc-800 dark:text-white mb-8">
-                🛒 Add Product
-            </h1>
+        <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center flex-col p-4 transition-all duration-300">
 
-            <form onSubmit={handleAddProduct} className="w-full max-w-4xl bg-white dark:bg-zinc-800 p-6 rounded-xl shadow space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Image */}
-                    <div className="col-span-1">
-                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+            <form
+                onSubmit={handleAddProduct}
+                className="w-full max-w-4xl bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-2xl space-y-8"
+            >
+                <h1 className="text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                    🛒 Add Product
+                </h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-zinc-800 dark:text-zinc-100">
+                    {/* Product Image */}
+                    <div>
+                        <label className="block text-sm font-semibold mb-1">
                             Upload Product Cover Image
                         </label>
-                        <input type="text" name="image" placeholder='image url' className="w-full file-input file-input-bordered" />
+                        <input
+                            type="text"
+                            name="image"
+                            placeholder="Image URL"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        />
                     </div>
 
-                    {/* Name */}
-                    <div className="col-span-1">
-                        <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+                    {/* Product Name */}
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-semibold mb-1">
                             Title of the Product
                         </label>
-                        <input type="text" id="name" name="name" className="input input-bordered w-full" required />
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        />
                     </div>
 
                     {/* Main Quantity */}
                     <div>
-                        <label htmlFor="mainQty" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+                        <label htmlFor="mainQty" className="block text-sm font-semibold mb-1">
                             Main Quantity
                         </label>
-                        <input type="number" id="mainQty" name="mainQty" className="input input-bordered w-full" required />
+                        <input
+                            type="number"
+                            id="mainQty"
+                            name="mainQty"
+                            required
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        />
                     </div>
 
                     {/* Minimum Selling Quantity */}
                     <div>
-                        <label htmlFor="minQty" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+                        <label htmlFor="minQty" className="block text-sm font-semibold mb-1">
                             Minimum Selling Quantity
                         </label>
-                        <input type="number" id="minQty" name="minQty" className="input input-bordered w-full" required />
+                        <input
+                            type="number"
+                            id="minQty"
+                            name="minQty"
+                            required
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        />
                     </div>
 
                     {/* Brand Name */}
                     <div>
-                        <label htmlFor="brand" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+                        <label htmlFor="brand" className="block text-sm font-semibold mb-1">
                             Brand Name
                         </label>
-                        <input type="text" id="brand" name="brand" className="input input-bordered w-full" />
+                        <input
+                            type="text"
+                            id="brand"
+                            name="brand"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        />
                     </div>
 
                     {/* Category */}
                     <div>
-                        <label htmlFor="category" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+                        <label htmlFor="category" className="block text-sm font-semibold mb-1">
                             Category
                         </label>
-                        <select id="category" name="category" className="select select-bordered w-full" required>
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                            className="select select-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        >
                             <option value="">Select Category</option>
                             <option>electrical</option>
                             <option>gadget</option>
                             <option>appliances</option>
                             <option>fashion</option>
                             <option>machinery</option>
-                            {/* <option>Health & Beauty</option>
-                                <option>Automotive Parts & Accessories</option>
-                                <option>Office Supplies & Stationery</option> */}
                             <option>Others</option>
                         </select>
                     </div>
 
                     {/* Short Description */}
                     <div className="md:col-span-2">
-                        <label htmlFor="description" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+                        <label htmlFor="description" className="block text-sm font-semibold mb-1">
                             Short Description
                         </label>
-                        <textarea id="description" name="description" className="textarea textarea-bordered w-full" rows={3}></textarea>
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows={3}
+                            className="textarea textarea-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        ></textarea>
                     </div>
 
                     {/* Price */}
                     <div>
-                        <label htmlFor="price" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
+                        <label htmlFor="price" className="block text-sm font-semibold mb-1">
                             Price
                         </label>
-                        <input type="number" id="price" name="price" className="input input-bordered w-full" required />
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            required
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                        />
                     </div>
 
                     {/* Rating */}
                     <div>
-                        <label htmlFor="rating" className="block text-sm font-medium text-zinc-700 dark:text-zinc-200 mb-1">
-                            Rating (1-5)
+                        <label htmlFor="rating" className="block text-sm font-semibold mb-1">
+                            Rating (1–5)
                         </label>
                         <input
                             type="number"
@@ -122,18 +166,22 @@ const AddProduct = () => {
                             name="rating"
                             min="1"
                             max="5"
-                            className="input input-bordered w-full"
                             required
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
                         />
                     </div>
                 </div>
 
                 {/* Submit */}
-                <button type="submit" className="btn btn-primary w-full mt-4">
+                <button
+                    type="submit"
+                    className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-none w-full mt-4 rounded-full text-lg shadow-md hover:brightness-110 transition"
+                >
                     Add Product
                 </button>
             </form>
         </div>
+
     );
 };
 

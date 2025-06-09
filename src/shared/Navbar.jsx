@@ -15,6 +15,8 @@ const Navbar = () => {
     const [lastScrollY, setLastScrollY] = useState(0);
     // const [isActive, setIsActive] = useState(false)
 
+    const [showSearchBar, setShowSearchBar] = useState(false);
+
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
@@ -52,6 +54,10 @@ const Navbar = () => {
             }
         });
 
+    }
+
+    const handleShowSearchBar = () => {
+        setShowSearchBar(!showSearchBar);
     }
 
 
@@ -114,27 +120,47 @@ const Navbar = () => {
                 <Link className='flex items-center'>
                     <img src="/assets/logo.png" className='w-10' alt="logo" />
                     <p className="text-xl font-bold -ml-3 hidden md:flex">enmart</p>
+
+
+
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden md:flex">
                 <ul className="flex md:gap-8 font-semibold">
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end gap-5">
+            <div className="navbar-end gap-2 ">
+
+                <div className='relative flex'>
+                    {/* for pc */}
+                    <input type="text" placeholder="products" className="hidden md:flex relative input input-bordered w-full rounded-full focus:outline-none focus:ring-0 focus:border-transparent lg:w-70" />
+                    <IoSearchOutline className='hidden md:flex absolute text-indigo-500 text-4xl md:text-2xl right-2 mt-1 md:mt-0 md:right-2 md:top-2 cursor-pointer' />
+
+                    {/* for small device */}
+                    <input type="text" placeholder="products" className={`
+                        md:hidden input input-bordered mr-10 rounded-full w-full
+                        transition-all duration-300 ease-in-out
+                        focus:outline-none focus:ring-0 focus:border-transparent
+                        ${showSearchBar ? 'opacity-100 scale-100 w-full' : 'opacity-0 scale-0 w-0'}
+                      `}
+                    />
+
+                    <IoSearchOutline onClick={handleShowSearchBar} className='md:hidden absolute text-indigo-500 text-3xl right-1 mt-1 cursor-pointer' />
+                </div>
+                <ThemeToggle></ThemeToggle>
 
                 {
                     !user ?
-                        <>
-                            <Link to='/logIn' className="btn">Login</Link>
-                            <Link to='/register' className="btn">Register</Link>
-                        </>
+
+                        <div className='hidden md:flex gap-1'>
+                            <Link to='/logIn' className="btn btn-accent text-white">Login</Link>
+                            <Link to='/register' className="btn btn-error text-white">Register</Link>
+                        </div>
+
                         :
                         <>
                             <div className="flex gap-1 md:gap-3">
-                                <input type="text" placeholder="products" className="hidden  md:flex relative input input-bordered w-full rounded-full lg:w-70" />
-                                <IoSearchOutline className='absolute text-indigo-500 text-3xl md:text-2xl right-26 md:right-36 top-4 md:top-5' />
-                                <ThemeToggle></ThemeToggle>
                                 <div className="dropdown dropdown-hover dropdown-end">
                                     <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
@@ -145,7 +171,7 @@ const Navbar = () => {
                                     </div>
                                     <ul
                                         tabIndex={0}
-                                        className="menu menu-sm dropdown-content bottom-12 md:top-12 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
+                                        className="menu menu-sm dropdown-content bottom-10 md:top-10 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
                                         <li className='text-md md:text-lg font-semibold'>{user?.displayName}</li>
                                         <button onClick={handleSignOut} className='btn btn-accent text-white'>Logout</button>
                                     </ul>

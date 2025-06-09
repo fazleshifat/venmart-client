@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/PrivateRoute';
+import { Link } from 'react-router';
 
 const LogIn = () => {
 
@@ -53,7 +54,8 @@ const LogIn = () => {
                         <input type="email" name="email" className="input w-full" placeholder="Email" />
                         <label className="label">Password</label>
                         <input type="password" name="password" className="input w-full" placeholder="Password" />
-                        <div><a className="link link-hover">Forgot password?</a></div>
+                        <div><Link className="link link-hover">Forgot password?</Link></div>
+                        <div>Don't have any account<Link className="link link-hover">Registration</Link></div>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </form>
                 </div>
