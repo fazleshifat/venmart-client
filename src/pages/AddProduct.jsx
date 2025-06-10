@@ -1,8 +1,16 @@
 import axios from 'axios';
 import React from 'react';
+import { useNavigation } from 'react-router';
 import Swal from 'sweetalert2';
+import Spinner from '../components/Spinner';
 
 const AddProduct = () => {
+    window.scroll(0, 0)
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
 
     const handleAddProduct = (e) => {
         e.preventDefault();

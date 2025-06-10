@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigation } from "react-router";
+import Spinner from "../Spinner";
 
 const categories = [
     {
@@ -41,6 +42,13 @@ const categories = [
 ];
 
 const CategoryCards = () => {
+
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
+
     return (
         <div className="bg-base-100 py-16 px-6 md:px-16 mx-auto max-w-[1350px]">
             <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">

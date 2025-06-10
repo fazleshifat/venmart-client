@@ -1,15 +1,50 @@
+import axios from 'axios';
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate, useNavigation } from 'react-router';
+import Swal from 'sweetalert2';
+import Spinner from '../components/Spinner';
 
 const UpdateProduct = () => {
+    window.scroll(0, 0)
 
     const product = useLoaderData();
     console.log(product)
-    const { name, brand, category, description, image, mainQty, minQty, price, rating } = product;
+    const { _id, name, brand, category, description, image, mainQty, minQty, price, rating } = product;
+    const navigate = useNavigate();
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
+
+    const handleUpdateProduct = (e) => {
+
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const updatedProduct = Object.fromEntries(formData.entries());
+
+        axios.put(`http://localhost:3000/allProducts/${_id}`, updatedProduct)
+            .then(response => {
+                console.log(response.data)
+                if (response.data.modifiedCount) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Product updated successfully',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    navigate('/allProducts');
+                }
+            }
+            )
+            .catch(error => console.error(error));
+    }
+
 
     return (
         <div className="min-h-screen w-full bg-gradient-to-tr from-gray-100 via-white to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center px-4 py-10 transition-all duration-300">
-            <form className="w-full max-w-5xl p-10 bg-white dark:bg-[#1e1e2f] shadow-2xl rounded-2xl transition-all duration-300 dark:border border-indigo-300">
+            <form onSubmit={handleUpdateProduct} className="w-full max-w-5xl p-10 bg-white dark:bg-[#1e1e2f] shadow-2xl rounded-2xl transition-all duration-300 dark:border border-indigo-300">
                 <h2 className="text-4xl font-bold text-center mb-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                     🛠️ Update Product Information
                 </h2>

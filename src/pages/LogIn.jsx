@@ -1,9 +1,17 @@
 import React, { use } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/PrivateRoute';
-import { Link } from 'react-router';
+import { Link, useNavigation } from 'react-router';
+import Spinner from '../components/Spinner';
 
 const LogIn = () => {
+    window.scroll(0, 0)
+
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
 
     const { user, logInUser, setUser, signInGoogle, errorMessage, setErrorMessage } = use(AuthContext);
 

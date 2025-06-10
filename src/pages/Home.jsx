@@ -3,9 +3,17 @@ import MarqueeBanner from '../components/MarqueeBanner';
 import SliderBanner from '../components/SliderBanner';
 import CategoryCards from '../components/Category/CategoryCards';
 import Latest from '../components/Latest';
-import { Link } from 'react-router';
+import { Link, useNavigation } from 'react-router';
+import Spinner from '../components/Spinner';
 
 const Home = () => {
+    window.scroll(0, 0)
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
+
     return (
         <>
             <section className="min-h-screen">

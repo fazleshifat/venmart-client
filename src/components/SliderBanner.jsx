@@ -16,7 +16,7 @@ const SliderBanner = () => {
                 <div className="absolute inset-0 m-3  md:px-16 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
 
                 {/* Text Content */}
-                <div className="relative z-20 md:max-w-3xl space-y-6 text-white text-center md:text-left">
+                <div className="relative z-20 md:max-w-3xl space-y-6 text-white text-left">
                     <h1 className="text-3xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-500 bg-clip-text text-transparent">
                         Discover Premium Industrial Products for Modern Enterprises
                     </h1>

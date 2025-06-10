@@ -3,11 +3,19 @@ import { AuthContext } from '../AuthProvider/PrivateRoute';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
-import { Link } from 'react-router';
+import { Link, useNavigation } from 'react-router';
+import Spinner from '../components/Spinner';
 
 const Register = () => {
+    window.scroll(0, 0)
 
     const { createUser, setUser, errorMessage, setErrorMessage } = use(AuthContext);
+
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
 
     const handleRegistration = (e) => {
         e.preventDefault();
@@ -72,6 +80,7 @@ const Register = () => {
 
             })
     }
+
     return (
         <div className="bg-base-200 min-h-screen flex items-center justify-center">
             <div className="card bg-base-100 w-full shrink-0 shadow-2xl max-w-xl p-8">

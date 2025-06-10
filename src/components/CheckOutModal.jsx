@@ -22,11 +22,10 @@ const CheckOutModal = ({ user, product }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setQuantity(1);
         if (quantity < convertedMinQty) {
             Swal.fire({
                 toast: true,
-                position: "top-right",
+                position: "top",
                 icon: "error",
                 title: "Minimum quantity not met!",
                 text: "Please increase your quantity.",
@@ -39,13 +38,14 @@ const CheckOutModal = ({ user, product }) => {
                 }
             });
         } else {
+            document.getElementById('my_modal_4').close();
+            setQuantity(1);
             Swal.fire({
                 title: "Order Confirmed!",
                 text: `Your order has been confirmed as ${user?.displayName}!`,
                 icon: "success"
             });
         }
-        document.getElementById('my_modal_4').close();
 
     };
 

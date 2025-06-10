@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router';
+import { Link, useLoaderData, useNavigation, useParams } from 'react-router';
+import Spinner from '../components/Spinner';
 
 const ProductByCategory = () => {
     const products = useLoaderData();
@@ -10,13 +11,18 @@ const ProductByCategory = () => {
     const title = category.charAt(0).toUpperCase() + category.slice(1);
     // console.log(title);
 
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
 
     return (
         <section className="max-w-[1350px] mx-auto px-4 py-16">
             {/* Page Heading */}
             <div className="text-center mb-12">
                 <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 text-transparent bg-clip-text mb-4">
-                    🛒 Products of {title} Category
+                    🛒 Products of <span className='text-gray-500'>{title}</span> Category
                 </h1>
                 <p className="text-zinc-600 dark:text-zinc-300 text-base md:text-lg">
                     Discover top-quality tools, parts, and equipment with trusted industrial-grade assurance.

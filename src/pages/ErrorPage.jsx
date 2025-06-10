@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigation } from 'react-router';
+import Spinner from '../components/Spinner';
 
 const ErrorPage = () => {
+    window.scroll(0, 0)
+
+    const Navigation = useNavigation()
+
+    if (Navigation.state === "loading") {
+        return <Spinner />;
+    }
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 text-center px-6">
 

@@ -3,6 +3,7 @@ import { Link, useLoaderData, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 
 const AllProducts = () => {
+    window.scroll(0, 0)
 
     const products = useLoaderData();
     // console.log(products)
@@ -14,47 +15,49 @@ const AllProducts = () => {
     }
 
     return (
-        <section className="min-h-screen bg-gray-50 dark:bg-zinc-900 px-4 py-10">
-            <h1 className="text-4xl font-bold text-center text-zinc-800 dark:text-white mb-10">
+        <section className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 px-4 py-10">
+            <h1 className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-10">
                 🛍️ All Products
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1350px] mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-[1300px] mx-auto">
                 {products.map((product, index) => (
                     <div
                         key={index}
-                        className="bg-white dark:bg-zinc-800 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 flex flex-col overflow-hidden"
+                        className="bg-white dark:bg-zinc-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex flex-col overflow-hidden"
                     >
                         <img
                             src={product.image}
                             alt={product.name}
-                            className="h-48 w-full object-cover"
+                            className="h-52 w-full object-cover rounded-t-xl transition-transform duration-300 hover:scale-110"
                         />
-                        <div className="p-5 flex flex-col justify-between h-full space-y-4">
-                            <div>
-                                <h2 className="text-2xl font-semibold text-zinc-800 dark:text-white flex items-center gap-2">
-                                    📦 {product.name}
-                                </h2>
-                                <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-                                    Brand: <span className="font-medium">{product.brand}</span>
-                                </p>
-                                <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                                    Category: <span className="font-medium">{product.category}</span>
-                                </p>
-                            </div>
+                        <div className="p-4 flex flex-col justify-between ">
+                            <h2 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center gap-2">
+                                📦 {product.name}
+                            </h2>
+                            <div className='grid grid-cols-1'>
+                                <div className='flex items-center justify-between'>
+                                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                                        Brand: <span className="font-medium">{product.brand}</span>
+                                    </p>
+                                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                                        Category: <span className="font-medium">{product.category}</span>
+                                    </p>
+                                </div>
 
-                            <div className="space-y-1 text-zinc-600 dark:text-zinc-300">
                                 <p>⭐ Rating: {product.rating}</p>
                                 <p>📦 Available Quantity: {product.mainQty}</p>
                                 <p>🧾 Min Order Quantity: {product.minQty}</p>
-                                <p className="line-clamp-2">📝 {product.description}</p>
                             </div>
+                            <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
+                                💲{product.price}
+                            </span>
 
                             <div className="flex justify-between items-center mt-4">
-                                <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
-                                    💲{product.price}
-                                </span>
-                                <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition">
+                                <Link to={`/product/details/${product._id}`} className="btn btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition duration-200 transform hover:scale-105">
+                                    View Product
+                                </Link>
+                                <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition duration-200 transform hover:scale-105">
                                     ✏️ Update
                                 </Link>
                             </div>
@@ -63,6 +66,7 @@ const AllProducts = () => {
                 ))}
             </div>
         </section>
+
     );
 };
 
