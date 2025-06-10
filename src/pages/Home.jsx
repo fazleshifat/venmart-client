@@ -17,7 +17,6 @@ const Home = () => {
     return (
         <>
             <section className="min-h-screen">
-
                 <Latest></Latest>
                 {/* <MarqueeBanner></MarqueeBanner> */}
                 <SliderBanner></SliderBanner>

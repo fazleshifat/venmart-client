@@ -7,7 +7,7 @@ import HeaderForMobile from '../components/HeaderForMobile';
 const MainLayout = () => {
     return (
         <>
-            {/* <HeaderForMobile></HeaderForMobile> */}
+            <HeaderForMobile></HeaderForMobile>
             <Navbar></Navbar>
             <section className='min-h-screen md:mt-19'>
                 <Outlet></Outlet>

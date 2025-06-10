@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -20,7 +21,26 @@ const CheckOutModal = ({ user, product }) => {
     const handleIncrease = () => setQuantity(prev => prev + 1);
     const handleDecrease = () => setQuantity(prev => Math.max(1, prev - 1));
 
+    const customerName = user?.displayName;
+    const customerEmail = user?.email;
+    const purchaseDate = new Date().toDateString()
+    const purchaseTime = new Date().toLocaleTimeString();
+
     const handleSubmit = (e) => {
+
+        const purchaseInfo = {
+            customerName,
+            customerEmail,
+            name,
+            brand,
+            category,
+            image,
+            price,
+            quantity,
+            purchaseTime,
+            purchaseDate,
+        }
+
         e.preventDefault();
         if (quantity < convertedMinQty) {
             Swal.fire({
@@ -38,13 +58,22 @@ const CheckOutModal = ({ user, product }) => {
                 }
             });
         } else {
-            document.getElementById('my_modal_4').close();
-            setQuantity(1);
-            Swal.fire({
-                title: "Order Confirmed!",
-                text: `Your order has been confirmed as ${user?.displayName}!`,
-                icon: "success"
-            });
+
+            // Send a POST request
+            axios.post("http://localhost:3000/products/cart", purchaseInfo)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        // sweet alert after create user
+                        document.getElementById('my_modal_4').close();
+                        setQuantity(1);
+                        Swal.fire({
+                            title: "Order Confirmed!",
+                            text: `Your order has been confirmed as ${user?.displayName}!`,
+                            icon: "success"
+                        });
+                    }
+                })
+                .catch(err => console.error('Axios error:', err));
         }
 
     };
@@ -80,8 +109,8 @@ const CheckOutModal = ({ user, product }) => {
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm bg-base-300 p-2 text-zinc-700 dark:text-zinc-300">
                             <p><strong>Brand:</strong> {brand}</p>
                             <p><strong>Category:</strong> {category}</p>
-                            <p><strong>Min Qty:</strong> {minQty}</p>
-                            <p><strong>Main Qty:</strong> {mainQty}</p>
+                            <p><strong>Min Quantity:</strong> {minQty}</p>
+                            <p><strong>Main Quantity:</strong> {mainQty}</p>
                             <p><strong>Price:</strong> ${price}</p>
                             <p><strong>Rating:</strong> {rating}/5</p>
                         </div>

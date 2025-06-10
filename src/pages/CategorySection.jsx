@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useNavigation } from "react-router";
-import Spinner from "../Spinner";
+import Spinner from "../components/Spinner";
 
-const initialCategories = [
+const categories = [
     {
         title: "Gadgets Equipment",
         description: "Top-grade helmets, gloves, and vests for industrial environments.",
@@ -47,10 +47,9 @@ const initialCategories = [
     },
 ];
 
-const categories = initialCategories.slice(0, 6)
 
 
-const CategoryCards = () => {
+const CategorySection = () => {
 
     const Navigation = useNavigation()
 
@@ -102,4 +101,4 @@ const CategoryCards = () => {
     );
 };
 
-export default CategoryCards;
+export default CategorySection;

@@ -14,6 +14,9 @@ import AllProducts from "../pages/AllProducts";
 import ProductDetails from "../pages/ProductDetails";
 import CategoryCards from "../components/Category/CategoryCards";
 import UpdateProduct from "../pages/UpdateProduct";
+import CartSection from "../pages/CartSection";
+import MyProduct from "../pages/MyProduct";
+import CategorySection from "../pages/CategorySection";
 
 export const router = createBrowserRouter([
     {
@@ -32,6 +35,16 @@ export const router = createBrowserRouter([
                 path: '/register',
                 Component: Register,
             },
+            ,
+            {
+                path: '/addProduct',
+                Component: AddProduct
+            },
+
+            {
+                path: '/categories',
+                Component: CategorySection
+            },
             {
                 path: '/allProducts',
                 loader: async () => await fetch('http://localhost:3000/allProducts'),
@@ -43,23 +56,25 @@ export const router = createBrowserRouter([
                 Component: ProductDetails
             },
             {
-                path: '/categories',
-                Component: CategoryCards
-            }
-            ,
-            {
                 path: `/products/:category`,
                 loader: async ({ params }) => await fetch(`http://localhost:3000/products/${params.category}`),
                 Component: ProductByCategory
             },
             {
-                path: '/addProduct',
-                Component: AddProduct
-            },
-            {
                 path: '/updateProduct/:id',
                 loader: async ({ params }) => await fetch(`http://localhost:3000/allProducts/${params.id}`),
                 Component: UpdateProduct
+            },
+            {
+                path: '/myProduct',
+                loader: async () => await fetch('http://localhost:3000/allProducts'),
+                Component: MyProduct
+            }
+            ,
+            {
+                path: '/cart',
+                loader: async () => await fetch('http://localhost:3000/product/cart'),
+                Component: CartSection
             }
         ]
     },
