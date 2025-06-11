@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const CheckOutModal = ({ user, product }) => {
-    const [quantity, setQuantity] = useState(1);
     const {
         name,
         brand,
@@ -21,10 +21,16 @@ const CheckOutModal = ({ user, product }) => {
     const handleIncrease = () => setQuantity(prev => prev + 1);
     const handleDecrease = () => setQuantity(prev => Math.max(1, prev - 1));
 
+    // const quantityInput = document.getElementById('buyingQuantity').value;
+    // console.log(quantityInput)
+    const [quantity, setQuantity] = useState(1);
+
     const customerName = user?.displayName;
     const customerEmail = user?.email;
     const purchaseDate = new Date().toDateString()
     const purchaseTime = new Date().toLocaleTimeString();
+
+    const Navigate = useNavigate();
 
     const handleSubmit = (e) => {
 
@@ -71,6 +77,7 @@ const CheckOutModal = ({ user, product }) => {
                             text: `Your order has been confirmed as ${user?.displayName}!`,
                             icon: "success"
                         });
+                        Navigate('/cart');
                     }
                 })
                 .catch(err => console.error('Axios error:', err));
@@ -119,6 +126,12 @@ const CheckOutModal = ({ user, product }) => {
                         <div className="flex justify-center items-center gap-2 mt-4">
                             <label className="text-sm font-medium">Quantity:</label>
                             <button onClick={handleDecrease} type="button" className="btn btn-xs btn-outline">−</button>
+                            {/* <input
+                                type="number"
+                                className='w-auto outline-1 text-center'
+                                value={quantity}
+                                onChange={(e) => setQuantity(e.target.value)}
+                            /> */}
                             <span className="w-6 text-center">{quantity}</span>
                             <button onClick={handleIncrease} type="button" className="btn btn-xs btn-outline">+</button>
                         </div>

@@ -8,7 +8,7 @@ const UpdateProduct = () => {
     window.scroll(0, 0)
 
     const product = useLoaderData();
-    console.log(product)
+    // console.log(product)
     const { _id, name, brand, category, description, image, mainQty, minQty, price, rating } = product;
     const navigate = useNavigate();
     const Navigation = useNavigation()
@@ -26,7 +26,6 @@ const UpdateProduct = () => {
 
         axios.put(`http://localhost:3000/allProducts/${_id}`, updatedProduct)
             .then(response => {
-                console.log(response.data)
                 if (response.data.modifiedCount) {
                     Swal.fire({
                         icon: 'success',

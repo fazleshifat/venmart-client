@@ -30,7 +30,6 @@ const MyProduct = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes!"
         }).then((result) => {
-            console.log(result)
             if (result.isConfirmed) {
                 axios.delete(`http://localhost:3000/allProducts/delete/${id}`)
                     .then(response => {
@@ -52,7 +51,7 @@ const MyProduct = () => {
     }
 
     return (
-        <section className="p-6 md:p-10 min-h-screen ">
+        <section className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
             <div className="text-center mb-10">
                 <h1 className="text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                     📋My added Products
@@ -62,18 +61,18 @@ const MyProduct = () => {
             {myProducts.length === 0 ? (
                 <div className="text-center text-gray-500 text-lg">you haven't added any product yet</div>
             ) : (
-                <div className="grid gap-6 grid-cols-3">
+                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-fit">
                     {myProducts.map((product) => (
                         <div
                             key={product._id}
-                            className="bg-white rounded-2xl shadow-md hover:shadow-lg transition"
+                            className="bg-white rounded-2xl shadow-md hover:shadow-lg transition border-2 border-gray-300"
                         >
-                            <div className="p-4 border rounded-2xl shadow-sm bg-white hover:shadow-md transition">
+                            <div className="p-4 rounded-2xl  bg-white">
                                 <div className="flex flex-col md:flex-row gap-4">
                                     <img
                                         src={product.image}
                                         alt={product.name}
-                                        className="w-full md:w-48 h-48 object-cover rounded-xl"
+                                        className="w-48 rounded-xl"
                                     />
                                     <div className="flex-1 flex flex-col justify-between">
                                         <div>

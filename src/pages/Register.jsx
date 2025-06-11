@@ -38,7 +38,6 @@ const Register = () => {
                     .then(() => {
 
 
-                        console.log(result.user)
                         setUser(result.user)
                         // navigate('/');
 
@@ -96,7 +95,7 @@ const Register = () => {
                         <label className="label">Password</label>
                         <input type="password" name="password" className="input w-full" placeholder="Password" />
                         <div><Link className="link link-hover">Forgot password?</Link></div>
-                        <div>Already have an account?<Link className="link link-hover">Login</Link></div>
+                        <div>Already have an account?<Link to='/login' className="link link-hover">Login</Link></div>
                         <button className="btn btn-neutral mt-4">Registration</button>
                     </form>
                 </div>

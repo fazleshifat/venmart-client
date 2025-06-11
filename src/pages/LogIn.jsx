@@ -75,7 +75,7 @@ const LogIn = () => {
                         <label className="label">Password</label>
                         <input type="password" name="password" className="input w-full" placeholder="Password" />
                         <div><Link className="link link-hover">Forgot password?</Link></div>
-                        <div>Don't have any account<Link className="link link-hover">Registration</Link></div>
+                        <div>Don't have any account<Link to='/register' className="link link-hover">Registration</Link></div>
                         <button className="btn btn-primary mt-4 w-full">Login</button>
                     </form>
                     {/* Google */}
