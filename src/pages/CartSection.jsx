@@ -44,7 +44,7 @@ const CartSection = () => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/cart/delete/${id}`)
+                axios.delete(`https://venmart-server.vercel.app/cart/delete/${id}`)
                     .then(response => {
                         const filteredCart = myCarts.filter(cart => cart._id !== id);
                         setMyCarts(filteredCart);

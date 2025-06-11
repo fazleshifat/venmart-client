@@ -66,7 +66,7 @@ const CheckOutModal = ({ user, product }) => {
         } else {
 
             // Send a POST request
-            axios.post("http://localhost:3000/products/cart", purchaseInfo)
+            axios.post("https://venmart-server.vercel.app/products/cart", purchaseInfo)
                 .then(res => {
                     if (res.data.insertedId) {
                         // sweet alert after create user

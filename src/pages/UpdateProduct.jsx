@@ -25,7 +25,7 @@ const UpdateProduct = () => {
         const formData = new FormData(form);
         const updatedProduct = Object.fromEntries(formData.entries());
 
-        axios.put(`http://localhost:3000/allProducts/${_id}`, updatedProduct)
+        axios.put(`https://venmart-server.vercel.app/allProducts/${_id}`, updatedProduct)
             .then(response => {
                 if (response.data.modifiedCount) {
                     Swal.fire({

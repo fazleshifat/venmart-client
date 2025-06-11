@@ -32,7 +32,7 @@ const MyProduct = () => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/allProducts/delete/${id}`)
+                axios.delete(`https://venmart-server.vercel.app/allProducts/delete/${id}`)
                     .then(response => {
                         const filteredProducts = myProducts.filter(product => product._id !== id);
                         setMyProducts(filteredProducts);

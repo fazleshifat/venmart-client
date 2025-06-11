@@ -53,7 +53,7 @@ const Register = () => {
 
 
                         // Send a POST request
-                        axios.post("http://localhost:3000/users", userProfile)
+                        axios.post("https://venmart-server.vercel.app/users", userProfile)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     // sweet alert after create user
