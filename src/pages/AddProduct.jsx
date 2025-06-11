@@ -1,15 +1,16 @@
 import axios from 'axios';
 import React from 'react';
-import { useNavigation } from 'react-router';
+import { useNavigate, useNavigation } from 'react-router';
 import Swal from 'sweetalert2';
 import Spinner from '../components/Spinner';
 import { use } from 'react';
-import { AuthContext } from '../AuthProvider/PrivateRoute';
+import { AuthContext } from '../AuthProvider/AuthContext';
 
 const AddProduct = () => {
     const { user } = use(AuthContext);
 
 
+    const Navigate = useNavigate();
     const Navigation = useNavigation()
 
     if (Navigation.state === "loading") {
@@ -36,6 +37,7 @@ const AddProduct = () => {
                         timer: 1500
                     });
                 }
+                Navigate('/myProduct');
             })
             .catch(err => console.error('Axios error:', err));
     }
@@ -180,7 +182,6 @@ const AddProduct = () => {
                             name="ownerName"
                             defaultValue={user?.displayName}
                             readOnly
-                            disabled
                             className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
                         />
                     </div>
@@ -191,11 +192,10 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="text"
-                            id="ownerName"
-                            name="ownerName"
-                            defaultValue={user?.email} r
+                            id="ownerEmail"
+                            name="ownerEmail"
+                            defaultValue={user?.email}
                             readOnly
-                            disabled
                             className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
                         />
                     </div>

@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { AuthContext } from '../AuthProvider/PrivateRoute';
+import { AuthContext } from '../AuthProvider/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';

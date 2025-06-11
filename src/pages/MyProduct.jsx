@@ -1,14 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { use } from 'react';
 import { useLoaderData } from 'react-router';
-import { AuthContext } from '../AuthProvider/PrivateRoute';
+import { AuthContext } from '../AuthProvider/AuthContext';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const MyProduct = () => {
 
     const { user } = use(AuthContext);
-
     const products = useLoaderData();
-    const filterProducts = products.filter(product => product.ownerEmail === user?.email);
+    const [myProducts, setMyProducts] = useState([]);
+
+    useEffect(() => {
+        if (user && products) {
+            const filterProducts = products.filter(product => product.ownerEmail === user?.email);
+            setMyProducts(filterProducts);
+        }
+    }, [user, products]);
+
+
+
+    const handleRemoveProduct = (id) => {
+        Swal.fire({
+            title: "Want to remove the product!",
+            text: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+        }).then((result) => {
+            console.log(result)
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/allProducts/delete/${id}`)
+                    .then(response => {
+                        const filteredProducts = myProducts.filter(product => product._id !== id);
+                        setMyProducts(filteredProducts);
+                    })
+                    .catch(error => {
+                        // console.error(error);
+                    });
+
+                Swal.fire({
+                    title: "Product Removed",
+                    text: "your product has been removed",
+                    icon: "success"
+                });
+            }
+        });
+
+    }
 
     return (
         <section className="p-6 md:p-10 min-h-screen ">
@@ -16,14 +57,13 @@ const MyProduct = () => {
                 <h1 className="text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                     📋My added Products
                 </h1>
-                <p className="text-gray-600 text-lg mt-2">Manage the products you've listed for sale</p>
             </div>
 
-            {filterProducts.length === 0 ? (
-                <div className="text-center text-gray-500 text-lg">No products found</div>
+            {myProducts.length === 0 ? (
+                <div className="text-center text-gray-500 text-lg">you haven't added any product yet</div>
             ) : (
-                <div className="grid gap-6 grid-cols-1">
-                    {filterProducts.map((product) => (
+                <div className="grid gap-6 grid-cols-3">
+                    {myProducts.map((product) => (
                         <div
                             key={product._id}
                             className="bg-white rounded-2xl shadow-md hover:shadow-lg transition"
@@ -46,9 +86,9 @@ const MyProduct = () => {
                                                 Listed on: {product.listedDate || 'N/A'}
                                             </p>
                                         </div>
-                                        <div className="flex gap-4 mt-4">
-                                            <button className="text-sm text-blue-600 hover:underline">✏️ Edit</button>
-                                            <button className="text-sm text-red-600 hover:underline">🗑️ Remove</button>
+                                        <div className="flex gap-4 mt-4 w-fit">
+                                            {/* <button className="text-sm text-blue-600 hover:underline">✏️ Edit</button> */}
+                                            <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm text-sm btn-outline text-red-600 text">🗑️ Remove</button>
                                         </div>
                                     </div>
                                 </div>

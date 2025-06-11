@@ -1,6 +1,6 @@
 import React, { use, useState } from 'react';
 import { Link, useLoaderData, useNavigation } from 'react-router';
-import { AuthContext } from '../AuthProvider/PrivateRoute';
+import { AuthContext } from '../AuthProvider/AuthContext';
 import BuyModal from '../components/BuyModal';
 import CheckOutModal from '../components/CheckOutModal';
 import PopularProduct from '../components/PopularProduct';

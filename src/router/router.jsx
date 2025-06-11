@@ -17,6 +17,7 @@ import UpdateProduct from "../pages/UpdateProduct";
 import CartSection from "../pages/CartSection";
 import MyProduct from "../pages/MyProduct";
 import CategorySection from "../pages/CategorySection";
+import PrivateRoute from "../AuthProvider/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -38,7 +39,9 @@ export const router = createBrowserRouter([
             ,
             {
                 path: '/addProduct',
-                Component: AddProduct
+                element: <PrivateRoute>
+                    <AddProduct></AddProduct>
+                </PrivateRoute>
             },
 
             {
@@ -48,12 +51,16 @@ export const router = createBrowserRouter([
             {
                 path: '/allProducts',
                 loader: async () => await fetch('http://localhost:3000/allProducts'),
-                Component: AllProducts
+                element: <PrivateRoute>
+                    <AllProducts></AllProducts>
+                </PrivateRoute>
             },
             {
                 path: '/product/details/:id',
                 loader: async ({ params }) => await fetch(`http://localhost:3000/allProducts/${params.id}`),
-                Component: ProductDetails
+                element: <PrivateRoute>
+                    <ProductDetails></ProductDetails>
+                </PrivateRoute>
             },
             {
                 path: `/products/:category`,
@@ -63,18 +70,24 @@ export const router = createBrowserRouter([
             {
                 path: '/updateProduct/:id',
                 loader: async ({ params }) => await fetch(`http://localhost:3000/allProducts/${params.id}`),
-                Component: UpdateProduct
+                element: <PrivateRoute>
+                    <UpdateProduct></UpdateProduct>
+                </PrivateRoute>
             },
             {
                 path: '/myProduct',
                 loader: async () => await fetch('http://localhost:3000/allProducts'),
-                Component: MyProduct
+                element: <PrivateRoute>
+                    <MyProduct></MyProduct>
+                </PrivateRoute>
             }
             ,
             {
                 path: '/cart',
                 loader: async () => await fetch('http://localhost:3000/product/cart'),
-                Component: CartSection
+                element: <PrivateRoute>
+                    <CartSection></CartSection>
+                </PrivateRoute>
             }
         ]
     },

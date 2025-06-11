@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { use } from 'react';
-import { AuthContext } from '../AuthProvider/PrivateRoute';
+import { AuthContext } from '../AuthProvider/AuthContext';
 import { useLoaderData, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
@@ -8,10 +8,10 @@ import Swal from 'sweetalert2';
 
 const CartSection = () => {
 
+    const cartItems = useLoaderData();
     const [myCarts, setMyCarts] = useState([]);
 
     const { user } = use(AuthContext);
-    const cartItems = useLoaderData();
     // const filteredCart = cartItems.filter(cart => cart.customerEmail === user?.email);
 
     useEffect(() => {
@@ -65,9 +65,8 @@ const CartSection = () => {
         <section className="p-6 md:p-10 min-h-screen">
             <div className="text-center mb-10">
                 <h1 className="text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                🛍️My Cart
+                    🛍️My Cart
                 </h1>
-                <p className="text-gray-600 text-lg mt-2">Review your purchased items</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import ThemeToggle from '../components/ThemeToggle';
 import { Link, NavLink, useNavigate } from 'react-router';
-import { AuthContext } from '../AuthProvider/PrivateRoute';
+import { AuthContext } from '../AuthProvider/AuthContext';
 import Swal from 'sweetalert2';
 import { signOut } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.init';
