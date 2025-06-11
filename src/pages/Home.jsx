@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <>
             <section className="min-h-screen">
-                <Latest></Latest>
+                {/* <Latest></Latest> */}
                 {/* <MarqueeBanner></MarqueeBanner> */}
                 <SliderBanner></SliderBanner>
                 <CategoryCards></CategoryCards>

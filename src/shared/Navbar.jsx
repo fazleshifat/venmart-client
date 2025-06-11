@@ -47,16 +47,17 @@ const Navbar = () => {
                 });
 
                 Swal.fire({
-                    title: "Logged out!",
-                    text: "You has been logged out successfully.",
+                    title: "Logged out successful!",
+                    text: "still you can visit the Homepage.",
                     icon: "success"
                 });
+                navigate('/logIn');
             }
         });
 
     }
 
-  
+
 
 
 
@@ -101,7 +102,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className={`navbar fixed max-w-11/12  bg-black/10 dark:bg-indigo-700/60 backdrop-blur-md shadow-sm px-3 md:px-6 z-50 rounded-full transition-all duration-300
+        <div className={`navbar fixed max-w-11/12 bg-black/10 dark:bg-indigo-900/60 backdrop-blur-md shadow-sm px-3 md:px-6 z-50 rounded-full transition-all duration-300
         left-1/2 -translate-x-1/2
         top-auto bottom-2 
         md:top-2 md:bottom-auto

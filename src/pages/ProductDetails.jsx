@@ -6,6 +6,7 @@ import CheckOutModal from '../components/CheckOutModal';
 import PopularProduct from '../components/PopularProduct';
 import ProductReview from '../components/ProductReview';
 import Spinner from '../components/Spinner';
+import { Fade } from 'react-awesome-reveal';
 
 const ProductDetails = () => {
     window.scroll(0, 0)
@@ -26,71 +27,91 @@ const ProductDetails = () => {
 
 
     return (
-        <section className="min-h-screen max-w-[1390px] mx-auto flex flex-col lg:flex-row justify-between px-4 py-10">
-            {/* Left Section: Product Card */}
 
-            <div className="w-full lg:w-6/10 mx-auto  p-8 mb-10 lg:mb-0 ">
-                <h1 className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-10">
-                    🛍️ Product Details
-                </h1>
+        <Fade cascade damping={0.5}>
 
-                <div className='bg-white dark:bg-zinc-900 rounded-2xl shadow-xl  p-8 mb-10 lg:mb-0'>
-                    <div className="relative mb-6">
-                        {/* Product Image */}
-                        <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-72 object-cover rounded-lg shadow-xl"
-                        />
-                        <div className="absolute top-4 right-4 bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-bold text-sm py-1 px-3 rounded-full shadow-lg">
-                            🛍️ {product.name}
+            <section className="max-w-[1390px] p-3 flex flex-col lg:flex-row justify-between">
+                {/* Left Section: Product Card */}
+
+                <div className="w-full lg:w-6/10">
+                    <h1 className="text-4xl font-extrabold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-5">
+                        🛍️Product Details
+                    </h1>
+
+                    <div className="overflow-x-hidden">
+                        <div className="bg-white dark:bg-zinc-900 border-2 border-indigo-400 hover:border-indigo-300 rounded-3xl shadow-xl p-6 sm:p-8 mb-10 max-w-5xl mx-auto flex flex-col lg:flex-row gap-8">
+
+                            {/* LEFT: Product Image */}
+                            <div className="flex-shrink-0">
+                                <img
+                                    src={product?.image}
+                                    alt="product"
+                                    className="w-96 h-70 mx-auto object-cover rounded-2xl shadow-md"
+                                />
+                            </div>
+
+                            {/* RIGHT: Product Info */}
+                            <div className="flex flex-col justify-between flex-grow">
+                                <div className="space-y-4 text-zinc-800 dark:text-zinc-200">
+                                    <h2 className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">{product?.name}</h2>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <p className="text-lg font-semibold">
+                                            <span className="text-indigo-500">Brand:</span> {product?.brand}
+                                        </p>
+                                        <p className="text-lg font-semibold">
+                                            <span className="text-indigo-500">Category:</span> {product?.category}
+                                        </p>
+                                        <p className="text-lg font-semibold">
+                                            <span className="text-green-600 dark:text-green-400">Available Quantity:</span>{product?.mainQty}
+                                        </p>
+                                        <p className="text-lg font-semibold">
+                                            <span className="text-yellow-500">Min Order Quantity:</span>{product?.minQty}
+                                        </p>
+                                        <p className="text-lg font-semibold">
+                                            <span className="text-indigo-500">Rating:</span> ⭐ {product?.rating}/5
+                                        </p>
+                                        <p className="text-lg font-semibold">
+                                            <span className="text-indigo-500">Price:</span> 💲{product?.price}
+                                        </p>
+                                    </div>
+
+                                    <p className="text-md text-zinc-600 dark:text-zinc-400 mt-2">
+                                        <span className="font-semibold text-indigo-500">Description:</span> {product?.description}
+                                    </p>
+                                </div>
+
+                                {/* Buy Button */}
+                                <div className="mt-6">
+                                    <button
+                                        onClick={() => document.getElementById('my_modal_4').showModal()}
+                                        className="cursor-pointer w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-lg font-semibold shadow-md hover:shadow-xl transform transition hover:scale-105 duration-300"
+                                    >
+                                        🛒Buy Now
+                                    </button>
+                                </div>
+
+                                {/* Optional Modal */}
+                                <CheckOutModal user={user} product={product} />
+                            </div>
                         </div>
                     </div>
 
-                    {/* Product Details */}
-                    <div className="space-y-4 grid grid-cols-2">
-                        <p className="text-xl font-semibold text-zinc-800 dark:text-white">
-                            <strong>Brand:</strong> {product.brand}
-                        </p>
-                        <p className="text-xl font-semibold text-zinc-800 dark:text-white">
-                            <strong>Category:</strong> {product.category}
-                        </p>
-                        <p className="text-lg text-zinc-600 dark:text-zinc-400">
-                            <strong>Description:</strong> {product.description}
-                        </p>
-                        <p className="text-lg text-green-600 dark:text-green-400 font-semibold">
-                            <strong>Available Quantity:</strong> {product.mainQty}
-                        </p>
-                        <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-                            💲{product.price}
-                        </p>
+                    <div className='bg-base-300 my-3 p-3 rounded-3xl'>
+                        <ProductReview></ProductReview>
                     </div>
-
-                    {/* Buy Now Button */}
-                    <div className="mt-6 flex justify-between items-center">
-                        <button
-                            onClick={() => document.getElementById('my_modal_4').showModal()}
-                            className="btn btn-warning w-full py-3 rounded-lg text-white text-xl font-semibold transition-all duration-300 transform hover:bg-indigo-600 hover:scale-105 shadow-md"
-                        >
-                            🛒 Buy Now
-                        </button>
-                    </div>
-                    {/* Product Reviews Section */}
-                    <CheckOutModal user={user} product={product}></CheckOutModal>
                 </div>
-                <div className='bg-base-300 my-3 p-3 rounded-3xl'>
-                    <ProductReview></ProductReview>
+
+
+                {/* Right Section: Similar Products */}
+                <div className="w-full h-fit lg:w-3/10 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl p-6 space-y-6">
+
+                    <PopularProduct></PopularProduct>
+
                 </div>
-            </div>
+            </section>
+        </Fade>
 
-
-            {/* Right Section: Similar Products */}
-            <div className="w-full h-fit lg:w-3/10 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl p-6 space-y-6">
-
-                <PopularProduct></PopularProduct>
-
-            </div>
-        </section>
 
 
     );

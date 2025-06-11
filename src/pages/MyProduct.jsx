@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router';
 import { AuthContext } from '../AuthProvider/AuthContext';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Fade } from 'react-awesome-reveal';
 
 const MyProduct = () => {
 
@@ -51,53 +52,56 @@ const MyProduct = () => {
     }
 
     return (
-        <section className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
-            <div className="text-center mb-10">
-                <h1 className="text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                    📋My added Products
-                </h1>
-            </div>
+        <Fade cascade damping={0.5}>
 
-            {myProducts.length === 0 ? (
-                <div className="text-center text-gray-500 text-lg">you haven't added any product yet</div>
-            ) : (
-                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-fit">
-                    {myProducts.map((product) => (
-                        <div
-                            key={product._id}
-                            className="bg-white rounded-2xl shadow-md hover:shadow-lg transition border-2 border-gray-300"
-                        >
-                            <div className="p-4 rounded-2xl  bg-white">
-                                <div className="flex flex-col md:flex-row gap-4">
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                        className="w-48 rounded-xl"
-                                    />
-                                    <div className="flex-1 flex flex-col justify-between">
-                                        <div>
-                                            <h2 className="text-2xl font-semibold text-gray-800">{product.name}</h2>
-                                            <p className="text-sm text-gray-500 mt-1">Brand: <span className="font-medium">{product.brand}</span></p>
-                                            <p className="text-sm text-gray-500">Category: <span className="font-medium">{product.category}</span></p>
-                                            <p className="text-sm text-gray-600 mt-2 font-semibold ">Price: ${product.price}</p>
-                                            <p className="text-sm text-gray-500">Stock: {product.quantity}</p>
-                                            <p className="text-xs text-gray-400 mt-1 italic">
-                                                Listed on: {product.listedDate || 'N/A'}
-                                            </p>
-                                        </div>
-                                        <div className="flex gap-4 mt-4 w-fit">
-                                            {/* <button className="text-sm text-blue-600 hover:underline">✏️ Edit</button> */}
-                                            <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm text-sm btn-outline text-red-600 text">🗑️ Remove</button>
+            <section className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
+                <div className="text-center mb-10">
+                    <h1 className="text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                        📋My added Products
+                    </h1>
+                </div>
+
+                {myProducts.length === 0 ? (
+                    <div className="text-center text-gray-500 text-lg">you haven't added any product yet</div>
+                ) : (
+                    <div className="grid gap-6 grid-cols-1 lg:grid-cols-3 max-h-fit">
+                        {myProducts.map((product) => (
+                            <div
+                                key={product._id}
+                                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition border-2 border-gray-300"
+                            >
+                                <div className="p-4 rounded-2xl bg-white overflow-x-hidden">
+                                    <div className="flex flex-col lg:flex-row gap-2 justify-between">
+                                        <img
+                                            src={product.image}
+                                            alt={product.name}
+                                            className="h-fit my-auto rounded-xl w-6/12"
+                                        />
+                                        <div className="flex-1 flex flex-col justify-between">
+                                            <div>
+                                                <h2 className="text-2xl font-semibold text-gray-800">{product.name}</h2>
+                                                <p className="text-sm text-gray-500 mt-1">Brand: <span className="font-medium">{product.brand}</span></p>
+                                                <p className="text-sm text-gray-500">Category: <span className="font-medium">{product.category}</span></p>
+                                                <p className="text-sm text-gray-600 mt-2 font-semibold ">Price: ${product.price}</p>
+                                                <p className="text-sm text-gray-500">Stock: {product.quantity}</p>
+                                                <p className="text-xs text-gray-400 mt-1 italic">
+                                                    Listed on: {product.listedDate || 'N/A'}
+                                                </p>
+                                            </div>
+                                            <div className="flex gap-4 mt-4 w-fit">
+                                                {/* <button className="text-sm text-blue-600 hover:underline">✏️ Edit</button> */}
+                                                <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm text-sm btn-outline text-red-600 text">🗑️ Remove</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
-                    ))}
-                </div>
-            )}
-        </section>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </section>
+        </Fade>
     );
 };
 

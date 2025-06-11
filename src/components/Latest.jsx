@@ -4,7 +4,7 @@ import Marquee from 'react-fast-marquee';
 const Latest = () => {
     return (
         // <div className="bg-gradient-to-r from-indigo-700 via-purple-800 to-pink-700 py-4 px-6">
-        <div className="bg-gray-400 py-1 md:mt-22 px-2 flex items-center">
+        <div className="bg-gray-400 py-1 px-2 flex items-center">
             <Marquee
                 gradient={false}
                 speed={60}

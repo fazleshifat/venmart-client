@@ -71,7 +71,7 @@ const PopularProduct = () => {
             </h2>
 
             {/* Similar Products List */}
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-row flex-wrap space-x-7 lg:flex-col">
                 {popularProducts.map((popularProduct, index) => (
                     <div key={index} className="flex items-center space-x-4">
                         <img

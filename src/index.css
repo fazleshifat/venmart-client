@@ -1,8 +1,22 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* google fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Poiret+One&display=swap');
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poiret One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-secondary {
+  font-family: "Amaranth";
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

@@ -18,6 +18,7 @@ import CartSection from "../pages/CartSection";
 import MyProduct from "../pages/MyProduct";
 import CategorySection from "../pages/CategorySection";
 import PrivateRoute from "../AuthProvider/PrivateRoute";
+import CartDetailsModal from "../components/CartDetailsModal";
 
 export const router = createBrowserRouter([
     {
@@ -84,11 +85,18 @@ export const router = createBrowserRouter([
             ,
             {
                 path: '/cart',
-                loader: async () => await fetch('http://localhost:3000/product/cart'),
+                loader: async () => await fetch('http://localhost:3000/cart'),
                 element: <PrivateRoute>
                     <CartSection></CartSection>
                 </PrivateRoute>
-            }
+            },
+            // {
+            //     path: '/cart/:id',
+            //     loader: async () => await fetch(`http://localhost:3000/cart/${id}`),
+            //     element: <PrivateRoute>
+            //         <CartDetailsModal></CartDetailsModal>
+            //     </PrivateRoute>
+            // }
         ]
     },
     {

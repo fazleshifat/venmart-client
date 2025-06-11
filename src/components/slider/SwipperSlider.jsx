@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -13,9 +12,9 @@ import './Swiper.css';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-const SwipperSlider = () => {
+export default function App() {
     return (
-        <div>
+        <>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -28,18 +27,14 @@ const SwipperSlider = () => {
                 }}
                 // navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
+                className="mySwiper max-w-96 lg:max-w-full object-center"
             >
-                <SwiperSlide className=''><img src="/assets/banner1.jpg" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner2.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner3.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner6.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner7.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
-                <SwiperSlide className=''><img src="/assets/banner8.png" alt="banner" className='min-h-[80vh] lg:max-h-[80vh] '/></SwiperSlide>
-                
+                <SwiperSlide><img src="/assets/banner1.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
+                <SwiperSlide><img src="/assets/banner2.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
+                <SwiperSlide><img src="/assets/banner3.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
+                <SwiperSlide><img src="/assets/banner4.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
+                <SwiperSlide><img src="/assets/banner5.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
             </Swiper>
-        </div>
+        </>
     );
-};
-
-export default SwipperSlider;
+}

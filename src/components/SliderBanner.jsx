@@ -1,70 +1,75 @@
 import React from 'react';
 import SwipperSlider from './slider/SwipperSlider';
+import TypeWriter from './TypwWriter';
+import { Fade } from 'react-awesome-reveal';
 
 const SliderBanner = () => {
     return (
-        <div className="relative max-w-[1590px] mx-auto p-3 ">
-            
-            {/* Background Slider - defines full height */}
-
-            <SwipperSlider></SwipperSlider>
+        <Fade cascade damping={0.5}>
+            <div className="relative max-w-[1590px] mx-auto px-5 flex flex-col lg:flex-row-reverse justify-between">
 
 
-            {/* Overlay and Text Layer */}
-            <div className="absolute inset-0 mx-auto px-4 py-10 md:px-16 flex items-center z-20 ">
-                {/* Left-side overlay */}
-                <div className="absolute inset-0 m-3  md:px-16 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+                <div className='lg:max-w-6/12 md:mx-auto'>
+                    <Fade cascade direction={'left'}>
 
-                {/* Text Content */}
-                <div className="relative z-20 md:max-w-3xl space-y-6 text-white text-left">
-                    <h1 className="text-3xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-500 bg-clip-text text-transparent">
-                        Discover Premium Industrial Products for Modern Enterprises
-                    </h1>
+                        <img src="/assets/abstract.png" className='absolute lg:right-60 opacity-30 w-66 lg:w-fit' alt="abstract" />
+                    </Fade>
 
-                    <p className="hidden md:block text-sm md:text-lg text-gray-200">
-                        We supply high-grade tools, machinery components, and heavy-duty equipment designed for
-                        <span className="font-semibold text-white"> construction, logistics, and manufacturing sectors</span>.
-                        Experience efficient sourcing with <span className="text-indigo-300 font-semibold">fast delivery</span>,
-                        <span className="text-indigo-300 font-semibold">competitive pricing</span>, and a
-                        <span className="text-indigo-300 font-semibold">scalable inventory network</span> you can trust.
-                    </p>
+                    <SwipperSlider></SwipperSlider>
 
-                    <div className="flex flex-wrap justify-start gap-2 md:gap-4">
-                        <button className="btn btn-accent">📦 Explore Catalog</button>
-                        <button className="btn btn-outline text-white border-white hover:border-indigo-500 hover:text-indigo-600">
-                            🛠 Industries We Serve
-                        </button>
-                        <button className="btn btn-outline text-white border-white hover:border-indigo-500 hover:text-indigo-600">
-                            🧾 Request a Quote
-                        </button>
-                        <button className="btn btn-outline text-white border-white hover:border-indigo-500 hover:text-indigo-600">
-                            📞 Contact Sales
-                        </button>
-                    </div>
-
-                    <div className="hidden mt-6 md:grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-300">
-                        <div className="flex items-start gap-2">
-                            <span className="text-indigo-400">🚚</span>
-                            <p><strong>Global Shipping:</strong> Reliable delivery to over 50+ countries.</p>
-                        </div>
-                        <div className="flex items-start gap-2">
-                            <span className="text-indigo-400">⚙️</span>
-                            <p><strong>OEM Partnerships:</strong> Direct sourcing from certified manufacturers.</p>
-                        </div>
-                        <div className="flex items-start gap-2">
-                            <span className="text-indigo-400">📈</span>
-                            <p><strong>Scalable Supply:</strong> Bulk-ready inventories for all business sizes.</p>
-                        </div>
-                        <div className="flex items-start gap-2">
-                            <span className="text-indigo-400">🔒</span>
-                            <p><strong>Secure Transactions:</strong> Encrypted payments and order tracking.</p>
-                        </div>
-                    </div>
                 </div>
 
-            </div>
-        </div>
 
+                <img src="/assets/sale.png" className='w-15 md:w-40 h-15 md:h-40 md:mt-30 right-10 md:right-18 absolute animate-bounce' />
+
+                {/* Overlay and Text Layer */}
+                <div className="lg:max-w-6/12 mx-auto flex items-center overflow-x-hidden">
+                    <Fade cascade direction={'right'}>
+                        {/* Left-side overlay */}
+
+
+                        {/* Text Content */}
+                        <div className="space-y-6 max-w-3xl text-white text-left">
+                            <h1 className="text-3xl md:text-5xl text-[#19817b] dark:text-[#7fffd4]">
+                                Discover Premium Industrial
+                            </h1>
+                            <h1 className='-mt-2 text-3xl md:text-5xl text-[#19817b] dark:text-[#7fffd4]'>
+
+                                Products for
+                                <span className='text-indigo-300 ml-3 font-semibold'>
+                                    <TypeWriter></TypeWriter>
+                                </span>
+
+                            </h1>
+
+                            <p className="hidden md:block text-sm md:text-lg text-gray-500">
+                                We supply high-grade tools, machinery components, and heavy-duty equipment designed for
+                                <span className="font-semibold text-gray-400"> construction, logistics, and manufacturing sectors</span>.
+                                Experience efficient sourcing with <span className="text-indigo-300 font-semibold">fast delivery</span>,
+                                <span className="text-indigo-300 font-semibold">competitive pricing</span>, and a
+                                <span className="text-indigo-300 font-semibold">scalable inventory network</span> you can trust.
+                            </p>
+
+                            <div className="flex flex-wrap justify-start gap-2 md:gap-4 mt-6">
+                                <button className="btn bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 transition">
+                                    📦 Explore Catalog
+                                </button>
+                                <button className="btn bg-zinc-200 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-600 transition">
+                                    🛠 Industries We Serve
+                                </button>
+                                <button className="btn bg-zinc-200 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-600 transition">
+                                    🧾 Request a Quote
+                                </button>
+                                <button className="btn bg-zinc-200 text-zinc-800 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-600 transition">
+                                    📞 Contact Sales
+                                </button>
+                            </div>
+                        </div>
+
+                    </Fade>
+                </div>
+            </div >
+        </Fade >
     );
 };
 
