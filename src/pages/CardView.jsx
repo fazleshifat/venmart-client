@@ -19,7 +19,7 @@ const CardView = ({ products }) => {
                             className="h-52 object-cover rounded-xl "
                         />
                         <div className="p-4 flex flex-col justify-between ">
-                            <h2 className="text-xl font-semibold text-[#20b2aa] dark:text-[#7fffd4] flex items-center gap-2">
+                            <h2 className="md:text-xl font-semibold text-[#20b2aa] dark:text-[#7fffd4] flex items-center gap-2">
                                 📦{product.name}
                             </h2>
                             <div className='grid grid-cols-1'>
@@ -32,9 +32,9 @@ const CardView = ({ products }) => {
                                     </p>
                                 </div>
 
-                                <p>⭐Rating: {product.rating}</p>
-                                <p>📦Available Quantity: {product.mainQty}</p>
-                                <p>🧾Min Order Quantity: {product.minQty}</p>
+                                <p className='text-xs md:text-lg'>⭐Rating: {product.rating}</p>
+                                <p className='text-xs md:text-lg'>📦Available Quantity: {product.mainQty}</p>
+                                <p className='text-xs md:text-lg'>🧾Min Order Quantity: {product.minQty}</p>
                             </div>
                             <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
                                 ${product.price}

@@ -9,21 +9,25 @@ const ToggleSearchBar = () => {
 
 
     const [showSearchBar, setShowSearchBar] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+
     const handleShowSearchBar = () => {
         setShowSearchBar(!showSearchBar);
     }
 
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
     const navigate = useNavigate();
 
     const searchBarInput = document.getElementsByName('searchBar')[0];
     const handleSearchItem = (e) => {
         navigate('/allProducts')
-        const value = searchBarInput.value;
+        setSearchValue(e.target.value);
 
-        if (value.length === 0) {
-            navigate(location?.state || '/');
+        if (e.target.value.length === 0) {
+            navigate(-1);
+        } else {
+            navigate('/allProducts');
         }
     }
 

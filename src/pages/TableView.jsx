@@ -31,7 +31,7 @@ const TableView = ({ products }) => {
                                         className="w-26 object-cover rounded-md"
                                     />
                                 </td>
-                                <td className="p-3 font-semibold text-[#20b2aa] dark:text-[#7fffd4]">
+                                <td className="p-3 text-sm md:text-lg font-semibold text-[#20b2aa] dark:text-[#7fffd4]">
                                     {product.name}
                                 </td>
                                 <td className="hidden md:table-cell p-3 text-zinc-700 dark:text-zinc-300">{product.brand}</td>

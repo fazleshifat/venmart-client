@@ -66,14 +66,14 @@ const CategoryCards = () => {
         <div className="py-16 px-6 md:px-16 mx-auto max-w-[1350px]">
 
 
-            <h2 className="text-4xl font-bold text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
+            <h2 className="md:text-4xl font-bold text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
                 Explore Our Categories ✨
             </h2>
 
 
 
             <Fade cascade direction={'left'}>
-                <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
+                <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {categories.map((cat, index) => (
                         <Link
                             to={cat.path}
@@ -91,7 +91,7 @@ const CategoryCards = () => {
                                 </span>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-[#20b2aa] dark:text-[#7fffd4]">
+                            <h3 className="md:text-2xl font-bold text-[#20b2aa] dark:text-[#7fffd4]">
                                 {cat.title}
                             </h3>
 

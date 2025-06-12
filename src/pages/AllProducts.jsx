@@ -30,7 +30,7 @@ const AllProducts = () => {
         <Fade cascade damping={0.5}>
 
             <section className="min-h-screen dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 px-4 py-7">
-                <h1 className="text-4xl text-[#20b2aa] dark:text-[#7fffd4] text-center">
+                <h1 className="text-md md:text-4xl text-[#20b2aa] dark:text-[#7fffd4] text-center">
                     All Products🛍️
                 </h1>
 

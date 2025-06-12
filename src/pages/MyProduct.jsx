@@ -55,14 +55,14 @@ const MyProduct = () => {
         <Fade cascade damping={0.5}>
 
             <section className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
-                <div className="text-center mb-10">
-                    <h1 className="text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                <div className="text-center md:mb-10">
+                    <h1 className="md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                         📋My added Products
                     </h1>
                 </div>
 
                 {myProducts.length === 0 ? (
-                    <div className="text-center text-gray-500 text-lg">you haven't added any product yet</div>
+                    <div className="text-center text-gray-500 text-sm md:text-lg">you haven't added any product yet</div>
                 ) : (
                     <div className="grid gap-6 grid-cols-1 lg:grid-cols-3 max-h-fit">
                         {myProducts.map((product) => (

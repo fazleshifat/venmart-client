@@ -88,8 +88,8 @@ const CheckOutModal = ({ user, product }) => {
 
     return (
         <div>
-            <dialog id="my_modal_4" className="modal p-3">
-                <div className="modal-box w-11/12 h-[90vh] max-w-sm p-0 overflow-hidden rounded-xl bg-white dark:bg-zinc-900 shadow-xl">
+            <dialog id="my_modal_4" className="modal p-3 min-h-fit">
+                <div className="modal-box w-11/12 min-h-fit max-w-sm p-0 overflow-hidden rounded-xl bg-white dark:bg-zinc-900 shadow-xl">
                     <div className="relative p-4">
                         {/* Close Button */}
                         <form method="dialog">
@@ -104,17 +104,17 @@ const CheckOutModal = ({ user, product }) => {
                         </h2>
 
                         {/* Product Image */}
-                        <div className="text-center mt-4">
+                        <div className="text-center md:mt-4">
                             <img
                                 src={image}
                                 alt={name}
                                 className="mx-auto w-24 h-24 object-contain"
                             />
-                            <h3 className="text-md font-bold text-zinc-800 dark:text-white mt-2">{name}</h3>
+                            <h3 className="text-md font-bold text-zinc-800 dark:text-white md:mt-2">{name}</h3>
                         </div>
 
                         {/* Info Grid */}
-                        <div className="mt-4 grid grid-cols-2 gap-2 text-sm bg-base-300 p-2 text-zinc-700 dark:text-zinc-300">
+                        <div className="md:mt-4 grid grid-cols-2 gap-2 text-sm bg-base-300 p-2 text-zinc-700 dark:text-zinc-300">
                             <p><strong>Brand:</strong> {brand}</p>
                             <p><strong>Category:</strong> {category}</p>
                             <p><strong>Min Quantity:</strong> {minQty}</p>
@@ -124,7 +124,7 @@ const CheckOutModal = ({ user, product }) => {
                         </div>
 
                         {/* Quantity Controller */}
-                        <div className="flex justify-center items-center gap-2 mt-4">
+                        <div className="flex justify-center items-center gap-2 mt-2 md:mt-4">
                             <label className="text-sm font-medium">Quantity:</label>
                             <button onClick={handleDecrease} type="button" className="btn btn-xs btn-outline">−</button>
                             {/* <input
@@ -138,10 +138,10 @@ const CheckOutModal = ({ user, product }) => {
                         </div>
 
                         {/* Form */}
-                        <form onSubmit={handleSubmit} className="mt-4 space-y-3">
+                        <form onSubmit={handleSubmit} className="mt-2 md:mt-4 space-y-3">
                             <div className="bg-gray-100 text-center dark:bg-zinc-800 p-3 rounded-md shadow-sm text-sm mb-4">
                                 <h2 className="font-semibold bg-indigo-600 w-fit mx-auto p-2 rounded-full text-white dark:text-white">👤 Ordered By</h2>
-                                <div className='flex justify-center'>
+                                <div className=''>
                                     <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Name:</span><span className='font-bold'>{user?.displayName}</span></p>
                                     <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Email:</span><span className='font-bold'>{user?.email}</span></p>
                                 </div>

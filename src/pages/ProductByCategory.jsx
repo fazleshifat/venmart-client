@@ -25,16 +25,16 @@ const ProductByCategory = () => {
             <section className="max-w-[1350px] mx-auto px-4 py-16">
                 {/* Page Heading */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl text-[#20b2aa] dark:text-[#7fffd4] mb-4">
+                    <h1 className="md:text-5xl text-[#20b2aa] dark:text-[#7fffd4] mb-4">
                         🛒Products of <span className='text-gray-500'>{title}</span> Category
                     </h1>
-                    <p className="text-zinc-600 dark:text-zinc-300 text-base md:text-lg">
+                    <p className="text-zinc-600 dark:text-zinc-300 text-base text-sm md:text-lg">
                         Discover top-quality tools, parts, and equipment with trusted industrial-grade assurance.
                     </p>
                 </div>
 
                 {/* Product Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {products.map((product, index) => (
                         <div
                             key={index}
@@ -48,8 +48,8 @@ const ProductByCategory = () => {
 
                             <div>
                                 <div className="flex items-center justify-between mb-3">
-                                    <h2 className="text-md md:text-lg font-extrabold text-[#20b2aa] dark:text-[#7fffd4]">
-                                        🛍️ {product.name}
+                                    <h2 className="md:text-lg font-extrabold text-[#20b2aa] dark:text-[#7fffd4]">
+                                        🛍️{product.name}
                                     </h2>
                                     <span className="text-xs font-semibold bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 px-3 py-1 rounded-full shadow-sm whitespace-nowrap">
                                         {product.category}

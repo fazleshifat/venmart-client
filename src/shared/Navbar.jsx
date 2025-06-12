@@ -120,15 +120,20 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link className='hidden md:flex items-center'>
-                    <img src="/assets/logo.png" className='w-10' alt="logo" />
-                    <p className="text-xl font-bold -ml-3 hidden md:flex">enmart</p>
-
-
-
+                    <div className="flex items-center">
+                        <img
+                            src="/assets/logo.png"
+                            className="w-12 md:w-16 h-auto"
+                            alt="logo"
+                        />
+                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-600 dark:text-indigo-400 -ml-3">
+                            enmart
+                        </p>
+                    </div>
                 </Link>
 
 
-                <div className='flex md:hidden'>
+                <div className='flex ml-3 auto w-full md:hidden'>
                     <ThemeToggle></ThemeToggle>
                 </div>
             </div>
@@ -151,8 +156,13 @@ const Navbar = () => {
                     !user ?
 
                         <div className='flex gap-1'>
-                            <Link to='/logIn' className="btn btn-accent text-white">Login</Link>
-                            <Link to='/register' className="btn btn-error text-white">Register</Link>
+                            <Link to='/logIn' className="btn bg-gradient-to-r from-blue-300 to-purple-500 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
+                                Login
+                            </Link>
+
+                            <Link to='/register' className="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-red-600 transition rounded-lg">
+                                Register
+                            </Link>
                         </div>
 
                         :
@@ -174,8 +184,13 @@ const Navbar = () => {
                                         {
                                             !user &&
                                             <div className='flex md:hidden'>
-                                                <Link className='btn btn-primary text-white'>Login</Link>
-                                                <Link className='btn btn-accent text-white'>Register</Link>
+                                                <Link className="btn bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
+                                                    Login
+                                                </Link>
+
+                                                <Link className="btn bg-gradient-to-r from-yellow-400 to-red-500 text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-red-600 transition rounded-lg">
+                                                    Register
+                                                </Link>
                                             </div>
                                         }
                                     </ul>

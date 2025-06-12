@@ -34,7 +34,7 @@ const ProductDetails = () => {
                 {/* Left Section: Product Card */}
 
                 <div className="w-full lg:w-6/10">
-                    <h1 className="text-4xl font-extrabold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-5">
+                    <h1 className="md:text-4xl font-extrabold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-5">
                         🛍️Product Details
                     </h1>
 
@@ -53,30 +53,30 @@ const ProductDetails = () => {
                             {/* RIGHT: Product Info */}
                             <div className="flex flex-col justify-between flex-grow">
                                 <div className="space-y-4 text-zinc-800 dark:text-zinc-200">
-                                    <h2 className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">{product?.name}</h2>
+                                    <h2 className="md:text-3xl font-bold text-indigo-600 dark:text-indigo-400">{product?.name}</h2>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <p className="text-lg font-semibold">
+                                        <p className="md:text-lg font-semibold">
                                             <span className="text-indigo-500">Brand:</span> {product?.brand}
                                         </p>
-                                        <p className="text-lg font-semibold">
+                                        <p className="md:text-lg font-semibold">
                                             <span className="text-indigo-500">Category:</span> {product?.category}
                                         </p>
-                                        <p className="text-lg font-semibold">
+                                        <p className="md:text-lg font-semibold">
                                             <span className="text-green-600 dark:text-green-400">Available Quantity:</span>{product?.mainQty}
                                         </p>
-                                        <p className="text-lg font-semibold">
+                                        <p className="md:text-lg font-semibold">
                                             <span className="text-yellow-500">Min Order Quantity:</span>{product?.minQty}
                                         </p>
-                                        <p className="text-lg font-semibold">
+                                        <p className="md:text-lg font-semibold">
                                             <span className="text-indigo-500">Rating:</span> ⭐ {product?.rating}/5
                                         </p>
-                                        <p className="text-lg font-semibold">
+                                        <p className="md:text-lg font-semibold">
                                             <span className="text-indigo-500">Price:</span> 💲{product?.price}
                                         </p>
                                     </div>
 
-                                    <p className="text-md text-zinc-600 dark:text-zinc-400 mt-2">
+                                    <p className="md:text-md text-zinc-600 dark:text-zinc-400 mt-2">
                                         <span className="font-semibold text-indigo-500">Description:</span> {product?.description}
                                     </p>
                                 </div>

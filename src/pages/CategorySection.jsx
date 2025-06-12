@@ -63,7 +63,7 @@ const CategorySection = () => {
         <Fade cascade damping={0.5}>
 
             <div className="py-7 px-6 md:px-16 mx-auto max-w-[1350px]">
-                <h2 className="text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
+                <h2 className="md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
                     Categories<span className="font-extrabold text-yellow-500">|</span>
                 </h2>
 
@@ -85,11 +85,11 @@ const CategorySection = () => {
                                 </span>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-[#20b2aa] dark:text-[#7fffd4]">
+                            <h3 className="md:text-2xl font-bold text-[#20b2aa] dark:text-[#7fffd4]">
                                 {cat.title}
                             </h3>
 
-                            <p className="text-sm text-gray-600 dark:text-zinc-300 mt-2">
+                            <p className="text-xs md:text-sm text-gray-600 dark:text-zinc-300 mt-2">
                                 {cat.description}
                             </p>
 
