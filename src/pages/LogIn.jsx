@@ -20,6 +20,7 @@ const LogIn = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    // console.log(location)
 
 
 
@@ -70,7 +71,7 @@ const LogIn = () => {
         <Fade cascade damping={0.5}>
 
             <div className="min-h-screen flex items-center justify-center px-4">
-                <div className="w-full max-w-xl rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-10 md:p-12">
+                <div className="w-full max-w-xl rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-5 md:p-12">
                     {/* Title */}
                     <h1 className="text-4xl font-bold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-3">Login</h1>
 

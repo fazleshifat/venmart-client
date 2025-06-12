@@ -31,11 +31,7 @@ const SliderBanner = () => {
                         {/* Text Content */}
                         <div className="space-y-6 max-w-3xl text-white text-left">
                             <h1 className="text-3xl md:text-5xl text-[#19817b] dark:text-[#7fffd4]">
-                                Discover Premium Industrial
-                            </h1>
-                            <h1 className='-mt-2 text-3xl md:text-5xl text-[#19817b] dark:text-[#7fffd4]'>
-
-                                Products for
+                                Discover Premium Industrial Products for
                                 <span className='text-indigo-300 ml-3 font-semibold'>
                                     <TypeWriter></TypeWriter>
                                 </span>

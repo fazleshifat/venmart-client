@@ -7,7 +7,7 @@ const CardView = ({ products }) => {
     return (
         <Fade cascade damping={0.5}>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-[1300px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-[1300px] mx-auto">
                 {products.map((product, index) => (
                     <div
                         key={index}
@@ -20,7 +20,7 @@ const CardView = ({ products }) => {
                         />
                         <div className="p-4 flex flex-col justify-between ">
                             <h2 className="text-xl font-semibold text-[#20b2aa] dark:text-[#7fffd4] flex items-center gap-2">
-                                📦 {product.name}
+                                📦{product.name}
                             </h2>
                             <div className='grid grid-cols-1'>
                                 <div className='flex items-center justify-between'>
@@ -32,12 +32,12 @@ const CardView = ({ products }) => {
                                     </p>
                                 </div>
 
-                                <p>⭐ Rating: {product.rating}</p>
-                                <p>📦 Available Quantity: {product.mainQty}</p>
-                                <p>🧾 Min Order Quantity: {product.minQty}</p>
+                                <p>⭐Rating: {product.rating}</p>
+                                <p>📦Available Quantity: {product.mainQty}</p>
+                                <p>🧾Min Order Quantity: {product.minQty}</p>
                             </div>
                             <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
-                                💲{product.price}
+                                ${product.price}
                             </span>
 
                             <div className="flex justify-between items-center mt-4">
@@ -45,7 +45,7 @@ const CardView = ({ products }) => {
                                     View Product
                                 </Link>
                                 <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition duration-200 transform hover:scale-105">
-                                    ✏️ Update
+                                    ✏️Update
                                 </Link>
                             </div>
                         </div>

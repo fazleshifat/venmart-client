@@ -12,12 +12,12 @@ const TableView = ({ products }) => {
                         <tr>
                             <th className="p-3 text-left">Image</th>
                             <th className="p-3 text-left">Name</th>
-                            <th className="p-3 text-left">Brand</th>
-                            <th className="p-3 text-left">Category</th>
-                            <th className="p-3 text-left">Rating</th>
-                            <th className="p-3 text-left">Available Qty</th>
-                            <th className="p-3 text-left">Min Order Qty</th>
-                            <th className="p-3 text-left">Price</th>
+                            <th className="hidden md:table-cell p-3 text-left">Brand</th>
+                            <th className="hidden md:table-cell p-3 text-left">Category</th>
+                            <th className="hidden md:table-cell p-3 text-left">Rating</th>
+                            <th className="hidden md:table-cell p-3 text-left">Available Qty</th>
+                            <th className="hidden md:table-cell p-3 text-left">Min Order Qty</th>
+                            <th className="hidden md:table-cell p-3 text-left">Price</th>
                             <th className="p-3 text-left">Actions</th>
                         </tr>
                     </thead>
@@ -32,15 +32,15 @@ const TableView = ({ products }) => {
                                     />
                                 </td>
                                 <td className="p-3 font-semibold text-[#20b2aa] dark:text-[#7fffd4]">
-                                    📦 {product.name}
+                                    {product.name}
                                 </td>
-                                <td className="p-3 text-zinc-700 dark:text-zinc-300">{product.brand}</td>
-                                <td className="p-3 text-zinc-700 dark:text-zinc-300">{product.category}</td>
-                                <td className="p-3">⭐ {product.rating}</td>
-                                <td className="p-3">{product.mainQty}</td>
-                                <td className="p-3">{product.minQty}</td>
-                                <td className="p-3 text-indigo-600 dark:text-indigo-400 font-bold">💲{product.price}</td>
-                                <td className="p-3 space-x-2">
+                                <td className="hidden md:table-cell p-3 text-zinc-700 dark:text-zinc-300">{product.brand}</td>
+                                <td className="hidden md:table-cell p-3 text-zinc-700 dark:text-zinc-300">{product.category}</td>
+                                <td className="hidden md:table-cell p-3">⭐ {product.rating}</td>
+                                <td className="hidden md:table-cell p-3">{product.mainQty}</td>
+                                <td className="hidden md:table-cell p-3">{product.minQty}</td>
+                                <td className="hidden md:table-cell  p-3 text-indigo-600 dark:text-indigo-400 font-bold">${product.price}</td>
+                                <td className="p-3 space-x-2 space-y-2">
                                     <Link
                                         to={`/product/details/${product._id}`}
                                         className="btn btn-sm btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
@@ -51,7 +51,7 @@ const TableView = ({ products }) => {
                                         to={`/updateProduct/${product._id}`}
                                         className="btn btn-sm btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
                                     >
-                                        ✏️ Update
+                                        ✏️Update
                                     </Link>
                                 </td>
                             </tr>

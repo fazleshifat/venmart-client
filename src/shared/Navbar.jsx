@@ -108,7 +108,7 @@ const Navbar = () => {
         md:top-2 md:bottom-auto
         ${showNavbar ? 'translate-y-0' : 'md:-translate-y-full'}
     `}>
-            <div className="navbar-start md:w-fit lg:w-1/2">
+            <div className="flex items-center navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn cursor-pointer rounded-full lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
@@ -119,24 +119,33 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link className='flex items-center'>
+                <Link className='hidden md:flex items-center'>
                     <img src="/assets/logo.png" className='w-10' alt="logo" />
                     <p className="text-xl font-bold -ml-3 hidden md:flex">enmart</p>
 
 
 
                 </Link>
+
+
+                <div className='flex md:hidden'>
+                    <ThemeToggle></ThemeToggle>
+                </div>
             </div>
-            <div className="navbar-center hidden md:flex">
+            <div className="navbar-center hidden lg:flex">
                 <ul className="flex md:gap-8 font-semibold">
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end gap-2 w-full md:w-1/2">
+            <div className="gap-1 navbar-end flex">
 
-                <ToggleSearchBar></ToggleSearchBar>
+                <div className="hidden md:flex">
+                    <ToggleSearchBar></ToggleSearchBar>
+                </div>
 
-                <ThemeToggle></ThemeToggle>
+                <div className='hidden md:flex'>
+                    <ThemeToggle></ThemeToggle>
+                </div>
 
                 {
                     !user ?
