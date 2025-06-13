@@ -27,6 +27,29 @@ const Register = () => {
 
         const { email, password, name, photo, ...rest } = Object.fromEntries(formData.entries());
 
+        // Clear previous error
+        setErrorMessage('');
+
+        // Password validation checks
+
+        if (password.length < 6) {
+            setErrorMessage('Password must be at least 6 characters long');
+            return;
+        }
+        if (!/[A-Z]/.test(password)) {
+            setErrorMessage('Password must include at least one uppercase letter');
+            return;
+        }
+        if (!/[a-z]/.test(password)) {
+            setErrorMessage('Password must include at least one lowercase letter');
+            return;
+        }
+        // Validate photo URL length
+        if (photo.length > 1024) {
+            setErrorMessage('Photo URL must be less than 1024 characters');
+            return;
+        }
+
         // create user on firebase
         createUser(email, password)
             .then(result => {
@@ -112,8 +135,10 @@ const Register = () => {
                             <input
                                 type="text"
                                 name="photo"
+                                onChange={() => setErrorMessage(null)}
                                 className="input input-bordered w-full rounded-xl"
                                 placeholder="https://your-image.jpg"
+                                required
                             />
                         </div>
 
@@ -133,6 +158,7 @@ const Register = () => {
                             <input
                                 type="password"
                                 name="password"
+                                onChange={() => setErrorMessage(null)}
                                 className="input input-bordered w-full rounded-xl"
                                 placeholder="Your password"
                                 required
@@ -143,6 +169,10 @@ const Register = () => {
                         <div className="flex justify-between items-center text-sm">
                             <Link className="link link-hover text-indigo-500 dark:text-indigo-400">Forgot password?</Link>
                         </div>
+
+                        {
+                            errorMessage && <p className='text-red-500'>{errorMessage}</p>
+                        }
 
                         <button className="btn btn-primary w-full mt-2 rounded-xl shadow-md hover:shadow-lg transition">
                             Register

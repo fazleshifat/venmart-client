@@ -41,6 +41,7 @@ const AuthProvider = ({ children }) => {
 
         return () => unsubscribe();
     }, [])
+    
 
     // sharing all context info
     const authInfo = {

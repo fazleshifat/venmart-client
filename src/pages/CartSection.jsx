@@ -81,7 +81,7 @@ const CartSection = () => {
                     </h1>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
                     {myCarts.length === 0 ? (
                         <div className="text-center grid col-span-4 text-gray-500 md:text-lg">
                             you haven't purchased any product yet!
@@ -94,9 +94,9 @@ const CartSection = () => {
                             myCarts.map((item) => (
                                 <div
                                     key={item._id}
-                                    className="transition-opacity duration-300 opacity-100 translate-y-0"
+                                    className="transition-opacity h-full duration-300 opacity-100 translate-y-0"
                                 >
-                                    <div className="rounded-2xl shadow-md hover:shadow-lg transition border-indigo-200 border-2 bg-white">
+                                    <div className="rounded-2xl shadow-md hover:shadow-lg transition border-indigo-200 border-2 bg-white h-full flex flex-col">
                                         <div className="p-4">
                                             <div className="flex items-center gap-4">
                                                 <img

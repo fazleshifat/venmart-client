@@ -6,6 +6,7 @@ import { FiSearch } from "react-icons/fi";
 import { MdSearchOff } from "react-icons/md";
 import { use } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContext';
+import { useEffect } from 'react';
 
 const ToggleSearchBar = () => {
 
@@ -20,10 +21,16 @@ const ToggleSearchBar = () => {
 
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        // Clear input when route changes
+        setSearchQuery('');
+    }, [location.pathname]);
 
     const handleSearchItem = (e) => {
         setSearchQuery(e.target.value);
-        navigate('/allProducts');
+        navigate('/allProducts', { replace: true });
         // console.log(e.target.value);
     }
 

@@ -59,6 +59,9 @@ const ProductDetails = () => {
                                         <p className="md:text-lg font-semibold">
                                             <span className="text-indigo-500">Category:</span> {product?.category}
                                         </p>
+                                        <p className="md:text-lg font-semibold">
+                                            <span className="text-indigo-500">Owner:</span> {product?.ownerName}
+                                        </p>
                                         <p className="text-sm md:text-lg font-semibold">
                                             <span className="text-green-600 dark:text-green-400">Available Quantity:</span>{product?.mainQty}
                                         </p>

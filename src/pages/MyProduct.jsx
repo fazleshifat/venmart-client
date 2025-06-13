@@ -92,8 +92,10 @@ const MyProduct = () => {
                                                     Listed on: {product.listedDate || 'N/A'}
                                                 </p>
                                             </div>
-                                            <div className="flex gap-4 mt-4 w-fit">
-                                                {/* <button className="text-sm text-blue-600 hover:underline">✏️ Edit</button> */}
+                                            <div className="flex flex-wrap gap-2 mt-4 w-auto">
+                                             
+                                                <Link to={`/product/details/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 hover:underline">Details</Link>
+                                                <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 hover:underline">✏️ Edit</Link>
                                                 <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm text-sm btn-outline text-red-600 text">🗑️ Remove</button>
                                             </div>
                                         </div>
