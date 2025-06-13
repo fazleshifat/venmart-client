@@ -11,6 +11,7 @@ const UpdateProduct = () => {
     const product = useLoaderData();
     // console.log(product)
     const { _id, name, brand, category, description, image, mainQty, minQty, price, rating } = product;
+    console.log(category)
     const navigate = useNavigate();
     const Navigation = useNavigation()
 

@@ -14,6 +14,8 @@ const CartSection = () => {
     const [myCarts, setMyCarts] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
 
+    console.log(selectedItem)
+
     const { user } = use(AuthContext);
     // const filteredCart = cartItems.filter(cart => cart.customerEmail === user?.email);
 

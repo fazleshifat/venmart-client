@@ -59,10 +59,7 @@ const AllProducts = () => {
                     view === 'Card' ? <CardView products={(products, filteredProducts)}></CardView> : <TableView products={(products, filteredProducts)}></TableView>
                 }
 
-                {/* Table format */}
-
-
-                {/* <TableView products={products}></TableView> */}
+             
             </section>
         </Fade>
 
