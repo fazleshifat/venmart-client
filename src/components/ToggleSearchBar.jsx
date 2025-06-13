@@ -35,7 +35,7 @@ const ToggleSearchBar = () => {
         <div className='relative flex '>
             {/* for small device */}
             <input onChange={handleSearchItem} name="searchBar" type="text" placeholder="products..." className={`
-                        input input-bordered mr-10 rounded-full
+                        input input-bordered mr-10 rounded-full max-w-2/3 md:w-auto mx-auto
                         transition-all duration-300 ease-in-out
                         focus:outline-none focus:ring-0 focus:border-transparent
                         ${showSearchBar ? 'opacity-100 scale-100 w-full' : 'opacity-0 scale-0 w-0'}

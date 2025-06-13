@@ -20,11 +20,20 @@ const CartSection = () => {
     useEffect(() => {
         if (user && cartItems) {
             const filteredCart = cartItems.filter(
-                (cart) => cart.customerEmail === user.email
+                (cart) => cart?.customerEmail === user?.email
             );
             setMyCarts(filteredCart);
         }
     }, [user, cartItems]);
+
+    useEffect(() => {
+        if (selectedItem) {
+            const modal = document.getElementById('purchase_modal');
+            if (modal) {
+                modal.showModal();
+            }
+        }
+    }, [selectedItem]);
 
     window.scroll(0, 0)
     const Navigation = useNavigation()
@@ -65,7 +74,6 @@ const CartSection = () => {
 
     return (
         <Fade cascade damping={0.5}>
-
             <section className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
                     <h1 className="md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
@@ -109,8 +117,8 @@ const CartSection = () => {
                                             <div className="flex justify-between items-center mt-4">
                                                 <button
                                                     onClick={() => {
-                                                        document.getElementById('purchase_modal').showModal(); // Open modal
                                                         setSelectedItem(item); // Save item data
+                                                        document.getElementById('purchase_modal').showModal();  // Open modal
                                                     }}
                                                     className="btn btn-sm text-indigo-600 hover:text-red-800 text-sm flex items-center"
                                                 >
@@ -127,8 +135,9 @@ const CartSection = () => {
 
                         )}
                 </div>
-                <CartDetailsModal item={selectedItem}></CartDetailsModal>
+
             </section>
+            <CartDetailsModal item={selectedItem}></CartDetailsModal>
         </Fade>
     );
 };

@@ -31,7 +31,7 @@ const CartDetailsModal = ({ item }) => {
                         </h2>
 
                         <div className="text-center md:mt-4">
-                            <img src={image} alt={name} className="mx-auto w-24 h-24 object-contain" />
+                            <img src={image} alt={name} className="mx-auto w-24 h-24 rounded-2xl object-contain" />
                             <h3 className="text-md font-bold text-zinc-800 dark:text-white md:mt-2">{name}</h3>
                         </div>
 
@@ -42,14 +42,12 @@ const CartDetailsModal = ({ item }) => {
                             <p><strong>Price:</strong> ${price}</p>
                             <p><strong>Purchase Date:</strong> {purchaseDate}</p>
                             <p><strong>Purchase Time:</strong> {purchaseTime}</p>
+
                         </div>
 
                         <div className="bg-gray-100 text-center dark:bg-zinc-800 p-3 md:mt-4 rounded-md shadow-sm text-sm">
-                            <h2 className="font-semibold bg-indigo-600 w-fit mx-auto p-2 rounded-full text-white">👤 Customer Info</h2>
-                            <div className="flex flex-col sm:flex-row justify-center md:gap-3 md:mt-2">
-                                <p className="text-zinc-700 dark:text-zinc-300"><span className="font-semibold">Name:</span> <span className="font-bold">{customerName}</span></p>
-                                <p className="text-zinc-700 dark:text-zinc-300"><span className="font-semibold">Email:</span> <span className="font-bold">{customerEmail}</span></p>
-                            </div>
+                            <p className="text-zinc-700 font-semibold dark:text-zinc-300">Customer Name: {customerName}</p>
+                            <p className="text-zinc-700 font-semibold dark:text-zinc-300">Customer Email: {customerEmail}</p>
                         </div>
                     </div>
                 </div>

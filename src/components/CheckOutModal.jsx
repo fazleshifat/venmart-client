@@ -1,9 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { use } from 'react';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../AuthProvider/AuthContext';
 
 const CheckOutModal = ({ user, product }) => {
+
+    const { errorMessage, setErrorMessage } = use(AuthContext);
+
     const {
         name,
         brand,
@@ -31,6 +36,7 @@ const CheckOutModal = ({ user, product }) => {
     const purchaseTime = new Date().toLocaleTimeString();
 
     const Navigate = useNavigate();
+
 
     const handleSubmit = (e) => {
 
@@ -63,8 +69,10 @@ const CheckOutModal = ({ user, product }) => {
                     popup: 'z-[9999]'
                 }
             });
-            document.getElementById('my_modal_4').close();
+            // document.getElementById('my_modal_4').close();
+            setErrorMessage('Minimum quantity not met, Please increase your quantity')
         } else {
+            setErrorMessage('')
 
             // Send a POST request
             axios.post("https://venmart-server.vercel.app/products/cart", purchaseInfo)
@@ -104,11 +112,11 @@ const CheckOutModal = ({ user, product }) => {
                         </h2>
 
                         {/* Product Image */}
-                        <div className="text-center md:mt-4">
+                        <div className="text-center rounded-2xl md:mt-4">
                             <img
                                 src={image}
                                 alt={name}
-                                className="mx-auto w-24 h-24 object-contain"
+                                className="mx-auto h-24 rounded-2xl"
                             />
                             <h3 className="text-md font-bold text-zinc-800 dark:text-white md:mt-2">{name}</h3>
                         </div>
@@ -126,7 +134,7 @@ const CheckOutModal = ({ user, product }) => {
                         {/* Quantity Controller */}
                         <div className="flex justify-center items-center gap-2 mt-2 md:mt-4">
                             <label className="text-sm font-medium">Quantity:</label>
-                            <button onClick={handleDecrease} type="button" className="btn btn-xs btn-outline">−</button>
+                            <button onClick={() => (handleDecrease(), setErrorMessage(''))} type="button" className="btn btn-xs btn-outline">−</button>
                             {/* <input
                                 type="number"
                                 className='w-auto outline-1 text-center'
@@ -134,13 +142,13 @@ const CheckOutModal = ({ user, product }) => {
                                 onChange={(e) => setQuantity(e.target.value)}
                             /> */}
                             <span className="w-6 text-center">{quantity}</span>
-                            <button onClick={handleIncrease} type="button" className="btn btn-xs btn-outline">+</button>
+                            <button onClick={() => (handleIncrease(), setErrorMessage(''))} type="button" className="btn btn-xs btn-outline">+</button>
                         </div>
 
                         {/* Form */}
                         <form onSubmit={handleSubmit} className="mt-2 md:mt-4 space-y-3">
                             <div className="bg-gray-100 text-center dark:bg-zinc-800 p-3 rounded-md shadow-sm text-sm mb-4">
-                                <h2 className="font-semibold bg-indigo-600 w-fit mx-auto p-2 rounded-full text-white dark:text-white">👤 Ordered By</h2>
+                                <h2 className="font-semibold bg-indigo-400 w-fit mx-auto py-2 px-3 rounded-full text-white dark:text-white">Ordered By</h2>
                                 <div className=''>
                                     <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Name:</span><span className='font-bold'>{user?.displayName}</span></p>
                                     <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Email:</span><span className='font-bold'>{user?.email}</span></p>
@@ -148,6 +156,7 @@ const CheckOutModal = ({ user, product }) => {
 
                             </div>
                             <button type="submit" className="btn btn-sm btn-primary w-full">Confirm Purchase</button>
+                            <p className='text-sm text-red-500'>{errorMessage}</p>
                         </form>
                     </div>
                 </div>

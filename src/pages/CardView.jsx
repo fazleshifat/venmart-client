@@ -16,7 +16,7 @@ const CardView = ({ products }) => {
                         <img
                             src={product.image}
                             alt={product.name}
-                            className="h-52 object-cover rounded-xl "
+                            className="h-52 w-full object-cover rounded-xl "
                         />
                         <div className="p-4 flex flex-col justify-between ">
                             <h2 className="md:text-xl font-semibold text-[#20b2aa] dark:text-[#7fffd4] flex items-center gap-2">
@@ -32,9 +32,10 @@ const CardView = ({ products }) => {
                                     </p>
                                 </div>
 
-                                <p className='text-xs md:text-lg'>⭐Rating: {product.rating}</p>
-                                <p className='text-xs md:text-lg'>📦Available Quantity: {product.mainQty}</p>
-                                <p className='text-xs md:text-lg'>🧾Min Order Quantity: {product.minQty}</p>
+                                <p className='text-xs'>⭐Rating: {product.rating}</p>
+                                <p className='text-xs'>📦Available Quantity: {product.mainQty}</p>
+                                <p className='text-xs'>🧾Min Order Quantity: {product.minQty}</p>
+
                             </div>
                             <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
                                 ${product.price}

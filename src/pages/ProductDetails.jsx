@@ -15,9 +15,6 @@ const ProductDetails = () => {
     const { user } = use(AuthContext);
     const [showModal, setShowModal] = useState(false);
 
-    const handleBuyNow = () => {
-        setShowModal(true);
-    };
 
     const Navigation = useNavigation()
 
@@ -30,7 +27,7 @@ const ProductDetails = () => {
 
         <Fade cascade damping={0.5}>
 
-            <section className="max-w-[1390px] p-3 flex flex-col lg:flex-row justify-between">
+            <section className="max-w-[1390px] mx-auto p-3 flex flex-col lg:flex-row justify-between">
                 {/* Left Section: Product Card */}
 
                 <div className="w-full lg:w-6/10">
@@ -46,7 +43,7 @@ const ProductDetails = () => {
                                 <img
                                     src={product?.image}
                                     alt="product"
-                                    className="w-96 h-70 mx-auto object-cover rounded-2xl shadow-md"
+                                    className="h-40 w-40 md:w-96 md:h-70 mx-auto object-cover rounded-2xl shadow-md"
                                 />
                             </div>
 
@@ -55,28 +52,28 @@ const ProductDetails = () => {
                                 <div className="space-y-4 text-zinc-800 dark:text-zinc-200">
                                     <h2 className="md:text-3xl font-bold text-indigo-600 dark:text-indigo-400">{product?.name}</h2>
 
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-2 gap-4">
                                         <p className="md:text-lg font-semibold">
                                             <span className="text-indigo-500">Brand:</span> {product?.brand}
                                         </p>
                                         <p className="md:text-lg font-semibold">
                                             <span className="text-indigo-500">Category:</span> {product?.category}
                                         </p>
-                                        <p className="md:text-lg font-semibold">
+                                        <p className="text-sm md:text-lg font-semibold">
                                             <span className="text-green-600 dark:text-green-400">Available Quantity:</span>{product?.mainQty}
                                         </p>
-                                        <p className="md:text-lg font-semibold">
+                                        <p className="text-sm md:text-lg font-semibold">
                                             <span className="text-yellow-500">Min Order Quantity:</span>{product?.minQty}
                                         </p>
-                                        <p className="md:text-lg font-semibold">
+                                        <p className="text-sm md:text-lg font-semibold">
                                             <span className="text-indigo-500">Rating:</span> ⭐ {product?.rating}/5
                                         </p>
-                                        <p className="md:text-lg font-semibold">
+                                        <p className="text-sm md:text-lg font-semibold">
                                             <span className="text-indigo-500">Price:</span> 💲{product?.price}
                                         </p>
                                     </div>
 
-                                    <p className="md:text-md text-zinc-600 dark:text-zinc-400 mt-2">
+                                    <p className="text-sm md:text-md text-zinc-600 dark:text-zinc-400 mt-2">
                                         <span className="font-semibold text-indigo-500">Description:</span> {product?.description}
                                     </p>
                                 </div>
@@ -85,7 +82,7 @@ const ProductDetails = () => {
                                 <div className="mt-6">
                                     <button
                                         onClick={() => document.getElementById('my_modal_4').showModal()}
-                                        className="cursor-pointer w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-lg font-semibold shadow-md hover:shadow-xl transform transition hover:scale-105 duration-300"
+                                        className="cursor-pointer w-full py-1 md:py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-md md:text-lg font-semibold shadow-md hover:shadow-xl transform transition hover:scale-105 duration-300"
                                     >
                                         🛒Buy Now
                                     </button>

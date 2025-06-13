@@ -5,6 +5,7 @@ import CategoryCards from '../components/Category/CategoryCards';
 import Latest from '../components/Latest';
 import { Link, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
+import OurServices from '../layouts/OurServices';
 
 const Home = () => {
     window.scroll(0, 0)
@@ -21,6 +22,7 @@ const Home = () => {
                 {/* <MarqueeBanner></MarqueeBanner> */}
                 <SliderBanner></SliderBanner>
                 <CategoryCards></CategoryCards>
+                <OurServices></OurServices>
             </section>
         </>
     );

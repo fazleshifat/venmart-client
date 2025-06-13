@@ -40,19 +40,21 @@ const TableView = ({ products }) => {
                                 <td className="hidden md:table-cell p-3">{product.mainQty}</td>
                                 <td className="hidden md:table-cell p-3">{product.minQty}</td>
                                 <td className="hidden md:table-cell  p-3 text-indigo-600 dark:text-indigo-400 font-bold">${product.price}</td>
-                                <td className="p-3 space-x-2 space-y-2">
-                                    <Link
-                                        to={`/product/details/${product._id}`}
-                                        className="btn btn-sm btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
-                                    >
-                                        View
-                                    </Link>
-                                    <Link
-                                        to={`/updateProduct/${product._id}`}
-                                        className="btn btn-sm btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
-                                    >
-                                        ✏️Update
-                                    </Link>
+                                <td className="p-3">
+                                    <div className='flex flex-col md:flex-row gap-1'>
+                                        <Link
+                                            to={`/product/details/${product._id}`}
+                                            className="btn btn-sm btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
+                                        >
+                                            View
+                                        </Link>
+                                        <Link
+                                            to={`/updateProduct/${product._id}`}
+                                            className="btn btn-sm btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
+                                        >
+                                            Update
+                                        </Link>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
