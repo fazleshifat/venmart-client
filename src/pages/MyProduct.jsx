@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { use } from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import { AuthContext } from '../AuthProvider/AuthContext';
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -62,7 +62,11 @@ const MyProduct = () => {
                 </div>
 
                 {myProducts.length === 0 ? (
-                    <div className="text-center text-gray-500 text-sm md:text-lg">you haven't added any product yet</div>
+                    <div className="text-center text-gray-500 text-sm md:text-lg">you haven't added any product yet
+                        <br />
+
+                        <Link className='btn btn-primary mt-2' to='/addProduct'>Add your product</Link>
+                    </div>
                 ) : (
                     <div className="grid gap-6 grid-cols-1 lg:grid-cols-3 max-h-fit">
                         {myProducts.map((product) => (

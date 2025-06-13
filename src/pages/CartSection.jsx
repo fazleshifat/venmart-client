@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { use } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContext';
-import { useLoaderData, useNavigation } from 'react-router';
+import { Link, useLoaderData, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -85,6 +85,8 @@ const CartSection = () => {
                     {myCarts.length === 0 ? (
                         <div className="text-center grid col-span-4 text-gray-500 md:text-lg">
                             you haven't purchased any product yet!
+                            <br />
+                            <Link className='btn btn-primary mt-2 w-fit mx-auto' to='/allProducts'>Purchase products</Link>
                         </div>
                     ) :
                         (

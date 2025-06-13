@@ -3,7 +3,7 @@ import { AuthContext } from '../AuthProvider/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
-import { Link, useNavigation } from 'react-router';
+import { Link, useNavigate, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 
@@ -12,6 +12,7 @@ const Register = () => {
 
     const { createUser, setUser, errorMessage, setErrorMessage } = use(AuthContext);
 
+    const Navigate = useNavigate();
     const Navigation = useNavigation()
 
     if (Navigation.state === "loading") {
@@ -67,7 +68,7 @@ const Register = () => {
                             })
                             .catch(err => console.error('Axios error:', err));
 
-                        // update user at a time to update info at navbar
+                        Navigate('/');
 
 
                     })

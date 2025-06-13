@@ -61,7 +61,7 @@ const AddProduct = () => {
                         {/* Product Image */}
                         <div>
                             <label className="block text-sm font-semibold mb-1">
-                                Upload Product Cover Image
+                                Product Image URL
                             </label>
                             <input
                                 type="text"

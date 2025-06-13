@@ -27,7 +27,7 @@ const ProductDetails = () => {
 
         <Fade cascade damping={0.5}>
 
-            <section className="max-w-[1390px] mx-auto p-3 flex flex-col lg:flex-row justify-between">
+            <section className="max-w-[1390px] mx-auto p-3 flex flex-col my-5 lg:flex-row justify-between">
                 {/* Left Section: Product Card */}
 
                 <div className="w-full lg:w-6/10">
