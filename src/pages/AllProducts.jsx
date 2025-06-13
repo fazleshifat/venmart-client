@@ -4,12 +4,21 @@ import Spinner from '../components/Spinner';
 import TableView from './TableView';
 import CardView from './CardView';
 import { Fade } from 'react-awesome-reveal';
+import { use } from 'react';
+import { AuthContext } from '../AuthProvider/AuthContext';
 
 const AllProducts = () => {
+
+    const { searchQuery, setSearchQuery } = use(AuthContext);
+
     window.scroll(0, 0)
 
     const products = useLoaderData();
-    // console.log(products)
+
+    // console.log(searchQuery.toLowerCase().trim().replace(/\s+/g, ''))
+
+
+    const filteredProducts = products.filter(product => product.name.trim().toLowerCase().replace(/\s+/g, '').includes(searchQuery.trim().toLowerCase().replace(/\s+/g, '')));
 
     const [view, setView] = useState(() => {
         return localStorage.getItem('view') || 'list';
@@ -47,7 +56,7 @@ const AllProducts = () => {
                 </div>
 
                 {
-                    view === 'Card' ? <CardView products={products}></CardView> : <TableView products={products}></TableView>
+                    view === 'Card' ? <CardView products={(products, filteredProducts)}></CardView> : <TableView products={(products, filteredProducts)}></TableView>
                 }
 
                 {/* Table format */}

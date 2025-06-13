@@ -4,9 +4,12 @@ import { Navigate, useLocation, useNavigate } from 'react-router';
 import { IoSearchOutline } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
 import { MdSearchOff } from "react-icons/md";
+import { use } from 'react';
+import { AuthContext } from '../AuthProvider/AuthContext';
 
 const ToggleSearchBar = () => {
 
+    const { searchQuery, setSearchQuery } = use(AuthContext);
 
     const [showSearchBar, setShowSearchBar] = useState(false);
     const [searchValue, setSearchValue] = useState('');
@@ -15,26 +18,19 @@ const ToggleSearchBar = () => {
         setShowSearchBar(!showSearchBar);
     }
 
-    const location = useLocation();
-    // console.log(location)
+
     const navigate = useNavigate();
 
-    const searchBarInput = document.getElementsByName('searchBar')[0];
     const handleSearchItem = (e) => {
-        navigate('/allProducts')
-        setSearchValue(e.target.value);
-
-        if (e.target.value.length === 0) {
-            navigate(-1);
-        } else {
-            navigate('/allProducts');
-        }
+        setSearchQuery(e.target.value);
+        navigate('/allProducts');
+        // console.log(e.target.value);
     }
 
     return (
         <div className='relative flex '>
             {/* for small device */}
-            <input onChange={handleSearchItem} name="searchBar" type="text" placeholder="products..." className={`
+            <input value={searchQuery} onChange={(e) => handleSearchItem(e)} name="searchBar" type="text" placeholder="products..." className={`
                         input input-bordered mr-10 rounded-full max-w-2/3 md:w-auto mx-auto
                         transition-all duration-300 ease-in-out
                         focus:outline-none focus:ring-0 focus:border-transparent
