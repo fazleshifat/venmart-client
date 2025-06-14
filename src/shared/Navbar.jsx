@@ -49,7 +49,9 @@ const Navbar = () => {
                 Swal.fire({
                     title: "Logged out successful!",
                     text: "still you can visit the Homepage.",
-                    icon: "success"
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
                 navigate('/logIn');
             }

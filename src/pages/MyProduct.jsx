@@ -5,6 +5,7 @@ import { AuthContext } from '../AuthProvider/AuthContext';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Fade } from 'react-awesome-reveal';
+import { motion } from "framer-motion";
 
 const MyProduct = () => {
 
@@ -44,7 +45,9 @@ const MyProduct = () => {
                 Swal.fire({
                     title: "Product Removed",
                     text: "your product has been removed",
-                    icon: "success"
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
             }
         });
@@ -54,7 +57,14 @@ const MyProduct = () => {
     return (
         <Fade cascade damping={0.5}>
 
-            <section className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
+            <motion.section
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                }}
+                className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
                     <h1 className="md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                         📋My added Products
@@ -93,10 +103,10 @@ const MyProduct = () => {
                                                 </p>
                                             </div>
                                             <div className="flex flex-wrap gap-2 mt-4 w-auto">
-                                             
-                                                <Link to={`/product/details/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 hover:underline">Details</Link>
-                                                <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 hover:underline">✏️ Edit</Link>
-                                                <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm text-sm btn-outline text-red-600 text">🗑️ Remove</button>
+
+                                                <Link to={`/product/details/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 ">👁️Details</Link>
+                                                <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 ">✏️Edit</Link>
+                                                <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm text-sm btn-outline text-red-600 text">🗑️Remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -106,7 +116,7 @@ const MyProduct = () => {
                         ))}
                     </div>
                 )}
-            </section>
+            </motion.section>
         </Fade>
     );
 };

@@ -6,6 +6,7 @@ import CardView from './CardView';
 import { Fade } from 'react-awesome-reveal';
 import { use } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContext';
+import { motion } from "framer-motion";
 
 const AllProducts = () => {
 
@@ -36,32 +37,39 @@ const AllProducts = () => {
 
     return (
 
-        <Fade cascade damping={0.5}>
 
-            <section className="min-h-screen dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 px-4 py-7">
-                <h1 className="text-md md:text-4xl text-[#20b2aa] dark:text-[#7fffd4] text-center">
-                    All Products🛍️
-                </h1>
 
-                <div className="my-10 max-w-[1300px] mx-auto">
-                    <select
-                        name="viewProduct"
-                        value={view}
-                        onChange={(e) => setView(e.target.value)}
-                        className="p-2 px-4 border-2 border-gray-400 dark:bg-indigo-300 text-black rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
-                    >
-                        <option value="Card">Card View</option>
-                        <option value="Table">Table View</option>
-                    </select>
-                </div>
+        <motion.section
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+                duration: 0.9,
+                ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+            }}
+            className="min-h-screen overflow-x-hidden dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 px-4 py-7">
+            <h1 className="text-md md:text-4xl text-[#20b2aa] dark:text-[#7fffd4] text-center">
+                All Products🛍️
+            </h1>
 
-                {
-                    view === 'Card' ? <CardView products={(products, filteredProducts)}></CardView> : <TableView products={(products, filteredProducts)}></TableView>
-                }
+            <div className="overflow-x-hidden my-10 max-w-[1300px] mx-auto">
+                <select
+                    name="viewProduct"
+                    value={view}
+                    onChange={(e) => setView(e.target.value)}
+                    className="p-2 px-4 border-2 border-gray-400 dark:bg-indigo-300 text-black rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+                >
+                    <option value="Card">Card View</option>
+                    <option value="Table">Table View</option>
+                </select>
+            </div>
 
-             
-            </section>
-        </Fade>
+            {
+                view === 'Card' ? <CardView products={(products, filteredProducts)}></CardView> : <TableView products={(products, filteredProducts)}></TableView>
+            }
+
+
+        </motion.section>
+
 
 
     );

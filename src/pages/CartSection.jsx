@@ -7,6 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import CartDetailsModal from '../components/CartDetailsModal';
 import { Fade } from 'react-awesome-reveal';
+import { motion } from "motion/react"
 
 const CartSection = () => {
 
@@ -75,8 +76,16 @@ const CartSection = () => {
     }
 
     return (
+
         <Fade cascade damping={0.5}>
-            <section className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
+            <motion.section
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                }}
+                className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
                     <h1 className="md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                         🛍️My Cart
@@ -140,7 +149,7 @@ const CartSection = () => {
                         )}
                 </div>
 
-            </section>
+            </motion.section>
             <CartDetailsModal item={selectedItem}></CartDetailsModal>
         </Fade>
     );

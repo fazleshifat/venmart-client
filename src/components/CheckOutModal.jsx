@@ -84,7 +84,9 @@ const CheckOutModal = ({ user, product }) => {
                         Swal.fire({
                             title: "Order Confirmed!",
                             text: `Your order has been confirmed as ${user?.displayName}!`,
-                            icon: "success"
+                            icon: "success",
+                            showConfirmButton: false,
+                            timer: 1500
                         });
                         Navigate('/cart');
                     }

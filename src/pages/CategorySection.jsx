@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigation } from "react-router";
 import Spinner from "../components/Spinner";
 import { Fade } from "react-awesome-reveal";
+import { motion } from "framer-motion";
 
 const categories = [
     {
@@ -67,7 +68,14 @@ const CategorySection = () => {
                     Categories<span className="font-extrabold text-yellow-500">|</span>
                 </h2>
 
-                <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
+                <motion.div
+                    initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                        duration: 0.8,
+                        ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                    }}
+                    className="grid gap-8 grid-cols-1 md:grid-cols-3">
                     {categories.map((cat, index) => (
                         <Link
                             to={cat.path}
@@ -99,7 +107,7 @@ const CategorySection = () => {
                             </div>
                         </Link>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </Fade>
 

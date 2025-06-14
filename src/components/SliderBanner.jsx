@@ -2,11 +2,19 @@ import React from 'react';
 import SwipperSlider from './slider/SwipperSlider';
 import TypeWriter from './TypwWriter';
 import { Fade } from 'react-awesome-reveal';
+import { motion } from "framer-motion";
 
 const SliderBanner = () => {
     return (
         <Fade cascade damping={0.5}>
-            <div className="relative max-w-[1590px] mx-auto px-5 flex flex-col lg:flex-row-reverse justify-between">
+            <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                }}
+                className="relative max-w-[1590px] mx-auto px-5 flex flex-col lg:flex-row-reverse justify-between">
 
 
                 <div className='lg:max-w-6/12 md:mx-auto'>
@@ -68,7 +76,7 @@ const SliderBanner = () => {
 
                     </Fade>
                 </div>
-            </div >
+            </motion.div >
         </Fade >
     );
 };

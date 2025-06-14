@@ -7,6 +7,7 @@ import PopularProduct from '../components/PopularProduct';
 import ProductReview from '../components/ProductReview';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
+import { motion } from "framer-motion";
 
 const ProductDetails = () => {
     window.scroll(0, 0)
@@ -27,7 +28,14 @@ const ProductDetails = () => {
 
         <Fade cascade damping={0.5}>
 
-            <section className="max-w-[1390px] mx-auto p-3 flex flex-col my-5 lg:flex-row justify-between">
+            <motion.section
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                }}
+                className="max-w-[1390px] mx-auto p-3 flex flex-col my-5 lg:flex-row justify-between">
                 {/* Left Section: Product Card */}
 
                 <div className="w-full lg:w-6/10">
@@ -109,7 +117,7 @@ const ProductDetails = () => {
                     <PopularProduct></PopularProduct>
 
                 </div>
-            </section>
+            </motion.section>
         </Fade>
 
 

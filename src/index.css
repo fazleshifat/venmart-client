@@ -13,6 +13,7 @@ body {
   font-family: "Poiret One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  overflow-x: hidden;
 }
 
 .font-secondary {
