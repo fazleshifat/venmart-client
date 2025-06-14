@@ -76,7 +76,7 @@ const CategoryCards = () => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.5, y: -100 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.1 }}
                 transition={{
                     duration: 0.7,
                     type: 'spring',

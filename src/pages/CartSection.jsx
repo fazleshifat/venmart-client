@@ -68,7 +68,9 @@ const CartSection = () => {
                 Swal.fire({
                     title: "Order Cancelled",
                     text: "your order has been canceled",
-                    icon: "success"
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
             }
         });

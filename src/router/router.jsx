@@ -12,13 +12,11 @@ import ProductByCategory from "../pages/ProductByCategory";
 import AddProduct from "../pages/AddProduct";
 import AllProducts from "../pages/AllProducts";
 import ProductDetails from "../pages/ProductDetails";
-import CategoryCards from "../components/Category/CategoryCards";
 import UpdateProduct from "../pages/UpdateProduct";
 import CartSection from "../pages/CartSection";
 import MyProduct from "../pages/MyProduct";
 import CategorySection from "../pages/CategorySection";
 import PrivateRoute from "../AuthProvider/PrivateRoute";
-import CartDetailsModal from "../components/CartDetailsModal";
 
 export const router = createBrowserRouter([
     {
