@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { Link } from 'react-router';
 
 
-const CardView = ({ products = [], filteredProducts = [] }) => {
-    const toRender =
-        filteredProducts && filteredProducts.length > 0
-            ? filteredProducts
-            : products;
+const CardView = ({ products = [], filteredProducts = [], filteredAvailableProducts = [], showAvailableOnly }) => {
+    let toRender = [];
+
+    if (showAvailableOnly) {
+        toRender = filteredAvailableProducts;
+    } else if (filteredProducts.length > 0) {
+        toRender = filteredProducts;
+    } else {
+        toRender = products;
+    }
+
 
     return (
         <Fade cascade damping={0.5}>

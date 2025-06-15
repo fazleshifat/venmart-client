@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { Link } from 'react-router';
 
-const TableView = ({ products = [], filteredProducts = [] }) => {
-    const toRender =
-        filteredProducts && filteredProducts.length > 0
-            ? filteredProducts
-            : products;
+const TableView = ({ products = [], filteredProducts = [], filteredAvailableProducts = [], showAvailableOnly }) => {
+    let toRender = [];
+
+    if (showAvailableOnly) {
+        toRender = filteredAvailableProducts;
+    } else if (filteredProducts.length > 0) {
+        toRender = filteredProducts;
+    } else {
+        toRender = products;
+    }
+
 
     return (
         <Fade cascade damping={0.5}>
@@ -28,7 +34,7 @@ const TableView = ({ products = [], filteredProducts = [] }) => {
                                 </tr>
                             </thead>
                             <tbody className="bg-white dark:bg-zinc-800 divide-y divide-gray-200 dark:divide-zinc-700">
-                                {products.map((product, index) => (
+                                {toRender.map((product, index) => (
                                     <tr key={index} className="hover:bg-gray-100 dark:hover:bg-zinc-700 transition">
                                         <td className="p-3">
                                             <img

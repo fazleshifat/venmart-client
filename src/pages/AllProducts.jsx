@@ -19,15 +19,28 @@ const AllProducts = () => {
     // console.log(searchQuery.toLowerCase().trim().replace(/\s+/g, ''))
 
 
-    const filteredProducts = products.filter(product => product.name.trim().toLowerCase().replace(/\s+/g, '').includes(searchQuery.trim().toLowerCase().replace(/\s+/g, '')));
 
     const [view, setView] = useState(() => {
         return localStorage.getItem('view') || 'list';
     });
 
+    const [availableProducts, setAvailableProducts] = useState();
+
+
+
     useEffect(() => {
         localStorage.setItem('view', view);
     }, [view]);
+
+    const [showAvailableOnly, setShowAvailableOnly] = useState(false);
+
+    const filteredProducts = products.filter(product => product.name.trim().toLowerCase().replace(/\s+/g, '').includes(searchQuery.trim().toLowerCase().replace(/\s+/g, '')));
+    const filteredAvailableProducts = products.filter(product => parseInt(product.minQty) > 100);
+
+    const handleShowAvailable = () => {
+        setShowAvailableOnly(true);
+    };
+
 
     const Navigation = useNavigation()
 
@@ -51,7 +64,7 @@ const AllProducts = () => {
                 All Products🛍️
             </h1>
 
-            <div className="overflow-x-hidden my-10 max-w-[1300px] mx-auto">
+            <div className="overflow-x-hidden my-10 max-w-[1300px] mx-auto flex justify-between">
                 <select
                     name="viewProduct"
                     value={view}
@@ -61,13 +74,28 @@ const AllProducts = () => {
                     <option value="Card">Card View</option>
                     <option value="Table">Table View</option>
                 </select>
+
+
+                <button onClick={() => handleShowAvailable()} className='btn btn-outline hover:border-indigo-500'>Show Available product</button>
             </div>
 
             {
-                view === 'Card' ? <CardView products={(products, filteredProducts)}></CardView> : <TableView products={(products, filteredProducts)}></TableView>
+                view === 'Card' ? (
+                    <CardView
+                        products={products}
+                        filteredProducts={filteredProducts}
+                        filteredAvailableProducts={filteredAvailableProducts}
+                        showAvailableOnly={showAvailableOnly}
+                    />
+                ) : (
+                    <TableView
+                        products={products}
+                        filteredProducts={filteredProducts}
+                        filteredAvailableProducts={filteredAvailableProducts}
+                        showAvailableOnly={showAvailableOnly}
+                    />
+                )
             }
-
-
         </motion.section>
 
 

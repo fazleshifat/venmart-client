@@ -178,6 +178,11 @@ const AddProduct = () => {
                             min="1"
                             max="5"
                             required
+                            onInput={(e) => {
+                                const value = parseInt(e.target.value);
+                                if (value > 5) e.target.value = 5;
+                                if (value < 1) e.target.value = 1;
+                            }}
                             className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
                         />
                     </div>

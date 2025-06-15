@@ -124,6 +124,12 @@ const UpdateProduct = () => {
                             max="5"
                             className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
                             defaultValue={rating}
+
+                            onInput={(e) => {
+                                const value = parseInt(e.target.value);
+                                if (value > 5) e.target.value = 5;
+                                if (value < 1) e.target.value = 1;
+                            }}
                         />
                     </div>
 
@@ -145,7 +151,7 @@ const UpdateProduct = () => {
                         <label className="label font-semibold">Main Quantity</label>
                         <input
                             type="number"
-                            name="mainQuantity"
+                            name="mainQty"
                             className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
                             defaultValue={mainQty}
                         />
