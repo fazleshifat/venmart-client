@@ -84,7 +84,7 @@ const OurServices = () => {
 
             <div
                 className="absolute inset-0 w-full h-full bg-center bg-fixed brightness-[0.4] z-0"
-                // style={{ backgroundImage: 'url("/assets/servicesBanner.jpg")' }}
+                style={{ backgroundImage: 'url("/assets/servicesBanner.jpg")' }}
             ></div>
 
             <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 auto-rows-fr">
@@ -95,24 +95,27 @@ const OurServices = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`${service.span} bg-gray-200 dark:bg-zinc-900 p-6 rounded-3xl border-2 border-indigo-200 dark:border-indigo-400 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center`}
+                        className={`${service.span} bg-gradient-to-br from-white via-indigo-50 to-indigo-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 p-6 rounded-3xl border-2 border-indigo-200 dark:border-indigo-400 shadow-md flex flex-col items-center text-center`}
                     >
-                        <div className="w-full h-96 rounded-3xl border-4 border-indigo-300 overflow-hidden mb-4">
+                        <div className="w-full h-96 rounded-3xl border-4 border-indigo-300 dark:border-indigo-500 overflow-hidden mb-4">
                             <img
                                 src={service.image}
                                 alt={service.title}
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <h3 className="text-xl font-semibold text-[#246d6a] dark:text-[#7fffd4] mb-2">
+
+                        <h3 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-cyan-400 dark:to-teal-300 text-transparent bg-clip-text mb-2">
                             {service.title}
                         </h3>
+
                         <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm">
                             {service.description}
                         </p>
+
                         <Link
                             to={service.link}
-                            className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-600 transition"
+                            className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm transition"
                         >
                             Learn More
                         </Link>

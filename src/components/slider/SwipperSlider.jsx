@@ -30,6 +30,7 @@ export default function App() {
                 className="mySwiper max-w-96 lg:max-w-full object-center"
             >
                 <SwiperSlide><img src="/assets/banner1.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
+                <SwiperSlide><img src="/assets/banner10.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
                 <SwiperSlide><img src="/assets/banner2.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
                 <SwiperSlide><img src="/assets/banner3.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
                 <SwiperSlide><img src="/assets/banner4.png" className='cursor-grab  md:max-h-full' alt="banner" /></SwiperSlide>
