@@ -19,7 +19,7 @@ const services = [
         link: "/services/equipment",
         image: "/assets/equipmentSupply.jpg",
         span: "col-span-2",
-
+        span2: "col-span-2"
     },
     {
         title: "Logistics Support",
@@ -28,6 +28,7 @@ const services = [
         link: "/services/logistics",
         image: "/assets/AfterSalesSupport.webp",
         span: "col-span-2",
+        span2: "col-span-2"
     },
     {
         title: "Technical Consultancy",
@@ -37,40 +38,7 @@ const services = [
         image: "/assets/TechnicalConsultancy.avif",
         span: "col-span-3",
         span2: "col-span-2"
-    },
-    {
-        title: "After-Sales Support",
-        description:
-            "We’re here post-purchase with maintenance, guidance, and assistance.",
-        link: "/services/support",
-        image: "/assets/logisticssupport.webp",
-        span: "col-span-5",
-        span2: "col-span-2"
-    },
-    // {
-    //     title: "On-Site Installation",
-    //     description:
-    //         "Seamless setup by our professional technicians to minimize downtime.",
-    //     link: "/services/installation",
-    //     image: "/assets/services/installation.jpg",
-    //     span: "col-span-2",
-    // },
-    // {
-    //     title: "Training Programs",
-    //     description:
-    //         "Equip your team with the knowledge to operate and maintain equipment efficiently.",
-    //     link: "/services/training",
-    //     image: "/assets/services/training.jpg",
-    //     span: "col-span-3",
-    // },
-    // {
-    //     title: "Procurement Planning",
-    //     description:
-    //         "Let us help you plan, forecast, and optimize procurement cycles.",
-    //     link: "/services/procurement",
-    //     image: "/assets/services/procurement.jpg",
-    //     span: "col-span-5",
-    // },
+    }
 ];
 
 const OurServices = () => {
@@ -81,17 +49,14 @@ const OurServices = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="relative z-10 text-4xl font-bold text-center mb-14 text-[#20b2aa] dark:text-[#7fffd4]"
+                className="relative z-10 text-3xl md:text-4xl font-bold text-center mb-14 text-[#20b2aa] dark:text-[#7fffd4]"
             >
                 Our Services 🚀
             </motion.h2>
 
-            <div
-                className="absolute inset-0 w-full h-full bg-center bg-fixed brightness-[0.4] z-0"
-                // style={{ backgroundImage: 'url("/assets/servicesBanner.jpg")' }}
-            ></div>
+            <div className="absolute inset-0 w-full h-full bg-center bg-fixed brightness-[0.4] z-0" />
 
-            <div className="relative z-10 grid grid-cols-2 md:grid-cols-5 gap-8 auto-rows-fr">
+            <div className="relative z-10 mx-auto flex flex-wrap gap-6 auto-rows-fr">
                 {services.map((service, index) => (
                     <motion.div
                         key={index}
@@ -99,27 +64,28 @@ const OurServices = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`${service.span} bg-gradient-to-br from-white via-indigo-50 to-indigo-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 p-6 rounded-3xl border-2 border-indigo-200 dark:border-indigo-400 shadow-md flex flex-col items-center text-center`}
+                        className={`${service.span2 || "col-span-2"} md:${service.span
+                            } mx-auto bg-gradient-to-br from-white via-indigo-50 to-indigo-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 p-5 md:p-6 rounded-3xl border-2 border-indigo-200 dark:border-indigo-400 shadow-md flex flex-col items-center text-center`}
                     >
-                        <div className="w-full h-96 rounded-3xl border-4 border-indigo-300 dark:border-indigo-500 overflow-hidden mb-4">
+                        <div className="w-full h-64 md:h-72 rounded-2xl border-4 border-indigo-300 dark:border-indigo-500 overflow-hidden mb-4">
                             <img
                                 src={service.image}
                                 alt={service.title}
-                                className="w-full h-full object-cover    "
+                                className="w-full h-full object-cover"
                             />
                         </div>
 
-                        <h3 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-cyan-400 dark:to-teal-300 text-transparent bg-clip-text mb-2">
+                        <h3 className="text-lg md:text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-cyan-400 dark:to-teal-300 text-transparent bg-clip-text mb-2">
                             {service.title}
                         </h3>
 
-                        <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm">
+                        <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4">
                             {service.description}
                         </p>
 
                         <Link
                             to={service.link}
-                            className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm transition"
+                            className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm transition hover:bg-indigo-600"
                         >
                             Learn More
                         </Link>

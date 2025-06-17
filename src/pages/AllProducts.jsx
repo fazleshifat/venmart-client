@@ -11,12 +11,12 @@ import axios from 'axios';
 
 const AllProducts = () => {
 
-    const [availableProducts, setAvailableProducts] = useState();
+
+    const [showAvailableOnly, setShowAvailableOnly] = useState(false);
     const [load, setLoad] = useState(true);
 
     const { user, searchQuery, setSearchQuery } = use(AuthContext);
 
-    window.scroll(0, 0)
 
     const [products, setProducts] = useState([]);
 
@@ -32,7 +32,8 @@ const AllProducts = () => {
             }
             )
             .catch(err => console.log(err))
-    }, [])
+    }, [user])
+
     const [view, setView] = useState(() => {
         return localStorage.getItem('view') || 'list';
     });
@@ -40,10 +41,12 @@ const AllProducts = () => {
 
 
     useEffect(() => {
+
+        window.scroll(0, 0)
         localStorage.setItem('view', view);
+        document.getElementById("title").innerText = "All Products"
     }, [view]);
 
-    const [showAvailableOnly, setShowAvailableOnly] = useState(false);
 
     const filteredProducts = products.filter(product => product.name.trim().toLowerCase().replace(/\s+/g, '').includes(searchQuery.trim().toLowerCase().replace(/\s+/g, '')));
     const filteredAvailableProducts = products.filter(product => parseInt(product.minQty) > 100);
@@ -53,15 +56,12 @@ const AllProducts = () => {
     };
 
 
-    const Navigation = useNavigation()
-
-    if (Navigation.state === "loading") {
+    if (load) {
         return <Spinner />;
     }
 
-    useEffect(() => {
-        document.getElementById("title").innerText = "All Products"
-    }, [])
+
+
 
 
     return (
@@ -98,7 +98,6 @@ const AllProducts = () => {
             {
                 view === 'Card' ? (
                     <CardView
-                        load={load}
                         products={products}
                         filteredProducts={filteredProducts}
                         filteredAvailableProducts={filteredAvailableProducts}

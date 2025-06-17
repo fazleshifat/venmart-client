@@ -8,18 +8,15 @@ import { AuthContext } from '../AuthProvider/AuthContext';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 const AddProduct = () => {
     const { user } = use(AuthContext);
 
 
     const Navigate = useNavigate();
-    const Navigation = useNavigation()
 
-    if (Navigation.state === "loading") {
-        return <Spinner />;
-    }
-    window.scroll(0, 0)
+
 
     const handleAddProduct = (e) => {
         e.preventDefault();
@@ -50,7 +47,10 @@ const AddProduct = () => {
 
     useEffect(() => {
         document.getElementById("title").innerText = "Add product"
+        window.scroll(0, 0)
     }, [])
+
+
 
     return (
 

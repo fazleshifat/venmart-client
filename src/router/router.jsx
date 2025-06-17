@@ -61,18 +61,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: `/products/:category`,
-                Component: ProductByCategory
+                element: <PrivateRoute>
+                    <ProductByCategory></ProductByCategory>
+                </PrivateRoute>
             },
             {
                 path: '/updateProduct/:id',
-                loader: async ({ params }) => await fetch(`http://localhost:3000/allProducts/${params.id}`),
                 element: <PrivateRoute>
                     <UpdateProduct></UpdateProduct>
                 </PrivateRoute>
             },
             {
                 path: '/myProduct',
-                loader: async () => await fetch('http://localhost:3000/allProducts'),
                 element: <PrivateRoute>
                     <MyProduct></MyProduct>
                 </PrivateRoute>
@@ -80,18 +80,10 @@ export const router = createBrowserRouter([
             ,
             {
                 path: '/cart',
-                loader: async () => await fetch('http://localhost:3000/cart'),
                 element: <PrivateRoute>
                     <CartSection></CartSection>
                 </PrivateRoute>
-            },
-            // {
-            //     path: '/cart/:id',
-            //     loader: async () => await fetch(`http://localhost:3000/cart/${id}`),
-            //     element: <PrivateRoute>
-            //         <CartDetailsModal></CartDetailsModal>
-            //     </PrivateRoute>
-            // }
+            }
         ]
     },
     {

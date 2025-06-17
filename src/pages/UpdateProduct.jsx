@@ -1,25 +1,40 @@
 import axios from 'axios';
-import React from 'react';
-import { useLoaderData, useNavigate, useNavigation } from 'react-router';
+import React, { use, useState } from 'react';
+import { useLoaderData, useNavigate, useNavigation, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
+import { AuthContext } from '../AuthProvider/AuthContext';
 
 const UpdateProduct = () => {
-    window.scroll(0, 0)
 
-    const product = useLoaderData();
+    const { id } = useParams();
+    const { user } = use(AuthContext);
+    const [product, setProduct] = useState({});
+    const [load, setLoad] = useState(true);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/allProducts/${id}?email=${user?.email}`, {
+            headers: {
+                Authorization: `Bearer ${user?.accessToken}`
+            }
+        })
+            .then(res => {
+                setLoad(false);
+                setProduct(res.data);
+            }
+            )
+            .catch(err => console.log(err))
+    }, [id])
+
+
     // console.log(product)
     const { _id, name, brand, category, description, image, mainQty, minQty, price, rating } = product;
-    console.log(category)
     const navigate = useNavigate();
-    const Navigation = useNavigation()
 
-    if (Navigation.state === "loading") {
-        return <Spinner />;
-    }
+
 
     const handleUpdateProduct = (e) => {
 
@@ -48,8 +63,12 @@ const UpdateProduct = () => {
 
     useEffect(() => {
         document.getElementById("title").innerText = "Update Information"
+        window.scroll(0, 0)
     }, [])
 
+    if (load) {
+        return <Spinner />;
+    }
 
 
     return (

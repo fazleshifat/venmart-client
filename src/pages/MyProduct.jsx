@@ -1,17 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { use } from 'react';
-import { Link, useLoaderData } from 'react-router';
+import { Link, useLoaderData, useNavigation } from 'react-router';
 import { AuthContext } from '../AuthProvider/AuthContext';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
+import Spinner from '../components/Spinner';
 
 const MyProduct = () => {
 
     const { user } = use(AuthContext);
-    const products = useLoaderData();
+    const [products, setProducts] = useState([]);
     const [myProducts, setMyProducts] = useState([]);
+    const [load, setLoad] = useState(true);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/allProducts?email=${user?.email}`, {
+            headers: {
+                Authorization: `Bearer ${user?.accessToken}`
+            }
+        })
+            .then(res => {
+                setLoad(false);
+                setProducts(res.data);
+            }
+            )
+            .catch(err => console.log(err))
+    }, [user])
+
 
     useEffect(() => {
         if (user && products) {
@@ -20,6 +37,9 @@ const MyProduct = () => {
         }
     }, [user, products]);
 
+    if (load) {
+        return <Spinner />;
+    }
 
 
     const handleRemoveProduct = (id) => {
@@ -33,7 +53,7 @@ const MyProduct = () => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/allProducts/delete/${id}`)
+                axios.delete(`https://venmart-server.vercel.app/allProducts/delete/${id}`)
                     .then(response => {
                         const filteredProducts = myProducts.filter(product => product._id !== id);
                         setMyProducts(filteredProducts);
@@ -53,10 +73,6 @@ const MyProduct = () => {
         });
 
     }
-
-    useEffect(() => {
-        document.getElementById("title").innerText = "My Products"
-    }, [])
 
     return (
         <Fade cascade damping={0.5}>

@@ -11,12 +11,15 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 const ProductDetails = () => {
-    const { id } = useParams(); // ✅ Get ID from URL
-    const { user } = use(AuthContext); // ✅ Correct context usage
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true); // ✅ Use this instead of `setLoad`
-
+    const { id } = useParams();
+    const { user } = use(AuthContext);
+    const [product, setProduct] = useState(null);   
+    const [loading, setLoading] = useState(true);
+    
     const navigation = useNavigation();
+    useEffect(() => {
+        document.getElementById('title').innerText = 'Product Details';
+    }, []);
 
     useEffect(() => {
         window.scrollTo(0, 0); // ✅ Proper scroll method
@@ -37,9 +40,6 @@ const ProductDetails = () => {
             });
     }, [id, user?.accessToken]);
 
-    useEffect(() => {
-        document.getElementById('title').innerText = 'Product Details';
-    }, []);
 
     if (navigation.state === 'loading' || loading || !product) {
         return <Spinner />;

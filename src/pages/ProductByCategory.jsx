@@ -1,45 +1,45 @@
 import React, { useState } from 'react';
-import { Link, useLoaderData, useNavigation, useParams } from 'react-router';
+import { Link, useNavigation, useParams } from 'react-router';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
 import { use } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContext';
+import axios from 'axios';
 
 const ProductByCategory = () => {
-
-    const { id } = useParams();
+    const { category } = useParams();
     const { user } = use(AuthContext);
+    const [products, setProducts] = useState([]);
+    const [load, setLoad] = useState(true);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/products/${params.category}?email=${user?.email}`, {
+        if (!user?.email || !category) return;
+
+        axios.get(`http://localhost:3000/products/${category}?email=${user.email}`, {
             headers: {
-                Authorization: `Bearer ${user?.accessToken}`
+                Authorization: `Bearer ${user.accessToken}`
             }
         })
             .then(res => {
-                setLoad(false);
                 setProducts(res.data);
-            }
-            )
-            .catch(err => console.log(err))
-    }, [id])
-
-    window.scroll(0, 0)
-    const { category } = useParams();
-    const title = category.charAt(0).toUpperCase() + category.slice(1);
-    // console.log(title);
-
-    const Navigation = useNavigation()
-
-    if (Navigation.state === "loading") {
-        return <Spinner />;
-    }
+            })
+            .catch(err => {
+                console.error("Failed to fetch products:", err);
+            })
+            .finally(() => setLoad(false));
+    }, [category, user]);
 
     useEffect(() => {
-        document.getElementById("title").innerText = "Product by category"
-    }, [])
+        window.scrollTo(0, 0);
+        document.getElementById("title").innerText = "Product by category";
+    }, []);
+
+    const title = category?.charAt(0).toUpperCase() + category?.slice(1);
+
+    if (load) return <Spinner />;
+
 
     return (
 

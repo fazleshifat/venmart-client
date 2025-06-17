@@ -8,17 +8,36 @@ import Swal from 'sweetalert2';
 import CartDetailsModal from '../components/CartDetailsModal';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "motion/react"
+import { useContext } from 'react';
 
 const CartSection = () => {
 
-    const cartItems = useLoaderData();
+    const [cartItems, setCartItems] = useState([]);
+    const { user } = useContext(AuthContext);
     const [myCarts, setMyCarts] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
+    const [load, setLoad] = useState(true);
 
-    console.log(selectedItem)
 
-    const { user } = use(AuthContext);
-    // const filteredCart = cartItems.filter(cart => cart.customerEmail === user?.email);
+
+    useEffect(() => {
+        if (!user?.email) return; // prevent calling axios with undefined email
+
+        axios.get(`http://localhost:3000/cart?email=${user.email}`, {
+            headers: {
+                Authorization: `Bearer ${user.accessToken}`
+            }
+        })
+            .then(res => {
+                setCartItems(res.data);
+                setLoad(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setLoad(false);
+            });
+    }, [user]);
+
 
     useEffect(() => {
         if (user && cartItems) {
@@ -29,8 +48,9 @@ const CartSection = () => {
         }
     }, [user, cartItems]);
 
+
     useEffect(() => {
-        if (selectedItem) {
+        if (selectedItem && Object.keys(selectedItem).length > 0) {
             const modal = document.getElementById('purchase_modal');
             if (modal) {
                 modal.showModal();
@@ -38,12 +58,18 @@ const CartSection = () => {
         }
     }, [selectedItem]);
 
-    window.scroll(0, 0)
-    const Navigation = useNavigation()
 
-    if (Navigation.state === "loading") {
+    useEffect(() => {
+        window.scroll(0, 0);
+        document.getElementById("title").innerText = "Purchased Cart"
+    }, [])
+
+    if (load) {
         return <Spinner />;
     }
+
+ 
+
 
     const handleCancelOrder = (item) => {
         Swal.fire({
@@ -82,9 +108,7 @@ const CartSection = () => {
         });
     };
 
-    useEffect(() => {
-        document.getElementById("title").innerText = "Purchased Cart"
-    }, [])
+
 
     return (
 
@@ -102,6 +126,7 @@ const CartSection = () => {
                         🛍️My Cart
                     </h1>
                 </div>
+
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
                     {myCarts.length === 0 ? (
@@ -141,8 +166,8 @@ const CartSection = () => {
                                             <div className="flex justify-between items-center mt-4">
                                                 <button
                                                     onClick={() => {
-                                                        setSelectedItem(item); // Save item data
-                                                        document.getElementById('purchase_modal').showModal();  // Open modal
+                                                        setSelectedItem(item);
+                                                        document.getElementById('purchase_modal')?.showModal();
                                                     }}
                                                     className="btn btn-sm text-indigo-600 hover:text-red-800 text-sm flex items-center"
                                                 >
@@ -160,6 +185,7 @@ const CartSection = () => {
 
                         )}
                 </div>
+
 
             </motion.section>
             <CartDetailsModal item={selectedItem}></CartDetailsModal>
