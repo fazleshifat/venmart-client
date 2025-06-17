@@ -77,11 +77,11 @@ const CheckOutModal = ({ user, product }) => {
             setErrorMessage('')
 
             // Send a POST request
-            axios.post("http://localhost:3000/products/cart", purchaseInfo)
+            axios.post("https://venmart-server.vercel.app/products/cart", purchaseInfo)
                 .then(res => {
                     if (res.data.insertedId) {
 
-                        axios.patch(`http://localhost:3000/cart/${purchaseInfo.id}`, { quantity })
+                        axios.patch(`https://venmart-server.vercel.app/cart/${purchaseInfo.id}`, { quantity })
                             .then(res => console.log(res))
                             .catch(err => console.log(err))
 

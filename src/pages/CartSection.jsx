@@ -23,7 +23,7 @@ const CartSection = () => {
     useEffect(() => {
         if (!user?.email) return; // prevent calling axios with undefined email
 
-        axios.get(`http://localhost:3000/cart?email=${user.email}`, {
+        axios.get(`https://venmart-server.vercel.app/cart?email=${user.email}`, {
             headers: {
                 Authorization: `Bearer ${user.accessToken}`
             }
@@ -82,14 +82,14 @@ const CartSection = () => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/cart/delete/${item?._id}`)
+                axios.delete(`https://venmart-server.vercel.app/cart/delete/${item?._id}`)
                     .then(response => {
                         console.log(response);
                         const filteredCart = myCarts.filter(cart => cart._id !== item?._id);
                         setMyCarts(filteredCart);
 
                         // Send PATCH with quantity
-                        axios.patch(`http://localhost:3000/allProducts/${item?.id}`, { quantity: item.quantity })
+                        axios.patch(`https://venmart-server.vercel.app/allProducts/${item?.id}`, { quantity: item.quantity })
                             .then(res => console.log(res))
                             .catch(err => console.log(err))
                     })

@@ -25,7 +25,7 @@ const ProductDetails = () => {
         window.scrollTo(0, 0); // ✅ Proper scroll method
 
 
-        axios.get(`http://localhost:3000/allProducts/${id}?email=${user?.email}`, {
+        axios.get(`https://venmart-server.vercel.app/allProducts/${id}?email=${user?.email}`, {
             headers: {
                 Authorization: `Bearer ${user?.accessToken}`,
             },

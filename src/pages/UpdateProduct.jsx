@@ -16,7 +16,7 @@ const UpdateProduct = () => {
     const [load, setLoad] = useState(true);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/allProducts/${id}?email=${user?.email}`, {
+        axios.get(`https://venmart-server.vercel.app/allProducts/${id}?email=${user?.email}`, {
             headers: {
                 Authorization: `Bearer ${user?.accessToken}`
             }
@@ -43,7 +43,7 @@ const UpdateProduct = () => {
         const formData = new FormData(form);
         const updatedProduct = Object.fromEntries(formData.entries());
 
-        axios.put(`http://localhost:3000/allProducts/${_id}`, updatedProduct)
+        axios.put(`https://venmart-server.vercel.app/allProducts/${_id}`, updatedProduct)
             .then(response => {
                 if (response.data.modifiedCount) {
                     Swal.fire({

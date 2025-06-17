@@ -16,7 +16,7 @@ const MyProduct = () => {
     const [load, setLoad] = useState(true);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/allProducts?email=${user?.email}`, {
+        axios.get(`https://venmart-server.vercel.app/allProducts?email=${user?.email}`, {
             headers: {
                 Authorization: `Bearer ${user?.accessToken}`
             }

@@ -13,7 +13,6 @@ const ToggleSearchBar = () => {
     const { searchQuery, setSearchQuery } = use(AuthContext);
 
     const [showSearchBar, setShowSearchBar] = useState(false);
-    const [searchValue, setSearchValue] = useState('');
 
     const handleShowSearchBar = () => {
         setShowSearchBar(!showSearchBar);

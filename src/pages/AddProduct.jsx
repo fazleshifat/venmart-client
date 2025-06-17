@@ -28,7 +28,7 @@ const AddProduct = () => {
         // console.log(productInfo)
 
         // Send a POST request
-        axios.post("http://localhost:3000/addProducts", productInfo)
+        axios.post("https://venmart-server.vercel.app/addProducts", productInfo)
             .then(res => {
                 if (res.data.insertedId) {
                     // sweet alert after create user
