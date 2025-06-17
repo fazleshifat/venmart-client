@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import { AuthContext } from './AuthContext';
 import { auth } from '../Firebase/firebase.init';
 
@@ -27,6 +27,10 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
+    const userSignOut = () => {
+        return signOut(auth)
+    }
+
     // to observe the authentic user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -41,7 +45,7 @@ const AuthProvider = ({ children }) => {
 
         return () => unsubscribe();
     }, [])
-    
+
 
     // sharing all context info
     const authInfo = {
@@ -54,6 +58,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         logInUser,
         googleLoginUser,
+        userSignOut,
         searchQuery,
         setSearchQuery
     }

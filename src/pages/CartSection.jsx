@@ -45,7 +45,7 @@ const CartSection = () => {
         return <Spinner />;
     }
 
-    const handleCancelOrder = (id) => {
+    const handleCancelOrder = (item) => {
         Swal.fire({
             title: "Want to cancel order!",
             text: "Are you sure?",
@@ -56,13 +56,19 @@ const CartSection = () => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://venmart-server.vercel.app/cart/delete/${id}`)
+                axios.delete(`http://localhost:3000/cart/delete/${item?._id}`)
                     .then(response => {
-                        const filteredCart = myCarts.filter(cart => cart._id !== id);
+                        console.log(response);
+                        const filteredCart = myCarts.filter(cart => cart._id !== item?._id);
                         setMyCarts(filteredCart);
+
+                        // Send PATCH with quantity
+                        axios.patch(`http://localhost:3000/allProducts/${item?.id}`, { quantity: item.quantity })
+                            .then(res => console.log(res))
+                            .catch(err => console.log(err))
                     })
                     .catch(error => {
-                        // console.error(error);
+                        console.error('Delete error:', error);
                     });
 
                 Swal.fire({
@@ -74,8 +80,11 @@ const CartSection = () => {
                 });
             }
         });
+    };
 
-    }
+    useEffect(() => {
+        document.getElementById("title").innerText = "Purchased Cart"
+    }, [])
 
     return (
 
@@ -139,7 +148,8 @@ const CartSection = () => {
                                                 >
                                                     👁️View
                                                 </button>
-                                                <button onClick={() => handleCancelOrder(item._id)} className="btn btn-sm text-red-600 hover:text-red-800 text-sm flex items-center">
+                                                <button onClick={() => handleCancelOrder(item)}
+                                                    className="btn btn-sm text-red-600 hover:text-red-800 text-sm flex items-center">
                                                     🗑️<span className="ml-1">Cancel Order</span>
                                                 </button>
                                             </div>

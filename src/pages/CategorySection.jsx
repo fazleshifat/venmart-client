@@ -3,6 +3,7 @@ import { Link, useNavigation } from "react-router";
 import Spinner from "../components/Spinner";
 import { Fade } from "react-awesome-reveal";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const categories = [
     {
@@ -50,7 +51,6 @@ const categories = [
 ];
 
 
-
 const CategorySection = () => {
 
     const Navigation = useNavigation()
@@ -58,6 +58,12 @@ const CategorySection = () => {
     if (Navigation.state === "loading") {
         return <Spinner />;
     }
+
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "Categories"
+    }, [])
+
 
     return (
 

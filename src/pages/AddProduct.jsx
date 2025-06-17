@@ -7,6 +7,7 @@ import { use } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContext';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
+import { useEffect } from 'react';
 
 const AddProduct = () => {
     const { user } = use(AuthContext);
@@ -25,10 +26,12 @@ const AddProduct = () => {
         const form = e.target;
         const formData = new FormData(form);
         const productInfo = Object.fromEntries(formData.entries());
+        productInfo.mainQty = parseInt(productInfo?.mainQty)
+        productInfo.minQty = parseInt(productInfo?.minQty)
         // console.log(productInfo)
 
         // Send a POST request
-        axios.post("https://venmart-server.vercel.app/allProducts", productInfo)
+        axios.post("http://localhost:3000/addProducts", productInfo)
             .then(res => {
                 if (res.data.insertedId) {
                     // sweet alert after create user
@@ -44,6 +47,10 @@ const AddProduct = () => {
             .catch(err => console.error('Axios error:', err));
     }
 
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "Add product"
+    }, [])
 
     return (
 

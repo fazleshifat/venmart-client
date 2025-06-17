@@ -3,10 +3,28 @@ import { Link, useLoaderData, useNavigation, useParams } from 'react-router';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
+import { useEffect } from 'react';
+import { use } from 'react';
+import { AuthContext } from '../AuthProvider/AuthContext';
 
 const ProductByCategory = () => {
-    const products = useLoaderData();
-    // console.log(products)
+
+    const { id } = useParams();
+    const { user } = use(AuthContext);
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/products/${params.category}?email=${user?.email}`, {
+            headers: {
+                Authorization: `Bearer ${user?.accessToken}`
+            }
+        })
+            .then(res => {
+                setLoad(false);
+                setProducts(res.data);
+            }
+            )
+            .catch(err => console.log(err))
+    }, [id])
 
     window.scroll(0, 0)
     const { category } = useParams();
@@ -18,6 +36,10 @@ const ProductByCategory = () => {
     if (Navigation.state === "loading") {
         return <Spinner />;
     }
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "Product by category"
+    }, [])
 
     return (
 

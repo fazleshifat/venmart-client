@@ -10,6 +10,7 @@ const CheckOutModal = ({ user, product }) => {
     const { errorMessage, setErrorMessage } = use(AuthContext);
 
     const {
+        _id,
         name,
         brand,
         category,
@@ -21,6 +22,7 @@ const CheckOutModal = ({ user, product }) => {
         rating
     } = product;
 
+    const [quantity, setQuantity] = useState(1);
     const convertedMinQty = parseInt(minQty);
 
     const handleIncrease = () => setQuantity(prev => prev + 1);
@@ -28,7 +30,6 @@ const CheckOutModal = ({ user, product }) => {
 
     // const quantityInput = document.getElementById('buyingQuantity').value;
     // console.log(quantityInput)
-    const [quantity, setQuantity] = useState(1);
 
     const customerName = user?.displayName;
     const customerEmail = user?.email;
@@ -41,6 +42,7 @@ const CheckOutModal = ({ user, product }) => {
     const handleSubmit = (e) => {
 
         const purchaseInfo = {
+            id: product._id,
             customerName,
             customerEmail,
             name,
@@ -75,9 +77,15 @@ const CheckOutModal = ({ user, product }) => {
             setErrorMessage('')
 
             // Send a POST request
-            axios.post("https://venmart-server.vercel.app/products/cart", purchaseInfo)
+            axios.post("http://localhost:3000/products/cart", purchaseInfo)
                 .then(res => {
                     if (res.data.insertedId) {
+
+                        axios.patch(`http://localhost:3000/cart/${purchaseInfo.id}`, { quantity })
+                            .then(res => console.log(res))
+                            .catch(err => console.log(err))
+
+                        console.log(res.data)
                         // sweet alert after create user
                         document.getElementById('my_modal_4').close();
                         setQuantity(1);

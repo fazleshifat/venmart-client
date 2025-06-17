@@ -6,6 +6,7 @@ import { updateProfile } from 'firebase/auth';
 import { Link, useNavigate, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 import { motion } from "framer-motion";
+import { useEffect } from 'react';
 
 const Register = () => {
     window.scroll(0, 0)
@@ -77,7 +78,7 @@ const Register = () => {
 
 
                         // Send a POST request
-                        axios.post("https://venmart-server.vercel.app/users", userProfile)
+                        axios.post("http://localhost:3000/users", userProfile)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     // sweet alert after create user
@@ -104,6 +105,13 @@ const Register = () => {
 
             })
     }
+
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "Register"
+    }, [])
+
+
 
     return (
 

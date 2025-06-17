@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
+import { useEffect } from 'react';
 
 const ErrorPage = () => {
     window.scroll(0, 0)
@@ -10,6 +11,11 @@ const ErrorPage = () => {
     if (Navigation.state === "loading") {
         return <Spinner />;
     }
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "error"
+    }, [])
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 text-center px-6">
 
@@ -17,7 +23,7 @@ const ErrorPage = () => {
             <img
                 src="/assets/error.png" // Replace with your actual image path
                 alt="Error"
-                className="max-w-md mb-8"
+                className="max-w-4/12 mb-4"
             />
 
             {/* Heading */}

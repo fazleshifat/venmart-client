@@ -1,25 +1,47 @@
 import React, { use, useState } from 'react';
-import { Link, useLoaderData, useNavigation } from 'react-router';
+import { Link, useLoaderData, useNavigation, useParams } from 'react-router';
 import { AuthContext } from '../AuthProvider/AuthContext';
-import BuyModal from '../components/BuyModal';
 import CheckOutModal from '../components/CheckOutModal';
 import PopularProduct from '../components/PopularProduct';
 import ProductReview from '../components/ProductReview';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const ProductDetails = () => {
-    window.scroll(0, 0)
+    const { id } = useParams(); // ✅ Get ID from URL
+    const { user } = use(AuthContext); // ✅ Correct context usage
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true); // ✅ Use this instead of `setLoad`
 
-    const product = useLoaderData();
-    const { user } = use(AuthContext);
-    const [showModal, setShowModal] = useState(false);
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0); // ✅ Proper scroll method
 
 
-    const Navigation = useNavigation()
+        axios.get(`http://localhost:3000/allProducts/${id}?email=${user?.email}`, {
+            headers: {
+                Authorization: `Bearer ${user?.accessToken}`,
+            },
+        })
+            .then((res) => {
+                setProduct(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error(err);
+                setLoading(false);
+            });
+    }, [id, user?.accessToken]);
 
-    if (Navigation.state === "loading") {
+    useEffect(() => {
+        document.getElementById('title').innerText = 'Product Details';
+    }, []);
+
+    if (navigation.state === 'loading' || loading || !product) {
         return <Spinner />;
     }
 

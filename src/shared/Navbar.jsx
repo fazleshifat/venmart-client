@@ -9,7 +9,7 @@ import ToggleSearchBar from '../components/ToggleSearchBar';
 
 const Navbar = () => {
 
-    const { user } = use(AuthContext);
+    const { user, userSignOut } = use(AuthContext);
 
     const navigate = useNavigate();
     const [showNavbar, setShowNavbar] = useState(true);
@@ -39,7 +39,7 @@ const Navbar = () => {
             confirmButtonText: "Yes, Log out!"
         }).then((result) => {
             if (result.isConfirmed) {
-                signOut(auth).then(() => {
+                userSignOut().then(() => {
 
                     // navigate('/signIn')
                 }).catch((error) => {

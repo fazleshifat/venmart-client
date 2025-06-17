@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
+import { useEffect } from 'react';
 
 const LogIn = () => {
     window.scroll(0, 0)
@@ -66,9 +67,13 @@ const LogIn = () => {
                 setLoading(false);
             });
     }
+
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "Login"
+    }, [])
+
     return (
-
-
 
         <div className="min-h-screen flex items-center justify-center px-4">
             <motion.div

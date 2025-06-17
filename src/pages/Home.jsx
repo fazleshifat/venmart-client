@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MarqueeBanner from '../components/MarqueeBanner';
 import SliderBanner from '../components/SliderBanner';
 import { Link, useNavigation } from 'react-router';
@@ -16,6 +16,10 @@ const Home = () => {
     if (Navigation.state === "loading") {
         return <Spinner />;
     }
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "Venmart"
+    }, [])
 
     return (
         <>

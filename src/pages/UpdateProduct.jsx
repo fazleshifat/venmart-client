@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
+import { useEffect } from 'react';
 
 const UpdateProduct = () => {
     window.scroll(0, 0)
@@ -27,7 +28,7 @@ const UpdateProduct = () => {
         const formData = new FormData(form);
         const updatedProduct = Object.fromEntries(formData.entries());
 
-        axios.put(`https://venmart-server.vercel.app/allProducts/${_id}`, updatedProduct)
+        axios.put(`http://localhost:3000/allProducts/${_id}`, updatedProduct)
             .then(response => {
                 if (response.data.modifiedCount) {
                     Swal.fire({
@@ -42,6 +43,13 @@ const UpdateProduct = () => {
             )
             .catch(error => console.error(error));
     }
+
+
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "Update Information"
+    }, [])
+
 
 
     return (

@@ -10,6 +10,7 @@ const services = [
         link: "/services/manufacturing",
         image: "/assets/custom-manufacturing.avif",
         span: "col-span-3",
+        span2: "col-span-2"
     },
     {
         title: "Equipment Supply",
@@ -18,14 +19,15 @@ const services = [
         link: "/services/equipment",
         image: "/assets/equipmentSupply.jpg",
         span: "col-span-2",
+
     },
     {
         title: "Logistics Support",
         description:
             "Reliable packaging, transport, and warehouse integration for hassle-free operations.",
         link: "/services/logistics",
-        image: "/assets/logisticssupport.webp",
-        span: "col-span-1",
+        image: "/assets/AfterSalesSupport.webp",
+        span: "col-span-2",
     },
     {
         title: "Technical Consultancy",
@@ -34,14 +36,16 @@ const services = [
         link: "/services/consultancy",
         image: "/assets/TechnicalConsultancy.avif",
         span: "col-span-3",
+        span2: "col-span-2"
     },
     {
         title: "After-Sales Support",
         description:
             "We’re here post-purchase with maintenance, guidance, and assistance.",
         link: "/services/support",
-        image: "/assets/AfterSalesSupport.webp",
-        span: "col-span-1",
+        image: "/assets/logisticssupport.webp",
+        span: "col-span-5",
+        span2: "col-span-2"
     },
     // {
     //     title: "On-Site Installation",
@@ -84,10 +88,10 @@ const OurServices = () => {
 
             <div
                 className="absolute inset-0 w-full h-full bg-center bg-fixed brightness-[0.4] z-0"
-                style={{ backgroundImage: 'url("/assets/servicesBanner.jpg")' }}
+                // style={{ backgroundImage: 'url("/assets/servicesBanner.jpg")' }}
             ></div>
 
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 auto-rows-fr">
+            <div className="relative z-10 grid grid-cols-2 md:grid-cols-5 gap-8 auto-rows-fr">
                 {services.map((service, index) => (
                     <motion.div
                         key={index}
@@ -101,7 +105,7 @@ const OurServices = () => {
                             <img
                                 src={service.image}
                                 alt={service.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover    "
                             />
                         </div>
 

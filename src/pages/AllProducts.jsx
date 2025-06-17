@@ -7,24 +7,35 @@ import { Fade } from 'react-awesome-reveal';
 import { use } from 'react';
 import { AuthContext } from '../AuthProvider/AuthContext';
 import { motion } from "framer-motion";
+import axios from 'axios';
 
 const AllProducts = () => {
 
-    const { searchQuery, setSearchQuery } = use(AuthContext);
+    const [availableProducts, setAvailableProducts] = useState();
+    const [load, setLoad] = useState(true);
+
+    const { user, searchQuery, setSearchQuery } = use(AuthContext);
 
     window.scroll(0, 0)
 
-    const products = useLoaderData();
+    const [products, setProducts] = useState([]);
 
-    // console.log(searchQuery.toLowerCase().trim().replace(/\s+/g, ''))
-
-
-
+    useEffect(() => {
+        axios.get(`http://localhost:3000/allProducts?email=${user?.email}`, {
+            headers: {
+                Authorization: `Bearer ${user?.accessToken}`
+            }
+        })
+            .then(res => {
+                setLoad(false);
+                setProducts(res.data);
+            }
+            )
+            .catch(err => console.log(err))
+    }, [])
     const [view, setView] = useState(() => {
         return localStorage.getItem('view') || 'list';
     });
-
-    const [availableProducts, setAvailableProducts] = useState();
 
 
 
@@ -38,7 +49,7 @@ const AllProducts = () => {
     const filteredAvailableProducts = products.filter(product => parseInt(product.minQty) > 100);
 
     const handleShowAvailable = () => {
-        setShowAvailableOnly(true);
+        setShowAvailableOnly(!showAvailableOnly);
     };
 
 
@@ -47,6 +58,11 @@ const AllProducts = () => {
     if (Navigation.state === "loading") {
         return <Spinner />;
     }
+
+    useEffect(() => {
+        document.getElementById("title").innerText = "All Products"
+    }, [])
+
 
     return (
 
@@ -76,12 +92,13 @@ const AllProducts = () => {
                 </select>
 
 
-                <button onClick={() => handleShowAvailable()} className='btn btn-outline hover:border-indigo-500'>Show Available product</button>
+                <button onClick={() => handleShowAvailable()} className='btn btn-outline hover:border-indigo-500'>{!showAvailableOnly ? 'Show Available Products' : 'Show All Products'}</button>
             </div>
 
             {
                 view === 'Card' ? (
                     <CardView
+                        load={load}
                         products={products}
                         filteredProducts={filteredProducts}
                         filteredAvailableProducts={filteredAvailableProducts}
@@ -89,6 +106,7 @@ const AllProducts = () => {
                     />
                 ) : (
                     <TableView
+                        load
                         products={products}
                         filteredProducts={filteredProducts}
                         filteredAvailableProducts={filteredAvailableProducts}

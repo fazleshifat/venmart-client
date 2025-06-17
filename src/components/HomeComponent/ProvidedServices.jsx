@@ -35,7 +35,7 @@ const ProvidedServices = () => {
                     transition={{ duration: 0.6 }}
                     className="text-4xl md:text-5xl font-bold text-[#7fffd4] mb-12"
                 >
-                    Services We Provide 💼
+                    Our Service Record💼
                 </motion.h2>
 
                 <div className="grid gap-12 md:grid-cols-3">
