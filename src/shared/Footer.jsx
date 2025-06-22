@@ -9,11 +9,11 @@ const Footer = () => {
                 <div className="flex flex-col items-start md:w-1/3 space-y-6">
                     <div className="flex items-center">
                         <img
-                            src="/assets/logo.png"
+                            src="/assets/logo2.png"
                             alt="VenMart Logo"
-                            className="w-20 h-20 object-contain rounded-lg shadow-lg"
+                            className="w-20 h-20 object-contain rounded-lg shadow-lg bg-base-100 mx-2"
                         />
-                        <h1 className="text-4xl font-extrabold text-[#34d399] tracking-wide">
+                        <h1 className="text-4xl font-extrabold text-white tracking-wide">
                             VenMart
                         </h1>
                     </div>

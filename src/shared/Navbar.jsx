@@ -104,7 +104,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className={`navbar fixed max-w-11/12 bg-black/10 dark:bg-indigo-900/60 backdrop-blur-md shadow-sm px-3 md:px-6 z-50 rounded-full transition-all duration-300
+        <div className={`navbar fixed max-w-11/12 bg-black/10 dark:bg-indigo-700/60 backdrop-blur-md shadow-sm px-3 md:px-6 z-50 rounded-full transition-all duration-300
         left-1/2 -translate-x-1/2
         top-auto bottom-2 
         md:top-2 md:bottom-auto
@@ -122,13 +122,13 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link className='hidden md:flex items-center'>
-                    <div className="flex items-center">
+                    <div className="flex absolute items-center">
                         <img
-                            src="/assets/logo.png"
-                            className="w-12 md:w-16 h-auto"
+                            src="/assets/logo2.png"
+                            className="w-12 md:w-26 h-auto"
                             alt="logo"
                         />
-                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-500 dark:text-indigo-400 -ml-3">
+                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-500 dark:text-indigo-400 -ml-8">
                             ENMART
                         </p>
                     </div>

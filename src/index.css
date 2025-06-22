@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Bangers&family=Permanent+Marker&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 
@@ -21,7 +21,7 @@ body {
 }
 
 #logo {
-  font-family: "Permanent Marker";
+  font-family: "Bangers";
   font-weight: 400;
   font-style: normal;
 

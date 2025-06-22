@@ -80,8 +80,9 @@ const CategoryCards = () => {
                         <Fade
                             key={index}
                             direction="down"
-                            delay={index * 100} 
+                            delay={index * 100}
                             cascade={false}
+                            triggerOnce
                         >
                             <div
 

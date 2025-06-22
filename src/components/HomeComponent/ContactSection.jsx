@@ -1,6 +1,10 @@
 import React from "react";
 
 const ContactSection = () => {
+    const handleSubmit = e => {
+        e.preventDefault();
+    }
+
     return (
         <section className="  max-w-[1450px] mx-auto rounded-3xl my-5 py-20 px-6 md:px-16">
             <div className="max-w-7xl  mx-auto flex flex-col md:flex-row items-center gap-12">
@@ -32,7 +36,7 @@ const ContactSection = () => {
 
                 {/* Right Side - Form */}
                 <div className="md:w-1/2 bg-white rounded-2xl shadow-xl p-8 space-y-6">
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
                             <label className="block text-gray-700 font-medium mb-2">
                                 Full Name
@@ -41,6 +45,7 @@ const ContactSection = () => {
                                 type="text"
                                 placeholder="Your Name"
                                 className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#34d399] outline-none"
+                                required
                             />
                         </div>
 
@@ -52,6 +57,7 @@ const ContactSection = () => {
                                 type="email"
                                 placeholder="your@email.com"
                                 className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#34d399] outline-none"
+                                required
                             />
                         </div>
 
@@ -63,6 +69,7 @@ const ContactSection = () => {
                                 type="text"
                                 placeholder="Subject"
                                 className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#34d399] outline-none"
+                                required
                             />
                         </div>
 
@@ -73,7 +80,8 @@ const ContactSection = () => {
                             <textarea
                                 rows="5"
                                 placeholder="Write your message..."
-                                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#34d399] outline-none resize-none"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#34d399] outline-none 
+                                resize-none"
                             ></textarea>
                         </div>
 
