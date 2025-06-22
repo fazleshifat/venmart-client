@@ -61,7 +61,7 @@ const ProductDetails = () => {
                 {/* Left Section: Product Card */}
 
                 <div className="w-full lg:w-6/10">
-                    <h1 className="md:text-4xl font-extrabold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-5">
+                    <h1 className="text-2xl md:text-4xl font-extrabold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-5">
                         🛍️Product Details
                     </h1>
 

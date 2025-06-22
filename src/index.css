@@ -9,6 +9,14 @@ html {
   scroll-behavior: smooth;
 }
 
+
+#logo {
+  font-family: "Bangers";
+  font-weight: 400;
+  font-style: normal;
+
+}
+
 body {
   font-family: "Poiret One", sans-serif;
   font-weight: 400;
@@ -18,13 +26,6 @@ body {
 
 .font-secondary {
   font-family: "Amaranth";
-}
-
-#logo {
-  font-family: "Bangers";
-  font-weight: 400;
-  font-style: normal;
-
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

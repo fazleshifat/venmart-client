@@ -54,7 +54,7 @@ const ProductByCategory = () => {
                 className="max-w-[1350px] mx-auto px-4 py-16">
                 {/* Page Heading */}
                 <div className="text-center mb-12">
-                    <h1 className="md:text-5xl text-[#20b2aa] dark:text-[#7fffd4] mb-4">
+                    <h1 className="text-3xl md:text-5xl text-[#20b2aa] dark:text-[#7fffd4] mb-4">
                         🛒Products of <span className='text-gray-500'>{title}</span> Category
                     </h1>
                     {/* <p className="text-zinc-600 dark:text-zinc-300 text-base text-sm md:text-lg">

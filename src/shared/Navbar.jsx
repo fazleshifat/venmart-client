@@ -9,7 +9,7 @@ import ToggleSearchBar from '../components/ToggleSearchBar';
 
 const Navbar = () => {
 
-    const { user, userSignOut } = use(AuthContext);
+    const { user, userSignOut, loading } = use(AuthContext);
 
     const navigate = useNavigate();
     const [showNavbar, setShowNavbar] = useState(true);
@@ -124,12 +124,12 @@ const Navbar = () => {
                 <Link className='hidden md:flex items-center'>
                     <div className="flex absolute items-center">
                         <img
-                            src="/assets/logo2.png"
-                            className="w-12 md:w-26 h-auto"
+                            src="/assets/logo.png"
+                            className="w-10 md:w-10 h-auto"
                             alt="logo"
                         />
-                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-500 dark:text-indigo-400 -ml-8">
-                            ENMART
+                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-700 dark:text-indigo-400 -ml-1">
+                            VENMART
                         </p>
                     </div>
                 </Link>
@@ -155,51 +155,58 @@ const Navbar = () => {
                 </div>
 
                 {
-                    !user ?
-
-                        <div className='flex gap-1'>
-                            <Link to='/logIn' className="btn bg-gradient-to-r from-blue-300 to-purple-500 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
-                                Login
-                            </Link>
-
-                            <Link to='/register' className="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-red-600 transition rounded-lg">
-                                Register
-                            </Link>
-                        </div>
-
-                        :
+                    loading ? '' :
                         <>
-                            <div className="flex gap-1 md:gap-3">
-                                <div className="dropdown dropdown-hover dropdown-end">
-                                    <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img
-                                                alt="Tailwind CSS Navbar component"
-                                                src={user?.photoURL} />
+                            {
+                                !user ?
+
+                                    <>
+                                        <div className='flex gap-1'>
+                                            <Link to='/logIn' className="btn bg-gradient-to-r from-blue-300 to-purple-500 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
+                                                Login
+                                            </Link>
+
+                                            <Link to='/register' className="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-red-600 transition rounded-lg">
+                                                Register
+                                            </Link>
                                         </div>
-                                    </div>
-                                    <ul
-                                        tabIndex={0}
-                                        className="menu menu-sm dropdown-content bottom-10 md:top-10 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
-                                        <li className='text-md md:text-lg font-semibold'>{user?.displayName}</li>
-                                        <button onClick={handleSignOut} className='btn btn-warning text-white'>Logout</button>
-                                        {
-                                            !user &&
-                                            <div className='flex md:hidden'>
-                                                <Link className="btn bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
-                                                    Login
-                                                </Link>
+                                    </>
 
-                                                <Link className="btn bg-gradient-to-r from-yellow-400 to-red-500 text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-red-600 transition rounded-lg">
-                                                    Register
-                                                </Link>
+                                    :
+                                    <>
+                                        <div className="flex gap-1 md:gap-3">
+                                            <div className="dropdown dropdown-hover dropdown-end">
+                                                <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                                    <div className="w-10 rounded-full">
+                                                        <img
+                                                            alt="Tailwind CSS Navbar component"
+                                                            src={user?.photoURL} />
+                                                    </div>
+                                                </div>
+                                                <ul
+                                                    tabIndex={0}
+                                                    className="menu menu-sm dropdown-content bottom-10 md:top-10 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
+                                                    <li className='text-md md:text-lg font-semibold'>{user?.displayName}</li>
+                                                    <button onClick={handleSignOut} className='btn btn-warning text-white'>Logout</button>
+                                                    {
+                                                        !user &&
+                                                        <div className='flex md:hidden'>
+                                                            <Link className="btn bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
+                                                                Login
+                                                            </Link>
+
+                                                            <Link className="btn bg-gradient-to-r from-yellow-400 to-red-500 text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-red-600 transition rounded-lg">
+                                                                Register
+                                                            </Link>
+                                                        </div>
+                                                    }
+                                                </ul>
                                             </div>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
+                                        </div>
 
 
+                                    </>
+                            }
                         </>
                 }
             </div>

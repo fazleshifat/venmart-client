@@ -67,7 +67,7 @@ const CategoryCards = () => {
         <div className="py-16 px-6 md:px-16 mx-auto max-w-[1350px]">
 
 
-            <h2 className="md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
+            <h2 className="text-2xl md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
                 Explore Our Categories<span className="font-extrabold text-yellow-500">|</span>
             </h2>
 

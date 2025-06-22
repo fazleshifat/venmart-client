@@ -69,7 +69,7 @@ const AddProduct = () => {
                 }}
                 className="w-full max-w-4xl bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-2xl space-y-8"
             >
-                <h1 className="text-xl md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                <h1 className="text-2xl md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                     🛒Add Product
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-zinc-800 dark:text-zinc-100">

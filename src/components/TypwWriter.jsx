@@ -8,7 +8,7 @@ const TypeWriter = () => {
 
             {/* Style will be inherited from the parent element */}
             <Typewriter
-                words={['Innovation', 'Efficiency', 'Design', 'Development', 'Automation', 'Scalability', 'Security']}
+                words={['Innovation', 'Business', 'Resell', 'Startups', 'Shops', 'Home', 'Office', 'Apartment', 'Automation', 'Scalability', 'Security']}
                 loop={0}
                 cursor
                 cursorStyle='_'

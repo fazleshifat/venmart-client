@@ -39,7 +39,7 @@ const SliderBanner = () => {
                         {/* Text Content */}
                         <div className="space-y-6 max-w-3xl text-white text-left">
                             <h1 className="text-3xl md:text-5xl text-[#19817b] dark:text-[#7fffd4]">
-                                Discover Premium Industrial Products for
+                                Discover & Buy Premium <span className='font-bold text-red-500'>B2B</span> Products for
                                 {/* <br className='hidden md:flex lg:hidden'/> */}
                                 <span className='text-indigo-300 ml-3 font-semibold'>
                                     <TypeWriter></TypeWriter>

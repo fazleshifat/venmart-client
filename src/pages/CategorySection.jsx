@@ -64,6 +64,7 @@ const categories = [
 
 
 const CategorySection = () => {
+    window.scroll(0, 0);
 
     const Navigation = useNavigation()
 
@@ -82,7 +83,7 @@ const CategorySection = () => {
         <Fade cascade damping={0.5}>
 
             <div className="py-7 px-6 md:px-16 mx-auto max-w-[1350px]">
-                <h2 className="md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
+                <h2 className="text-2xl md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
                     Categories<span className="font-extrabold text-yellow-500">|</span>
                 </h2>
 
@@ -93,7 +94,7 @@ const CategorySection = () => {
                         duration: 0.8,
                         ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
                     }}
-                    className="grid gap-8 grid-cols-1 md:grid-cols-3">
+                    className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {categories.map((cat, index) => (
                         <div
 

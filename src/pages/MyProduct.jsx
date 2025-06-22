@@ -91,7 +91,7 @@ const MyProduct = () => {
                 }}
                 className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
-                    <h1 className="md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                    <h1 className="text-2xl md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                         📋My added Products
                     </h1>
                 </div>
@@ -103,20 +103,20 @@ const MyProduct = () => {
                         <Link className='btn btn-primary mt-2' to='/addProduct'>Add your product</Link>
                     </div>
                 ) : (
-                    <div className="grid gap-6 grid-cols-1 lg:grid-cols-3 max-h-fit">
+                    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-fit">
                         {myProducts.map((product) => (
                             <div
                                 key={product._id}
                                 className="bg-white rounded-2xl shadow-md hover:shadow-lg transition border-2 border-gray-300"
                             >
-                                <div className="p-4 rounded-2xl bg-white overflow-x-hidden">
-                                    <div className="flex flex-col lg:flex-row gap-2 justify-between">
+                                <div className="p-4 rounded-2xl mx-auto bg-white overflow-x-hidden">
+                                    <div className="flex flex-col lg:flex-row gap-2 justify-center lg:justify-between">
                                         <img
                                             src={product.image}
                                             alt={product.name}
-                                            className="h-fit my-auto rounded-xl w-6/12"
+                                            className="h-60 w-auto lg:w-6/12 object-cover my-auto rounded-xl" 
                                         />
-                                        <div className="flex-1 flex flex-col justify-between">
+                                        <div className="flex-1 flex flex-col justify-center md:mx-auto">
                                             <div>
                                                 <h2 className="text-2xl font-semibold text-gray-800">{product.name}</h2>
                                                 <p className="text-sm text-gray-500 mt-1">Brand: <span className="font-medium">{product.brand}</span></p>

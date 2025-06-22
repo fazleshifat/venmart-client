@@ -6,9 +6,13 @@ import Spinner from '../components/Spinner';
 import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
+import loginAnimation from '../../public/assets/animations/login.json'
+import Lottie from 'lottie-react';
+import { useState } from 'react';
 
 const LogIn = () => {
     window.scroll(0, 0)
+    const [load, setLoad] = useState(false);
 
     const Navigation = useNavigation()
 
@@ -29,6 +33,8 @@ const LogIn = () => {
 
     const handleSignIn = (e) => {
         e.preventDefault();
+        setLoad(true);
+
         const form = e.target;
         const formData = new FormData(form);
 
@@ -47,13 +53,13 @@ const LogIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-
-
-
             })
             .catch((error) => {
                 // setErrorMessage(error.code);
-                setLoading(false);
+                setLoading(false); // not needed here if using finally
+            })
+            .finally(() => {
+                setLoad(false);
             });
     }
 
@@ -75,15 +81,15 @@ const LogIn = () => {
 
     return (
 
-        <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="min-h-screen flex py-8 flex-col md:flex-row items-center justify-center px-4">
             <motion.div
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                initial={{ opacity: 0, y: 0, scale: 0 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{
                     duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                    ease: [0.1, 1, 0.3, 1] // smooth cubic-bezier
                 }}
-                className="w-full max-w-xl rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-5 md:p-12">
+                className="w-full flex-1 max-w-xl rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-5 md:p-12">
                 {/* Title */}
                 <h1 className="text-4xl font-bold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-3">Login</h1>
 
@@ -147,7 +153,9 @@ const LogIn = () => {
                     </div>
 
                     <button className="btn btn-primary w-full mt-2 rounded-xl shadow-md hover:shadow-lg transition">
-                        Login
+                        {
+                            load ? 'Processing...' : 'Login'
+                        }
                     </button>
                 </form>
 
@@ -159,6 +167,10 @@ const LogIn = () => {
                     </Link>
                 </p>
             </motion.div>
+
+            <div className='flex-1 w-2/3 md:max-w-2xl'>
+                <Lottie animationData={loginAnimation} loop={true}/>
+            </div>
         </div>
 
 

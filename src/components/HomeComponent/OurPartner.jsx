@@ -35,12 +35,14 @@ const partners = [
 ];
 
 export default function OurPartner() {
-    return (
-        <section className="max-w-[1300px] bg-base-100 rounded-2xl mx-auto my-10 px-4 py-20">
+    return (<>
+
+        {/* <div className="sticky mt-20 -top-50 w-[1300px] bg-base-100 rounded-t-[90%] z-10 mx-auto h-96"></div> */}
+        <section className="relative max-w-[1300px] border-t-4 border-indigo-200 bg-base-100 rounded-3xl md:rounded-t-[30%] z-10 mx-auto mt-10 px-4 py-20">
 
             {/* <div className="absolute inset-0 bg-black/75 bg-opacity-60 z-0" /> */}
             <div className="relative text-center space-y-10">
-                <h2 className="md:text-4xl text-center mb-12 text-gray-500 dark:text-white">
+                <h2 className="text-2xl md:text-4xl text-center mb-12 text-gray-500 dark:text-white">
                     Our Trusted Partner<span className="font-extrabold text-yellow-500">|</span>
                 </h2>
 
@@ -78,5 +80,6 @@ export default function OurPartner() {
                 </Marquee>
             </div>
         </section>
+    </>
     );
 }

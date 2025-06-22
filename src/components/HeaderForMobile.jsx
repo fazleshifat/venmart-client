@@ -8,8 +8,8 @@ const HeaderForMobile = () => {
         <>
             <div to='/' className='flex md:hidden justify-between items-center py-2 px-2'>
                 <Link className='flex items-center'>
-                    <img src="/assets/logo2.png" className='w-10' alt="logo" />
-                    <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-600 dark:text-indigo-400 -ml-3">
+                    <img src="/assets/logo.png" className='w-10' alt="logo" />
+                    <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-600 dark:text-indigo-400 -ml-1">
                         enmart
                     </p>
                 </Link>

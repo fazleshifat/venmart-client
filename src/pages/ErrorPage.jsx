@@ -27,7 +27,7 @@ const ErrorPage = () => {
             />
 
             {/* Heading */}
-            <h1 className="text-6xl font-extrabold text-primary mb-4">Oops!</h1>
+            <h1 className="text-2xl md:text-6xl font-extrabold text-primary mb-4">Oops!</h1>
 
             {/* Subheading */}
             <h2 className="text-3xl font-semibold text-gray-300 mb-4">404 - Page Not Found</h2>

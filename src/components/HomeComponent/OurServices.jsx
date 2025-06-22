@@ -109,18 +109,18 @@ const services = [
 const OurServices = () => {
     return (
         <section className="max-w-[1290px] mx-auto px-4 py-12 space-y-16">
-            <h2 className="md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
+            <h2 className="text-2xl md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
                 Services We Offer<span className="font-extrabold text-yellow-500">|</span>
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-7 overflow-x-hidden">
+            <div className="grid lg:grid-cols-2 gap-7 overflow-x-hidden">
                 {services.map((service, index) => {
                     const isEven = index % 2 === 0;
 
                     return (
-                        <Fade key={index} direction={isEven ? "left" : "right"} className="overflow-x-hidden">
+                        <Fade key={index} direction={isEven ? "left" : "right"} className="overflow-x-hidden rounded-3xl">
                             <div
-                                className={`overflow-x-hidden flex flex-col md:flex-row h-full items-center justify-center gap-4 md:gap-6 bg-gradient-to-br from-indigo-50 via-white to-purple-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 rounded-3xl border border-indigo-200 dark:border-indigo-500 shadow-lg p-4 md:p-10 ${!isEven ? "md:flex-row-reverse" : ""}`}
+                                className={`overflow-x-hidden flex flex-col md:flex-row h-full items-center justify-center gap-4 md:gap-6 bg-gradient-to-br from-purple-200 via-white to-indigo-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 rounded-3xl border border-indigo-200 dark:border-indigo-500 shadow-lg p-4 md:p-10 ${!isEven ? "md:flex-row-reverse" : ""}`}
                             >
                                 {/* Image */}
                                 <div className="w-full md:w-1/2 h-52 md:h-full rounded-2xl">

@@ -22,7 +22,7 @@ const stats = [
 
 const ServiceRecord = () => {
     return (
-        <section className="relative max-w-[1290px] mx-auto bg-fixed py-24 px-6 md:px-16 text-white bg-cover bg-center bg-no-repeat overflow-hidden"
+        <section className="relative max-w-[1300px] mx-auto bg-fixed py-24 px-6 md:px-16 text-white bg-cover bg-center bg-no-repeat overflow-hidden"
             style={{ backgroundImage: 'url("/assets/providedServices.jpg")' }}
         >
             {/* Overlay for dark effect */}
@@ -34,7 +34,7 @@ const ServiceRecord = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
                     transition={{ duration: 0.6 }}
-                    className="text-4xl md:text-5xl font-light text-[#7fffd4] mb-12"
+                    className="text-3xl md:text-5xl font-light text-[#7fffd4] mb-12"
                 >
                     Our Service Record💼
                 </motion.h2>

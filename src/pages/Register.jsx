@@ -7,9 +7,13 @@ import { Link, useNavigate, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
+import registerAnimation from '../../public/assets/animations/registration.json'
+import Lottie from 'lottie-react';
+import { useState } from 'react';
 
 const Register = () => {
-    window.scroll(0, 0)
+    window.scroll(0, 0);
+    const [load, setLoad] = useState(false);
 
     const { createUser, setUser, errorMessage, setErrorMessage } = use(AuthContext);
 
@@ -22,6 +26,8 @@ const Register = () => {
 
     const handleRegistration = (e) => {
         e.preventDefault();
+        setLoad(true);
+
         const form = e.target;
         const formData = new FormData(form);
 
@@ -99,6 +105,9 @@ const Register = () => {
                     .catch()
             })
             .catch()
+            .finally(() => {
+                setLoad(false);
+            })
     }
 
 
@@ -111,7 +120,7 @@ const Register = () => {
     return (
 
 
-        <div className="min-h-screen flex items-center justify-center px-4">
+        <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center px-4 gap-10">
             <motion.div
                 initial={{ opacity: 0, y: 50, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -119,7 +128,7 @@ const Register = () => {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
                 }}
-                className="w-full max-w-xl rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-10 md:p-12">
+                className="w-full max-w-xl flex-1 rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-8 md:p-8">
 
                 {/* Title */}
                 <h1 className="text-4xl font-bold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-8">
@@ -184,7 +193,9 @@ const Register = () => {
                     }
 
                     <button className="btn btn-primary w-full mt-2 rounded-xl shadow-md hover:shadow-lg transition">
-                        Register
+                        {
+                            load? 'Processing...' : 'Register'
+                        }
                     </button>
                 </form>
 
@@ -196,6 +207,10 @@ const Register = () => {
                     </Link>
                 </p>
             </motion.div>
+
+            <div className='flex-1 w-2/3 md:max-w-xl'>
+                <Lottie animationData={registerAnimation}></Lottie>
+            </div>
         </div >
 
 

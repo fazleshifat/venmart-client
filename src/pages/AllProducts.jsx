@@ -73,7 +73,7 @@ const AllProducts = () => {
                 ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
             }}
             className="min-h-screen overflow-x-hidden dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 px-4 py-7">
-            <h1 className="text-md md:text-4xl text-[#20b2aa] dark:text-[#7fffd4] text-center">
+            <h1 className="text-2xl md:text-4xl text-[#20b2aa] dark:text-[#7fffd4] text-center">
                 All Products🛍️
             </h1>
 

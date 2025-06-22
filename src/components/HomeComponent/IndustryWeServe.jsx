@@ -61,7 +61,7 @@ const IndustryWeServe = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl font-bold text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]"
+                className="text-2xl md:text-4xl font-bold text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]"
             >
                 Industries We Serve ⚙️
             </motion.h2>

@@ -89,7 +89,7 @@ const UpdateProduct = () => {
                     ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
                 }}
                 className="w-full max-w-5xl p-10 bg-white dark:bg-[#1e1e2f] shadow-2xl rounded-2xl transition-all duration-300 dark:border border-indigo-300">
-                <h2 className="text-4xl font-bold text-center mb-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
                     🛠️ Update Product Information
                 </h2>
 
