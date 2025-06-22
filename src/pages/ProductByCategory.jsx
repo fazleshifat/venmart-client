@@ -18,7 +18,7 @@ const ProductByCategory = () => {
     useEffect(() => {
         if (!user?.email || !category) return;
 
-        axios.get(`https://venmart-server.vercel.app/products/${category}?email=${user.email}`, {
+        axios.get(`https://venmart-server.vercel.app/products/${category}/${user.email}`, {
             headers: {
                 Authorization: `Bearer ${user.accessToken}`
             }
@@ -26,9 +26,7 @@ const ProductByCategory = () => {
             .then(res => {
                 setProducts(res.data);
             })
-            .catch(err => {
-                console.error("Failed to fetch products:", err);
-            })
+            .catch()
             .finally(() => setLoad(false));
     }, [category, user]);
 

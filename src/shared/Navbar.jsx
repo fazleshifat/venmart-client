@@ -128,8 +128,8 @@ const Navbar = () => {
                             className="w-12 md:w-16 h-auto"
                             alt="logo"
                         />
-                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-600 dark:text-indigo-400 -ml-3">
-                            enmart
+                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-500 dark:text-indigo-400 -ml-3">
+                            ENMART
                         </p>
                     </div>
                 </Link>

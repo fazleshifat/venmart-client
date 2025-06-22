@@ -5,9 +5,10 @@ import { Link, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
 import CategoryCards from '../components/HomeComponent/CategoryCards';
 import IndustryWeServe from '../components/HomeComponent/IndustryWeServe';
-import OurServices from '../components/HomeComponent/OurServices';
-import ProvidedServices from '../components/HomeComponent/ProvidedServices';
 import ContactSection from '../components/HomeComponent/ContactSection';
+import OurPartners from '../components/HomeComponent/OurPartner';
+import OurServices from '../components/HomeComponent/OurServices';
+import ServiceRecord from '../components/HomeComponent/ServiceRecord';
 
 const Home = () => {
     window.scroll(0, 0)
@@ -29,8 +30,9 @@ const Home = () => {
                 <SliderBanner></SliderBanner>
                 <CategoryCards></CategoryCards>
                 <OurServices></OurServices>
-                <IndustryWeServe></IndustryWeServe>
-                <ProvidedServices></ProvidedServices>
+                {/* <IndustryWeServe></IndustryWeServe> */}
+                <OurPartners></OurPartners>
+                <ServiceRecord></ServiceRecord>
                 <ContactSection></ContactSection>
             </section>
         </>

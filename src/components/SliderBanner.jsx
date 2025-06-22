@@ -17,7 +17,7 @@ const SliderBanner = () => {
                 className="relative max-w-[1590px] mx-auto px-5 flex flex-col lg:flex-row-reverse justify-between">
 
 
-                <div className='lg:max-w-6/12 md:mx-auto'>
+                <div className='lg:max-w-6/12 md:mx-auto py-5'>
                     <Fade cascade direction={'left'}>
 
                         <img src="/assets/abstract.png" className='absolute lg:right-60 opacity-30 w-66 lg:w-fit' alt="abstract" />

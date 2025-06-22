@@ -31,7 +31,7 @@ const AllProducts = () => {
                 setProducts(res.data);
             }
             )
-            .catch(err => console.log(err))
+            .catch()
     }, [user])
 
     const [view, setView] = useState(() => {

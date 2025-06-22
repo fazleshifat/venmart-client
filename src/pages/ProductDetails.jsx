@@ -13,9 +13,9 @@ import axios from 'axios';
 const ProductDetails = () => {
     const { id } = useParams();
     const { user } = use(AuthContext);
-    const [product, setProduct] = useState(null);   
+    const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+
     const navigation = useNavigation();
     useEffect(() => {
         document.getElementById('title').innerText = 'Product Details';
@@ -35,7 +35,7 @@ const ProductDetails = () => {
                 setLoading(false);
             })
             .catch((err) => {
-                console.error(err);
+
                 setLoading(false);
             });
     }, [id, user?.accessToken]);

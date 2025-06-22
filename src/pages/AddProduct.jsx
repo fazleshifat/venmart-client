@@ -28,7 +28,9 @@ const AddProduct = () => {
         // console.log(productInfo)
 
         // Send a POST request
-        axios.post("https://venmart-server.vercel.app/addProducts", productInfo)
+        axios.post(`https://venmart-server.vercel.app/addProducts?email=${user?.email}`, productInfo, {
+            headers: { Authorization: `Bearer ${user?.accessToken}` }
+        })
             .then(res => {
                 if (res.data.insertedId) {
                     // sweet alert after create user
@@ -41,7 +43,7 @@ const AddProduct = () => {
                 }
                 Navigate('/myProduct');
             })
-            .catch(err => console.error('Axios error:', err));
+            .catch();
     }
 
 
@@ -153,9 +155,11 @@ const AddProduct = () => {
                             <option value="">Select Category</option>
                             <option>electrical</option>
                             <option>gadget</option>
-                            <option>appliances</option>
                             <option>fashion</option>
+                            <option>appliances</option>
                             <option>machinery</option>
+                            <option>tools</option>
+                            <option>accessories</option>
                             <option>others</option>
                         </select>
                     </div>

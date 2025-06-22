@@ -33,7 +33,7 @@ const CartSection = () => {
                 setLoad(false);
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
                 setLoad(false);
             });
     }, [user]);
@@ -68,7 +68,7 @@ const CartSection = () => {
         return <Spinner />;
     }
 
- 
+
 
 
     const handleCancelOrder = (item) => {
@@ -82,20 +82,24 @@ const CartSection = () => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://venmart-server.vercel.app/cart/delete/${item?._id}`)
+                axios.delete(`https://venmart-server.vercel.app/cart/delete/${item?._id}/${user?.email}`, {
+                    headers: { Authorization: `Bearer ${user?.accessToken}` }
+                })
                     .then(response => {
-                        console.log(response);
+                      
                         const filteredCart = myCarts.filter(cart => cart._id !== item?._id);
                         setMyCarts(filteredCart);
 
                         // Send PATCH with quantity
-                        axios.patch(`https://venmart-server.vercel.app/allProducts/${item?.id}`, { quantity: item.quantity })
-                            .then(res => console.log(res))
-                            .catch(err => console.log(err))
+                        axios.patch(`https://venmart-server.vercel.app/allProducts/${item?.id}/${user?.email}`, { quantity: item.quantity },
+                            {
+                                headers: { Authorization: `Bearer ${user?.accessToken}` }
+                            }
+                        )
+                            .then()
+                            .catch()
                     })
-                    .catch(error => {
-                        console.error('Delete error:', error);
-                    });
+                    .catch();
 
                 Swal.fire({
                     title: "Order Cancelled",

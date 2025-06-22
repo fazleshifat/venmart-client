@@ -90,20 +90,15 @@ const Register = () => {
                                     });
                                 }
                             })
-                            .catch(err => console.error('Axios error:', err));
+                            .catch();
 
                         Navigate('/');
 
 
                     })
-                    .catch(error => {
-                        console.log(error.code)
-                    })
+                    .catch()
             })
-            .catch(error => {
-                console.log(error.code);
-
-            })
+            .catch()
     }
 
 

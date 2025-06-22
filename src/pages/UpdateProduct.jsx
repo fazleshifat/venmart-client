@@ -26,7 +26,7 @@ const UpdateProduct = () => {
                 setProduct(res.data);
             }
             )
-            .catch(err => console.log(err))
+            .catch()
     }, [id])
 
 
@@ -42,8 +42,13 @@ const UpdateProduct = () => {
         const form = e.target;
         const formData = new FormData(form);
         const updatedProduct = Object.fromEntries(formData.entries());
+        updatedProduct.mainQty = parseInt(updatedProduct?.mainQty)
+        updatedProduct.minQty = parseInt(updatedProduct?.minQty)
 
-        axios.put(`https://venmart-server.vercel.app/allProducts/${_id}`, updatedProduct)
+        axios.put(`https://venmart-server.vercel.app/allProducts/${_id}/${user?.email}`, updatedProduct,
+            {
+                headers: { Authorization: `Bearer ${user?.accessToken}` }
+            })
             .then(response => {
                 if (response.data.modifiedCount) {
                     Swal.fire({
@@ -56,7 +61,7 @@ const UpdateProduct = () => {
                 }
             }
             )
-            .catch(error => console.error(error));
+            .catch();
     }
 
 
@@ -135,9 +140,12 @@ const UpdateProduct = () => {
                             <option value="">Select Category</option>
                             <option>electrical</option>
                             <option>gadget</option>
-                            <option>appliances</option>
                             <option>fashion</option>
+                            <option>appliances</option>
                             <option>machinery</option>
+                            <option>tools</option>
+                            <option>accessories</option>
+                            <option>others</option>
                         </select>
                     </div>
 

@@ -26,7 +26,7 @@ const MyProduct = () => {
                 setProducts(res.data);
             }
             )
-            .catch(err => console.log(err))
+            .catch()
     }, [user])
 
 
@@ -40,6 +40,8 @@ const MyProduct = () => {
     if (load) {
         return <Spinner />;
     }
+    document.getElementById("title").innerText = "My Products",
+        window.scroll(0, 0)
 
 
     const handleRemoveProduct = (id) => {
@@ -53,7 +55,10 @@ const MyProduct = () => {
             confirmButtonText: "Yes!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://venmart-server.vercel.app/allProducts/delete/${id}`)
+                axios.delete(`https://venmart-server.vercel.app/myProduct/delete/${id}/${user?.email}`, {
+                    headers: { Authorization: `Bearer ${user?.accessToken}` }
+
+                })
                     .then(response => {
                         const filteredProducts = myProducts.filter(product => product._id !== id);
                         setMyProducts(filteredProducts);

@@ -1,31 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
+import CountUp from 'react-countup';
 
 const stats = [
     {
-        number: "120+",
-        title: "Industrial Automation",
-        description: "Smart machinery integration and streamlined workflow systems.",
+        number: 3200,
+        title: "Products Sold",
+        description: "Diverse catalog of trending items delivered across the country."
     },
     {
-        number: "400+",
-        title: "Product Sourcing",
-        description: "Global sourcing for quality tools and industrial equipment.",
+        number: 450,
+        title: "Verified Sellers",
+        description: "Trusted vendors providing quality goods and reliable service."
     },
     {
-        number: "620+",
-        title: "Maintenance & Support",
-        description: "End-to-end support services to keep operations running smoothly.",
-    },
+        number: 1500,
+        title: "Varified Customer",
+        description: "Streamlined order processing with fast and secure delivery."
+    }
 ];
 
-const ProvidedServices = () => {
+const ServiceRecord = () => {
     return (
         <section className="relative max-w-[1290px] mx-auto bg-fixed py-24 px-6 md:px-16 text-white bg-cover bg-center bg-no-repeat overflow-hidden"
             style={{ backgroundImage: 'url("/assets/providedServices.jpg")' }}
         >
             {/* Overlay for dark effect */}
-            <div className="absolute inset-0 bg-black/80 bg-opacity-60 z-0" />
+            <div className="absolute inset-0 bg-black/85 bg-opacity-60 z-0" />
 
             <div className="relative z-10 max-w-[1200px] mx-auto text-center">
                 <motion.h2
@@ -33,7 +34,7 @@ const ProvidedServices = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
                     transition={{ duration: 0.6 }}
-                    className="text-4xl md:text-5xl font-bold text-[#7fffd4] mb-12"
+                    className="text-4xl md:text-5xl font-light text-[#7fffd4] mb-12"
                 >
                     Our Service Record💼
                 </motion.h2>
@@ -49,10 +50,17 @@ const ProvidedServices = () => {
                             className="relative p-6 flex flex-col items-center text-center"
                         >
                             {/* 3D cube behind the number */}
-                            <div className="relative w-24 h-24 mb-6 border-2 rounded-2xl">
-                                <div className="absolute inset-0 bg-indigo-400 transform border-2 rotate-45 rounded-lg shadow-lg" />
-                                <div className="relative z-10 text-3xl font-extrabold text-white flex items-center justify-center h-full">
-                                    {item.number}
+                            <div className="relative w-34 h-34 mb-6 border-2 border-gray-400">
+                                <div className="absolute inset-0 bg-black/60 transform border-2 border-gray-400 rotate-45 shadow-lg" />
+                                <div className="relative z-10 text-4xl font-extrabold text-white flex items-center justify-center h-full">
+                                    <CountUp
+                                        start={0}
+                                        end={item.number}
+                                        duration={4}
+                                        suffix="+"
+                                        enableScrollSpy
+                                        scrollSpyDelay={100}
+                                    />
                                 </div>
                             </div>
 
@@ -70,4 +78,4 @@ const ProvidedServices = () => {
     );
 };
 
-export default ProvidedServices;
+export default ServiceRecord;

@@ -77,15 +77,22 @@ const CheckOutModal = ({ user, product }) => {
             setErrorMessage('')
 
             // Send a POST request
-            axios.post("https://venmart-server.vercel.app/products/cart", purchaseInfo)
+            axios.post(`https://venmart-server.vercel.app/products/cart?email=${user?.email}`, purchaseInfo,
+                {
+                    headers: { Authorization: `Bearer ${user?.accessToken}` }
+                }
+            )
                 .then(res => {
                     if (res.data.insertedId) {
 
-                        axios.patch(`https://venmart-server.vercel.app/cart/${purchaseInfo.id}`, { quantity })
-                            .then(res => console.log(res))
-                            .catch(err => console.log(err))
+                        axios.patch(`https://venmart-server.vercel.app/cart/${purchaseInfo.id}/${user?.email}`, { quantity },
+                            {
+                                headers: { Authorization: `Bearer ${user?.accessToken}` }
+                            }
+                        )
+                            .then()
+                            .catch()
 
-                        console.log(res.data)
                         // sweet alert after create user
                         document.getElementById('my_modal_4').close();
                         setQuantity(1);
@@ -99,7 +106,7 @@ const CheckOutModal = ({ user, product }) => {
                         Navigate('/cart');
                     }
                 })
-                .catch(err => console.error('Axios error:', err));
+                .catch();
         }
 
     };

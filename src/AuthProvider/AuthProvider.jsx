@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
 
             // to always see the ser info at consol
-            console.log(user);
+           
         });
 
 

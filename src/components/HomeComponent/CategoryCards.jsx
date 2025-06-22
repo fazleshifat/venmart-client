@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigation } from "react-router";
 import Spinner from "../Spinner";
 import { motion } from "framer-motion";
+import { Fade } from "react-awesome-reveal";
 
 const initialCategories = [
     {
@@ -66,60 +67,63 @@ const CategoryCards = () => {
         <div className="py-16 px-6 md:px-16 mx-auto max-w-[1350px]">
 
 
-            <h2 className="md:text-4xl font-bold text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
-                Explore Our Categories ✨
+            <h2 className="md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
+                Explore Our Categories<span className="font-extrabold text-yellow-500">|</span>
             </h2>
 
 
 
 
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5, y: -100 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.1 }}
-                transition={{
-                    duration: 0.7,
-                    type: 'spring',
-                    stiffness: 120,
-                    damping: 10
-                }}
+            <div className="grid overflow-hidden gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                {categories.map((cat, index) => {
+                    return (
+                        <Fade
+                            key={index}
+                            direction="down"
+                            delay={index * 100} 
+                            cascade={false}
+                        >
+                            <div
 
+                                key={index}
+                                className="group bg-white h-full flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl  p-5 text-center border border-indigo-300 dark:bg-zinc-800"
+                            >
+                                <div className="relative overflow-x-hidden">
+                                    <img
+                                        src={cat.image}
+                                        alt={cat.title}
+                                        className="w-full h-48 object-cover rounded-xl mb-4 transition duration-300 group-hover:scale-105"
+                                    />
+                                    <span className="absolute top-2 right-2 text-xs bg-indigo-600 text-white px-2 py-1 rounded-full shadow">
+                                        🔥 Popular
+                                    </span>
+                                </div>
 
-                className="grid overflow-hidden gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {categories.map((cat, index) => (
-                    <Link
-                        to={cat.path}
-                        key={index}
-                        className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-2 duration-300 p-5 text-center border border-indigo-300 dark:bg-zinc-800"
-                    >
-                        <div className="relative overflow-x-hidden">
-                            <img
-                                src={cat.image}
-                                alt={cat.title}
-                                className="w-full h-48 object-cover rounded-xl mb-4 transition duration-300 group-hover:scale-105"
-                            />
-                            <span className="absolute top-2 right-2 text-xs bg-indigo-600 text-white px-2 py-1 rounded-full shadow">
-                                🔥 Popular
-                            </span>
-                        </div>
+                                <h3 className="md:text-2xl font-bold text-[#20b2aa] dark:text-[#7fffd4]">
+                                    {cat.title}
+                                </h3>
 
-                        <h3 className="md:text-2xl font-bold text-[#20b2aa] dark:text-[#7fffd4]">
-                            {cat.title}
-                        </h3>
+                                <p className="text-sm text-gray-600 dark:text-zinc-300 mt-2">
+                                    {cat.description}
+                                </p>
 
-                        <p className="text-sm text-gray-600 dark:text-zinc-300 mt-2">
-                            {cat.description}
-                        </p>
+                                <div className="mt-4 text-sm text-indigo-600 dark:text-indigo-300 font-medium flex justify-center items-center gap-2">
+                                    <span>📦 120+ Items</span>
+                                    <span>⭐ 4.8 Rating</span>
+                                </div>
+                                <div className="mt-4 text-sm text-indigo-600 dark:text-indigo-300 font-medium flex justify-center items-center gap-2">
+                                    <Link to={cat.path}
+                                        className="btn bg-sky-400 rounded-xl w-full text-white transition duration-500 hover:scale-105">
+                                        View Items
+                                    </Link>
+                                </div>
 
-                        <div className="mt-4 text-sm text-indigo-600 dark:text-indigo-300 font-medium flex justify-center items-center gap-2">
-                            <span>📦 120+ Items</span>
-                            <span>⭐ 4.8 Rating</span>
-                        </div>
+                            </div>
+                        </Fade>
+                    )
+                })}
 
-                    </Link>
-                ))}
-
-            </motion.div>
+            </div>
 
 
         </div >

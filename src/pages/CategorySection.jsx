@@ -43,6 +43,18 @@ const categories = [
         path: "/products/fashion",
     },
     {
+        title: "Equipment",
+        description: "High-quality safety gear including goggles, masks, and boots.",
+        image: "/assets/safety.avif",
+        path: "/products/equipments",
+    },
+    {
+        title: "Materials",
+        description: "Reliable construction supplies for both small and large projects.",
+        image: "/assets/construction.avif",
+        path: "/products/materials",
+    }
+    , {
         title: "Others",
         description: "Essential gear and tools for building and repair sites.",
         image: "/assets/others.jpeg",
@@ -83,12 +95,12 @@ const CategorySection = () => {
                     }}
                     className="grid gap-8 grid-cols-1 md:grid-cols-3">
                     {categories.map((cat, index) => (
-                        <Link
-                            to={cat.path}
+                        <div
+
                             key={index}
-                            className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-2 duration-300 p-5 text-center border border-transparent hover:border-indigo-300 dark:bg-zinc-800"
+                            className="group bg-white h-full flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl  p-5 text-center border border-indigo-300 dark:bg-zinc-800"
                         >
-                            <div className="relative">
+                            <div className="relative overflow-x-hidden">
                                 <img
                                     src={cat.image}
                                     alt={cat.title}
@@ -103,7 +115,7 @@ const CategorySection = () => {
                                 {cat.title}
                             </h3>
 
-                            <p className="text-xs md:text-sm text-gray-600 dark:text-zinc-300 mt-2">
+                            <p className="text-sm text-gray-600 dark:text-zinc-300 mt-2">
                                 {cat.description}
                             </p>
 
@@ -111,7 +123,14 @@ const CategorySection = () => {
                                 <span>📦 120+ Items</span>
                                 <span>⭐ 4.8 Rating</span>
                             </div>
-                        </Link>
+                            <div className="mt-4 text-sm text-indigo-600 dark:text-indigo-300 font-medium flex justify-center items-center gap-2">
+                                <Link to={cat.path}
+                                    className="btn bg-sky-400 rounded-xl w-full text-white transition duration-500 hover:scale-105">
+                                    View Items
+                                </Link>
+                            </div>
+
+                        </div>
                     ))}
                 </motion.div>
             </div>

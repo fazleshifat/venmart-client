@@ -1,96 +1,175 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router";
 
 const services = [
     {
-        title: "Custom Manufacturing",
+        title: "Product Catalog Management",
         description:
-            "Tailored solutions for large-scale and small-batch production runs across diverse industries.",
-        link: "/services/manufacturing",
-        image: "/assets/custom-manufacturing.avif",
-        span: "col-span-3",
-        span2: "col-span-2"
+            "Bulk upload, smart categories, and real-time stock updates to manage your storefront effortlessly.",
+        link: "/services/catalog-management",
+        image: "https://www.shipbob.com/wp-content/uploads/2021/06/catalog-management.jpg?w=1024",
+        icon: "🛒",
+        tag: "core",
+        cta: "Manage Products",
+        features: [
+            "Bulk CSV upload",
+            "Real-time stock sync",
+            "Smart categorization",
+            "Variant & attribute support",
+            "Scheduled product launch"
+        ]
     },
     {
-        title: "Equipment Supply",
+        title: "Secure Payment Gateways",
         description:
-            "From safety tools to heavy-duty machinery, we source and deliver with efficiency.",
-        link: "/services/equipment",
-        image: "/assets/equipmentSupply.jpg",
-        span: "col-span-2",
-        span2: "col-span-2"
+            "Integrate Stripe, SSLCommerz, bKash, and more — with multi-currency, fraud checks, and smooth checkout.",
+        link: "/services/payment-integration",
+        image: "https://www.gettrx.com/wp-content/uploads/2023/01/7-things-to-consider-before-choosing-a-payment-gateway.png",
+        icon: "💰",
+        tag: "popular",
+        cta: "Enable Payments",
+        features: [
+            "Stripe, bKash, PayPal, SSLCommerz",
+            "Multi-currency support",
+            "Transaction logging",
+            "Instant refunds",
+            "Fraud scoring integration"
+        ]
     },
     {
-        title: "Logistics Support",
+        title: "Smart Inventory & Order Flow",
         description:
-            "Reliable packaging, transport, and warehouse integration for hassle-free operations.",
-        link: "/services/logistics",
-        image: "/assets/AfterSalesSupport.webp",
-        span: "col-span-2",
-        span2: "col-span-2"
+            "Track orders live, automate inventory sync, receive alerts on low stock and automate fulfillment.",
+        link: "/services/order-inventory",
+        image: "https://www.netsuite.com/portal/assets/img/business-articles/inventory-management/infographic-vendor-managed-inventory.jpg?v2",
+        icon: "📊",
+        tag: "core",
+        cta: "Optimize Orders",
+        features: [
+            "QR-coded order tracking",
+            "Auto low-stock alerts",
+            "Warehouse integrations",
+            "Backorder control",
+            "Multi-warehouse management"
+        ]
     },
     {
-        title: "Technical Consultancy",
+        title: "Live Support & Helpdesk",
         description:
-            "Our expert engineers provide tailored technical consultation for industrial excellence.",
-        link: "/services/consultancy",
-        image: "/assets/TechnicalConsultancy.avif",
-        span: "col-span-3",
-        span2: "col-span-2"
+            "Integrate WhatsApp, Messenger, live chat and ticket systems to enhance customer service.",
+        link: "/services/customer-support",
+        image: "https://www.liveagent.com/wp/urlslab-download/4d8718b892f2473f5029471045dcbd5e/front_call_center.png",
+        icon: "📞",
+        tag: "premium",
+        cta: "Add Support Channels",
+        features: [
+            "Live chat widget",
+            "Ticketing system",
+            "Email sync",
+            "Chatbot integration",
+            "Support SLA tracking"
+        ]
+    },
+    {
+        title: "Marketing Automation & SEO",
+        description:
+            "Boost visibility with built-in SEO tools, product promotions, abandoned cart emails, and remarketing.",
+        link: "/services/marketing-seo",
+        image: "https://www.seosamba.com/media/Turnkey-Marketing-Automation-and-CRM-Software/original/automate-on-site-seo.png",
+        icon: "📢",
+        tag: "new",
+        cta: "Boost Marketing",
+        features: [
+            "Meta + OpenGraph editing",
+            "Discount engine",
+            "Facebook Pixel & GA4",
+            "Cart abandonment emails",
+            "Coupon code system"
+        ]
+    },
+    {
+        title: "Sales Analytics & Insights",
+        description:
+            "Make informed decisions with real-time dashboards, customer behavior tracking, and sales performance reports.",
+        link: "/services/analytics-reporting",
+        image: "https://www.hubspot.com/hubfs/sales-analytics.webp",
+        icon: "📈",
+        tag: "insight",
+        cta: "View Reports",
+        features: [
+            "Live sales dashboards",
+            "Top-selling product charts",
+            "Customer journey tracking",
+            "Heatmaps & session replays",
+            "Exportable CSV & PDF reports"
+        ]
     }
 ];
 
 const OurServices = () => {
     return (
-        <section className="relative py-20 px-6 md:px-16 max-w-[1350px] mx-auto">
-            <motion.h2
-                initial={{ opacity: 0, y: -50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="relative z-10 text-3xl md:text-4xl font-bold text-center mb-14 text-[#20b2aa] dark:text-[#7fffd4]"
-            >
-                Our Services 🚀
-            </motion.h2>
+        <section className="max-w-[1290px] mx-auto px-4 py-12 space-y-16">
+            <h2 className="md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
+                Services We Offer<span className="font-extrabold text-yellow-500">|</span>
+            </h2>
 
-            <div className="absolute inset-0 w-full h-full bg-center bg-fixed brightness-[0.4] z-0" />
+            <div className="grid md:grid-cols-2 gap-7 overflow-x-hidden">
+                {services.map((service, index) => {
+                    const isEven = index % 2 === 0;
 
-            <div className="relative z-10 mx-auto flex flex-wrap gap-6 auto-rows-fr">
-                {services.map((service, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: false, amount: 0.2 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`${service.span2 || "col-span-2"} md:${service.span
-                            } mx-auto bg-gradient-to-br from-white via-indigo-50 to-indigo-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 p-5 md:p-6 rounded-3xl border-2 border-indigo-200 dark:border-indigo-400 shadow-md flex flex-col items-center text-center`}
-                    >
-                        <div className="w-full h-64 md:h-72 rounded-2xl border-4 border-indigo-300 dark:border-indigo-500 overflow-hidden mb-4">
-                            <img
-                                src={service.image}
-                                alt={service.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                    return (
+                        <Fade key={index} direction={isEven ? "left" : "right"} className="overflow-x-hidden">
+                            <div
+                                className={`overflow-x-hidden flex flex-col md:flex-row h-full items-center justify-center gap-4 md:gap-6 bg-gradient-to-br from-indigo-50 via-white to-purple-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 rounded-3xl border border-indigo-200 dark:border-indigo-500 shadow-lg p-4 md:p-10 ${!isEven ? "md:flex-row-reverse" : ""}`}
+                            >
+                                {/* Image */}
+                                <div className="w-full md:w-1/2 h-52 md:h-full rounded-2xl">
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="h-full object-cover mx-auto rounded-2xl"
+                                    />
+                                </div>
 
-                        <h3 className="text-lg md:text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-cyan-400 dark:to-teal-300 text-transparent bg-clip-text mb-2">
-                            {service.title}
-                        </h3>
+                                {/* Content */}
+                                <div className="w-full md:w-1/2 space-y-3 text-center md:text-left">
+                                    {/* Tag */}
+                                    {service.tag && (
+                                        <span className="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 text-[10px] md:text-xs font-semibold px-2 py-1 md:px-3 md:py-1 rounded-full shadow-sm">
+                                            {service.tag.toUpperCase()}
+                                        </span>
+                                    )}
 
-                        <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4">
-                            {service.description}
-                        </p>
+                                    {/* Title */}
+                                    <h3 className="text-md md:text-2xl font-bold text-[#1b827d] flex items-center justify-center md:justify-start gap-2">
+                                        <span className="text-lg md:text-xl">{service.icon}</span>
+                                        <span>{service.title}</span>
+                                    </h3>
 
-                        <Link
-                            to={service.link}
-                            className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-full text-sm transition hover:bg-indigo-600"
-                        >
-                            Learn More
-                        </Link>
-                    </motion.div>
-                ))}
+                                    {/* Description */}
+                                    <p className="text-sm md:text-base text-gray-700 dark:text-gray-300">
+                                        {service.description}
+                                    </p>
+
+                                    {/* Features */}
+                                    <ul className="text-left text-xs md:text-sm text-zinc-600 dark:text-zinc-300 list-disc list-inside space-y-1 md:space-y-2">
+                                        {service.features.map((feature, i) => (
+                                            <li key={i}>{feature}</li>
+                                        ))}
+                                    </ul>
+
+                                    {/* CTA */}
+                                    <Link
+                                        to={service.link}
+                                        className="inline-block mt-3 md:mt-4 bg-indigo-500 text-white px-4 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium hover:bg-indigo-600 transition"
+                                    >
+                                        {service.cta || "Learn More"}
+                                    </Link>
+                                </div>
+                            </div>
+                        </Fade>
+                    );
+                })}
             </div>
         </section>
     );

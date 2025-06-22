@@ -15,7 +15,7 @@ const CartDetailsModal = ({ item }) => {
         customerEmail
     } = item;
 
-    console.log(item)
+    
 
     return (
         <div>
