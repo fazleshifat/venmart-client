@@ -1,55 +1,74 @@
-# 🛍️ Venmart - Modern eCommerce Web Application
+# 🛒 Venmart - Modern eCommerce Platform
 
-**Venmart** is a responsive and modern eCommerce web application where users can browse products, add them to cart, and place orders through a smooth and user-friendly interface.
+![Venmart Screenshot](https://venmart.netlify.app/preview.png)
 
-
----
-
-## 🔗 Live Website
-
-**Live:**[https://venmart.netlify.app](https://venmart.netlify.app)
+**Venmart** is a modern eCommerce platform where users can browse products, manage their cart, and place orders. Built with the MERN stack, it provides seamless performance, secure authentication, and a user-friendly interface. Firebase Authentication and JWT are implemented to ensure robust user access control.
 
 ---
 
-## 🛠️ Technologies Used
+## 🚀 Technologies Used
 
-- ⚛️ React.js  
-- 🎨 Tailwind CSS + DaisyUI  
-- 🌐 React Router DOM  
-- 🎞️ Framer Motion  
-- 🔐 Firebase (Auth & Hosting)  
-- 🔗 Axios  
-- 🧠 Node.js + Express.js (Backend API)  
-- 💾 MongoDB (Database)
+- **Frontend:** React.js, Tailwind CSS, DaisyUI, Framer Motion, Swiper.js
+- **Backend:** Node.js, Express.js, MongoDB
+- **Authentication:** Firebase Authentication, JWT (JSON Web Token)
+- **Deployment:** Netlify (Frontend), Render (Backend)
+- **Other Tools:** Axios, React Hook Form, React Router DOM
 
 ---
 
-## 🌟 Main Features
+## ✨ Key Features
 
-- User Authentication (Firebase Login/Register)
-- Product listing with category-based filtering
-- Shopping cart with quantity control
-- Order placement and order history
-- Responsive design for all devices
-- Smooth page transitions and animations
+- 🔐 Secure Authentication (Firebase + JWT)
+- 🛍 Product Catalog with Category Filtering
+- 🛒 Cart Management (Add, Remove, Quantity Control)
+- 🧾 Order Placement System
+- 📦 Backend CRUD for Products, Users & Cart Items
+- 📱 Fully Responsive Design
+- 🎨 Smooth Animations with Framer Motion
+- 📸 Image Slider with Swiper.js
+- 🔄 Realtime Form Validation (React Hook Form)
 
 ---
 
 ## 📦 Project Dependencies
 
-```json
-// Frontend
-"react": "^18.x",
-"react-dom": "^18.x",
-"react-router-dom": "^6.x",
-"axios": "^1.x",
-"firebase": "^10.x",
-"framer-motion": "^10.x",
-"tailwindcss": "^3.x",
-"daisyui": "^3.x",
-"react-icons": "^4.x"
+### Frontend
+- `react`
+- `react-router-dom`
+- `axios`
+- `firebase`
+- `framer-motion`
+- `swiper`
+- `react-hook-form`
+- `daisyui`
+- `tailwindcss`
 
-// Dev
-"vite": "^5.x",
-"autoprefixer": "^10.x",
-"postcss": "^8.x"
+### Backend
+- `express`
+- `cors`
+- `dotenv`
+- `mongodb`
+- `firebase-admin`
+- `jsonwebtoken`
+- `body-parser`
+
+---
+
+## 🖥️ How to Run the Project Locally
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/venmart.git
+cd venmart
+
+cd client
+npm install
+npm run dev
+
+cd server
+npm install
+# Create a .env file and configure the following:
+# MONGODB_URI=
+# FIREBASE_SERVICE_ACCOUNT=
+# ACCESS_TOKEN_SECRET=
+node index.js
