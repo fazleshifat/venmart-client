@@ -7,7 +7,7 @@
 
 ## 🔗 Live Website
 
-**Live:** [https://venmart.netlify.app]
+**Live:**[https://venmart.netlify.app](https://venmart.netlify.app)
 
 ---
 
