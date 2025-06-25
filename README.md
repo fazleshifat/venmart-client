@@ -1,6 +1,9 @@
 # 🛒 Venmart - Modern eCommerce Platform
 
-![Venmart Screenshot](https://venmart.netlify.app/preview.png)
+## 🌐 Live Site & Links
+
+- 🔗 **Live Website:** [https://venmart.netlify.app](https://venmart.netlify.app)
+- - 📊 **API Documentation:** Coming Soon
 
 **Venmart** is a modern eCommerce platform where users can browse products, manage their cart, and place orders. Built with the MERN stack, it provides seamless performance, secure authentication, and a user-friendly interface. Firebase Authentication and JWT are implemented to ensure robust user access control.
 
