@@ -1,37 +1,77 @@
-# 🛒 VenMart
+# 🛒 Venmart - Modern eCommerce Platform
 
-VenMart is a modern full-stack eCommerce platform focused on industrial and tech products. It features secure login, categorized browsing, product filtering, and responsive design.
+## 🌐 Live Site & Links
 
-🔗 **Live Site:** [https://venmart.netlify.app/](https://venmart.netlify.app/)
+- 🔗 **Live Website:** [https://venmart.netlify.app](https://venmart.netlify.app)
+- - 📊 **API Documentation:** Coming Soon
 
----
-
-## 🚀 Features
-
-- 🔐 **Authentication** (Firebase + JWT)
-- 🔍 **Search & Filter** by name and availability
-- 📦 **Category-Based Products**
-- 🌙 **Dark Mode** toggle
-- 📱 **Responsive Design**
-- ✨ **Animations** with Framer Motion and Reveal
-- ⭐ **Star Ratings** displayed per product
+**Venmart** is a modern eCommerce platform where users can browse products, manage their cart, and place orders. Built with the MERN stack, it provides seamless performance, secure authentication, and a user-friendly interface. Firebase Authentication and JWT are implemented to ensure robust user access control.
 
 ---
 
-## 🧰 Tech Stack
+## 🚀 Technologies Used
 
-**Frontend:**
-- React, React Router DOM
-- Tailwind CSS, DaisyUI
-- Axios, Lucide React, Swiper.js
-- Framer Motion, React Awesome Reveal
-
-**Backend:**
-- Express.js, MongoDB Atlas
-- JWT Auth, Firebase Login
-- Hosted API: `https://venmart-server.vercel.app`
+- **Frontend:** React.js, Tailwind CSS, DaisyUI, Framer Motion, Swiper.js
+- **Backend:** Node.js, Express.js, MongoDB
+- **Authentication:** Firebase Authentication, JWT (JSON Web Token)
+- **Deployment:** Netlify (Frontend), Render (Backend)
+- **Other Tools:** Axios, React Hook Form, React Router DOM
 
 ---
 
-## 📁 Project Structure
+## ✨ Key Features
 
+- 🔐 Secure Authentication (Firebase + JWT)
+- 🛍 Product Catalog with Category Filtering
+- 🛒 Cart Management (Add, Remove, Quantity Control)
+- 🧾 Order Placement System
+- 📦 Backend CRUD for Products, Users & Cart Items
+- 📱 Fully Responsive Design
+- 🎨 Smooth Animations with Framer Motion
+- 📸 Image Slider with Swiper.js
+- 🔄 Realtime Form Validation (React Hook Form)
+
+---
+
+## 📦 Project Dependencies
+
+### Frontend
+- `react`
+- `react-router-dom`
+- `axios`
+- `firebase`
+- `framer-motion`
+- `swiper`
+- `react-hook-form`
+- `daisyui`
+- `tailwindcss`
+
+### Backend
+- `express`
+- `cors`
+- `dotenv`
+- `mongodb`
+- `firebase-admin`
+- `jsonwebtoken`
+- `body-parser`
+
+---
+
+## 🖥️ How to Run the Project Locally
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/venmart.git
+cd venmart
+
+cd client
+npm install
+npm run dev
+
+cd server
+npm install
+# Create a .env file and configure the following:
+# MONGODB_URI=
+# FIREBASE_SERVICE_ACCOUNT=
+# ACCESS_TOKEN_SECRET=
+node index.js
