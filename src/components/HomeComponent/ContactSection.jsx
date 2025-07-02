@@ -8,7 +8,7 @@ const ContactSection = () => {
     }
 
     return (
-        <section className="relative max-w-[1300px] mx-auto rounded-3xl md:rounded-b-[20%] mb-4 py-16 px-6 md:px-16 border-b-4 border-indigo-200 bg-white dark:bg-zinc-900 shadow-lg">
+        <section id="contacts" className="relative max-w-[1300px] mx-auto rounded-3xl md:rounded-b-[20%] mb-4 py-16 px-6 md:px-16 border-b-4 border-indigo-200 bg-white dark:bg-zinc-900 shadow-lg">
             <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
 
                 {/* Left Side - Text Content */}

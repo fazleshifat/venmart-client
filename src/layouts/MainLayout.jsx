@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../shared/Navbar';
 import Footer from '../shared/Footer';
 import { Outlet } from 'react-router';
 import HeaderForMobile from '../components/HeaderForMobile';
+import Navbar from '../shared/Navbar/Navbar';
 
 const MainLayout = () => {
     return (

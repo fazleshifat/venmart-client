@@ -77,19 +77,48 @@ const AllProducts = () => {
                 All Products🛍️
             </h1>
 
-            <div className="overflow-x-hidden my-10 max-w-[1300px] mx-auto flex justify-between">
+            <div className="overflow-x-hidden gap-3 my-10 max-w-[1300px] mx-auto flex flex-col md:flex-row justify-between">
+                {/* toggle view type function */}
                 <select
                     name="viewProduct"
                     value={view}
                     onChange={(e) => setView(e.target.value)}
-                    className="p-2 px-4 border-2 border-gray-400 dark:bg-indigo-300 text-black rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+                    className="p-2 px-4 border-2 border-gray-400 dark:bg-black text-black dark:text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
                 >
                     <option value="Card">Card View</option>
                     <option value="Table">Table View</option>
                 </select>
 
+                <p className='text-black dark:text-white bg-black/10 h-fit rounded-3xl px-5 py-2 text-center'>
+                    Products which have minimum ordering quantity of <span className='text-gray-600 font-bold'>100</span> are only <span className='text-gray-600 font-bold'>Available</span>
+                </p>
 
-                <button onClick={() => handleShowAvailable()} className='btn btn-outline hover:border-indigo-500'>{!showAvailableOnly ? 'Show Available Products' : 'Show All Products'}</button>
+                {/* toggle sorting function */}
+                <div className="flex items-center gap-3">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                            type="radio"
+                            name="filter"
+                            value="all"
+                            checked={!showAvailableOnly}
+                            onChange={() => setShowAvailableOnly(false)}
+                            className="radio radio-primary"
+                        />
+                        <span>All Products</span>
+                    </label>
+
+                    <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                            type="radio"
+                            name="filter"
+                            value="available"
+                            checked={showAvailableOnly}
+                            onChange={() => setShowAvailableOnly(true)}
+                            className="radio radio-primary"
+                        />
+                        <span>Available Only</span>
+                    </label>
+                </div>
             </div>
 
             {

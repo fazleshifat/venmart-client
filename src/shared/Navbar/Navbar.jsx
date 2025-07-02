@@ -1,11 +1,12 @@
 import React, { use, useEffect, useState } from 'react';
-import ThemeToggle from '../components/ThemeToggle';
+import ThemeToggle from '../../components/ThemeToggle';
 import { Link, NavLink, useNavigate } from 'react-router';
-import { AuthContext } from '../AuthProvider/AuthContext';
+import { AuthContext } from '../../AuthProvider/AuthContext';
 import Swal from 'sweetalert2';
 import { signOut } from 'firebase/auth';
-import { auth } from '../Firebase/firebase.init';
-import ToggleSearchBar from '../components/ToggleSearchBar';
+import { auth } from '../../Firebase/firebase.init';
+import ToggleSearchBar from '../../components/ToggleSearchBar';
+import NavLinks from './Navlinks';
 
 const Navbar = () => {
 
@@ -60,49 +61,6 @@ const Navbar = () => {
     }
 
 
-
-
-
-
-    const links = (
-        <>
-            {[
-                { to: '/', label: 'Home' },
-                { to: '/categories', label: 'Categories' },
-                { to: '/allProducts', label: 'All Product' },
-                { to: '/addProduct', label: 'Add Product' },
-                { to: '/myProduct', label: 'My Product' },
-                { to: '/cart', label: 'Cart' },
-            ].map(({ to, label }) => (
-                <li key={to}>
-                    <NavLink
-                        to={to}
-                        className={({ isActive }) =>
-                            `group relative px-2 py-1 font-semibold transition duration-300 
-                            ${isActive
-                                ? 'text-indigo-400 dark:text-white'
-                                : 'text-zinc-700 dark:text-zinc-300 hover:text-indigo-500 hover:dark:text-white'
-                            }`
-                        }
-                    >
-                        {({ isActive }) => (
-                            <span
-                                className={`
-        relative
-        after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-indigo-600 dark:after:bg-white
-        after:transition-all after:duration-300 after:ease-in-out
-        ${isActive ? 'after:w-full' : 'after:w-0 group-hover:after:w-full'}
-      `}
-                            >
-                                {label}
-                            </span>
-                        )}
-                    </NavLink>
-                </li>
-            ))}
-        </>
-    );
-
     return (
         <div className={`navbar fixed max-w-11/12 bg-black/10 dark:bg-indigo-700/60 backdrop-blur-md shadow-sm px-3 md:px-6 z-50 rounded-full transition-all duration-300
         left-1/2 -translate-x-1/2
@@ -118,7 +76,7 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bottom-12 md:top-12 h-fit bg-base-100 rounded-box z-1 mt-0 w-52 p-2 shadow">
-                        {links}
+                        <NavLinks></NavLinks>
                     </ul>
                 </div>
                 <Link className='hidden md:flex items-center'>
@@ -141,7 +99,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="flex md:gap-8 font-semibold">
-                    {links}
+                    <NavLinks></NavLinks>
                 </ul>
             </div>
             <div className="gap-1 navbar-end flex">
@@ -162,11 +120,11 @@ const Navbar = () => {
 
                                     <>
                                         <div className='flex gap-1'>
-                                            <Link to='/logIn' className="btn bg-gradient-to-r from-blue-300 to-purple-500 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
+                                            <Link to='/logIn' className="btn bg-sky-500 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
                                                 Login
                                             </Link>
 
-                                            <Link to='/register' className="btn bg-gradient-to-r from-yellow-500 to-red-500 text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-red-600 transition rounded-lg">
+                                            <Link to='/register' className="btn bg-black/10 hover:bg-black/30 text-black btn-outline transition rounded-lg">
                                                 Register
                                             </Link>
                                         </div>

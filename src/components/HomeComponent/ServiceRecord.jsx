@@ -22,7 +22,7 @@ const stats = [
 
 const ServiceRecord = () => {
     return (
-        <section className="relative max-w-[1300px] mx-auto bg-fixed py-24 px-6 md:px-16 text-white bg-cover bg-center bg-no-repeat overflow-hidden"
+        <section id="records" className="relative max-w-[1300px] mx-auto bg-fixed py-24 px-6 md:px-16 text-white bg-cover bg-center bg-no-repeat overflow-hidden"
             style={{ backgroundImage: 'url("/assets/providedServices.jpg")' }}
         >
             {/* Overlay for dark effect */}
@@ -34,10 +34,11 @@ const ServiceRecord = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
                     transition={{ duration: 0.6 }}
-                    className="text-3xl md:text-5xl font-light text-[#7fffd4] mb-12"
+                    className="text-3xl md:text-4xl font-light text-[#7fffd4] mb-12"
                 >
-                    Our Service Record💼
+                    Our Records<span className="font-extrabold text-yellow-500">|</span>
                 </motion.h2>
+
 
                 <div className="grid gap-12 md:grid-cols-3">
                     {stats.map((item, index) => (
@@ -45,7 +46,7 @@ const ServiceRecord = () => {
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
+                            viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="relative p-6 flex flex-col items-center text-center"
                         >

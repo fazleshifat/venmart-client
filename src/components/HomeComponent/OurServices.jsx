@@ -108,7 +108,7 @@ const services = [
 
 const OurServices = () => {
     return (
-        <section className="max-w-[1290px] mx-auto px-4 py-12 space-y-16">
+        <section id="services" className="max-w-[1290px] mx-auto px-4 py-12 space-y-16">
             <h2 className="text-2xl md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
                 Services We Offer<span className="font-extrabold text-yellow-500">|</span>
             </h2>
