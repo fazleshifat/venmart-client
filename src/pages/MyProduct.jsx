@@ -91,7 +91,7 @@ const MyProduct = () => {
                 }}
                 className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
-                    <h1 className="text-2xl md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                    <h1 className="text-2xl md:text-4xl text-center font-bold mb-8 text-[#20b2aa] dark:text-[#7fffd4]">
                         📋My added Products
                     </h1>
                 </div>
