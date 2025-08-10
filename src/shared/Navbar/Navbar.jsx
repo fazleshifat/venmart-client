@@ -145,7 +145,7 @@ const Navbar = () => {
                                                     tabIndex={0}
                                                     className="menu menu-sm dropdown-content bottom-10 md:top-10 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
                                                     <li className='text-md md:text-lg font-semibold'>{user?.displayName}</li>
-                                                    <button onClick={handleSignOut} className='btn btn-warning text-white'>Logout</button>
+                                                    <button onClick={handleSignOut} className='btn bg-sky-500 text-white'>Logout</button>
                                                     {
                                                         !user &&
                                                         <div className='flex md:hidden'>
