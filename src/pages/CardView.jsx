@@ -54,7 +54,7 @@ const CardView = ({ products = [], filteredProducts = [], filteredAvailableProdu
                                 <div className="flex gap-1 flex-wrap justify-between items-center mt-4">
                                     <Link
                                         to={`/product/details/${product._id}`}
-                                        className="btn btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition duration-200 transform hover:scale-105"
+                                        className="btn bg-sky-500 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition duration-200 transform hover:scale-105"
                                     >
                                         View Product
                                     </Link>

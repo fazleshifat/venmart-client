@@ -56,7 +56,7 @@ const TableView = ({ products = [], filteredProducts = [], filteredAvailableProd
                                             <div className='flex flex-col md:flex-row gap-1'>
                                                 <Link
                                                     to={`/product/details/${product._id}`}
-                                                    className="btn btn-sm btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
+                                                    className="btn btn-sm bg-sky-500 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
                                                 >
                                                     View
                                                 </Link>
