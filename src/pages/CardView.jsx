@@ -32,7 +32,7 @@ const CardView = ({ products = [], filteredProducts = [], filteredAvailableProdu
                             />
                             <div className="p-4 flex flex-col justify-between">
                                 <h2 className="md:text-xl font-semibold text-[#20b2aa] dark:text-[#7fffd4] flex items-center gap-2">
-                                    📦 {product.name}
+                                    {product.name}
                                 </h2>
                                 <div className="grid grid-cols-1">
                                     <div className="flex items-center justify-between">
