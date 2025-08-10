@@ -86,7 +86,7 @@ const CartSection = () => {
                     headers: { Authorization: `Bearer ${user?.accessToken}` }
                 })
                     .then(response => {
-                      
+
                         const filteredCart = myCarts.filter(cart => cart._id !== item?._id);
                         setMyCarts(filteredCart);
 
@@ -126,8 +126,8 @@ const CartSection = () => {
                 }}
                 className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
-                    <h1 className="md:text-4xl text-center font-bold mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                        🛍️My Cart
+                    <h1 className="text-3xl md:text-4xl text-center font-bold mb-8 text-[#20b2aa] dark:text-[#7fffd4]">
+                        My Cart🛍️
                     </h1>
                 </div>
 
