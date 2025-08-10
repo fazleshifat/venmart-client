@@ -92,7 +92,7 @@ const MyProduct = () => {
                 className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
                     <h1 className="text-2xl md:text-4xl text-center font-bold mb-8 text-[#20b2aa] dark:text-[#7fffd4]">
-                        📋My added Products
+                        My added Products📋
                     </h1>
                 </div>
 
@@ -114,7 +114,7 @@ const MyProduct = () => {
                                         <img
                                             src={product.image}
                                             alt={product.name}
-                                            className="h-60 w-auto lg:w-6/12 object-cover my-auto rounded-xl" 
+                                            className="h-60 w-auto lg:w-6/12 object-cover my-auto rounded-xl"
                                         />
                                         <div className="flex-1 flex flex-col justify-center md:mx-auto">
                                             <div>
