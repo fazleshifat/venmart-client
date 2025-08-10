@@ -124,7 +124,7 @@ const Navbar = () => {
                                                 Login
                                             </Link>
 
-                                            <Link to='/register' className="btn bg-black/10 hover:bg-black/30 text-black btn-outline transition rounded-lg">
+                                            <Link to='/register' className="btn bg-accent hover:bg-black/10 text-white transition rounded-lg">
                                                 Register
                                             </Link>
                                         </div>
