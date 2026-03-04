@@ -109,8 +109,8 @@ const services = [
 const OurServices = () => {
     return (
         <section id="services" className="max-w-[1290px] mx-auto px-4 py-12 space-y-16">
-            <h2 className="text-2xl md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
-                Services We Offer<span className="font-extrabold text-yellow-500">|</span>
+            <h2 className="text-2xl md:text-4xl font-light text-center mb-12 text-gray-800 dark:text-white">
+                Services We <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Offer</span>
             </h2>
 
             <div className="grid lg:grid-cols-2 gap-7 overflow-x-hidden">
@@ -120,7 +120,7 @@ const OurServices = () => {
                     return (
                         <Fade key={index} direction={isEven ? "left" : "right"} className="overflow-x-hidden rounded-3xl">
                             <div
-                                className={`overflow-x-hidden flex flex-col md:flex-row h-full items-center justify-center gap-4 md:gap-6 bg-gradient-to-br from-purple-200 via-white to-indigo-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 rounded-3xl border border-indigo-200 dark:border-indigo-500 shadow-lg p-4 md:p-10 ${!isEven ? "md:flex-row-reverse" : ""}`}
+                                className={`overflow-x-hidden flex flex-col md:flex-row h-full items-center justify-center gap-4 md:gap-6 bg-white dark:bg-zinc-900/80 rounded-3xl border border-gray-100 dark:border-indigo-500/20 shadow-sm hover:shadow-xl p-4 md:p-10 transition-all duration-500 hover:-translate-y-1 ${!isEven ? "md:flex-row-reverse" : ""}`}
                             >
                                 {/* Image */}
                                 <div className="w-full md:w-1/2 h-52 md:h-full rounded-2xl">
@@ -141,7 +141,7 @@ const OurServices = () => {
                                     )}
 
                                     {/* Title */}
-                                    <h3 className="text-md md:text-2xl font-bold text-[#1b827d] flex items-center justify-center md:justify-start gap-2">
+                                    <h3 className="text-md md:text-2xl font-semibold text-gray-800 dark:text-white flex items-center justify-center md:justify-start gap-2">
                                         <span className="text-lg md:text-xl">{service.icon}</span>
                                         <span>{service.title}</span>
                                     </h3>
@@ -161,7 +161,7 @@ const OurServices = () => {
                                     {/* CTA */}
                                     <Link
                                         to={service.link}
-                                        className="inline-block mt-3 md:mt-4 bg-indigo-500 text-white px-4 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium hover:bg-indigo-600 transition"
+                                        className="inline-block mt-3 md:mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
                                     >
                                         {service.cta || "Learn More"}
                                     </Link>

@@ -126,8 +126,8 @@ const CartSection = () => {
                 }}
                 className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
-                    <h1 className="text-3xl md:text-4xl text-center font-bold mb-8 text-[#20b2aa] dark:text-[#7fffd4]">
-                        My Cart🛍️
+                    <h1 className="text-3xl md:text-4xl text-center font-light mb-8 text-gray-800 dark:text-white">
+                        My <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Cart</span>
                     </h1>
                 </div>
 
@@ -137,7 +137,7 @@ const CartSection = () => {
                         <div className="text-center grid col-span-4 text-gray-500 md:text-lg">
                             you haven't purchased any product yet!
                             <br />
-                            <Link className='btn btn-primary mt-2 w-fit mx-auto' to='/allProducts'>Purchase products</Link>
+                            <Link className='btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full mt-2 w-fit mx-auto hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300' to='/allProducts'>Purchase products</Link>
                         </div>
                     ) :
                         (
@@ -147,7 +147,7 @@ const CartSection = () => {
                                     key={item._id}
                                     className="transition-opacity h-full duration-300 opacity-100 translate-y-0"
                                 >
-                                    <div className="rounded-2xl shadow-md hover:shadow-lg transition border-indigo-200 border-2 bg-white h-full flex flex-col">
+                                    <div className="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-indigo-500/20 bg-white dark:bg-zinc-900/80 h-full flex flex-col hover:-translate-y-1">
                                         <div className="p-4">
                                             <div className="flex items-center gap-4">
                                                 <img
@@ -156,7 +156,7 @@ const CartSection = () => {
                                                     className="w-24 rounded-xl"
                                                 />
                                                 <div className="flex-1">
-                                                    <h2 className="text-xl font-semibold text-gray-800">{item.name}</h2>
+                                                    <h2 className="text-xl font-semibold text-gray-800 dark:text-white">{item.name}</h2>
                                                     <p className="text-sm text-gray-500">Brand: {item.brand}</p>
                                                     <p className="text-sm text-gray-500">Category: {item.category}</p>
                                                     <p className="text-sm text-gray-500">Price: ${item.price}</p>
@@ -173,13 +173,13 @@ const CartSection = () => {
                                                         setSelectedItem(item);
                                                         document.getElementById('purchase_modal')?.showModal();
                                                     }}
-                                                    className="btn btn-sm text-indigo-600 hover:text-red-800 text-sm flex items-center"
+                                                    className="btn btn-sm bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full text-sm flex items-center hover:shadow-md transition-all duration-300"
                                                 >
-                                                    👁️View
+                                                    View
                                                 </button>
                                                 <button onClick={() => handleCancelOrder(item)}
-                                                    className="btn btn-sm text-red-600 hover:text-red-800 text-sm flex items-center">
-                                                    🗑️<span className="ml-1">Cancel Order</span>
+                                                    className="btn btn-sm btn-outline border-red-200 dark:border-red-500/30 text-red-500 rounded-full text-sm flex items-center hover:bg-red-50 dark:hover:bg-red-500/10 transition-all duration-300">
+                                                    <span>Cancel Order</span>
                                                 </button>
                                             </div>
                                         </div>

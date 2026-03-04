@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Bangers&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Bangers&family=Inter:wght@300;400;500;600;700&family=Permanent+Marker&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 
@@ -14,11 +14,11 @@ html {
   font-family: "Bangers";
   font-weight: 400;
   font-style: normal;
-
+  letter-spacing: 1.5px;
 }
 
 body {
-  font-family: "Poiret One", sans-serif;
+  font-family: "Inter", "Poiret One", sans-serif;
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden;
@@ -26,6 +26,39 @@ body {
 
 .font-secondary {
   font-family: "Amaranth";
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e1b4b;
+}
+
+/* Subtle selection color */
+::selection {
+  background: #6366f1;
+  color: white;
+}
+
+/* Smooth focus rings */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  border-color: #6366f1 !important;
+  transition: all 0.2s ease;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

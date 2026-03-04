@@ -11,18 +11,18 @@ const DisplayCategory = ({ product }) => {
 
     return (
         <div
-            className="relative group rounded-3xl bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 p-5 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+            className="relative group rounded-3xl bg-white dark:bg-zinc-900/80 p-5 shadow-sm hover:shadow-xl border border-gray-100 dark:border-indigo-500/20 hover:-translate-y-2 transition-all duration-500"
         >
             <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-56 object-cover rounded-xl mb-4 border-2 border-indigo-100 dark:border-zinc-700"
+                className="w-full h-56 object-cover rounded-xl mb-4 border border-gray-100 dark:border-indigo-500/20"
             />
 
             <div>
                 <div className="flex items-center justify-between mb-3">
-                    <h2 className="md:text-lg font-extrabold text-[#20b2aa] dark:text-[#7fffd4]">
-                        🛍️{product.name}
+                    <h2 className="md:text-lg font-semibold text-gray-800 dark:text-white">
+                        {product.name}
                     </h2>
                     <span className="text-xs font-semibold bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 px-3 py-1 rounded-full shadow-sm whitespace-nowrap">
                         {product.category}
@@ -57,14 +57,14 @@ const DisplayCategory = ({ product }) => {
 
                 <Link
                     to={`/product/details/${product._id}`}
-                    className="w-full mt-6 btn btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition-all"
+                    className="w-full mt-6 btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
                 >
                     🔍 View Details
                 </Link>
             </div>
 
             {/* Glow Effect on Hover */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl pointer-events-none bg-gradient-to-tr from-indigo-400/10 via-pink-400/10 to-purple-400/10 shadow-inner"></div>
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl pointer-events-none bg-gradient-to-tr from-indigo-500/5 via-purple-500/5 to-pink-500/5"></div>
         </div>
     );
 };

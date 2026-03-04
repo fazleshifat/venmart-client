@@ -61,12 +61,12 @@ const ProductDetails = () => {
                 {/* Left Section: Product Card */}
 
                 <div className="w-full lg:w-6/10">
-                    <h1 className="text-2xl md:text-4xl font-extrabold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-5">
-                        🛍️Product Details
+                    <h1 className="text-2xl md:text-4xl font-light text-center text-gray-800 dark:text-white mb-5">
+                        Product <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Details</span>
                     </h1>
 
                     <div className="overflow-x-hidden">
-                        <div className="bg-white dark:bg-zinc-900 border-2 border-indigo-400 hover:border-indigo-300 rounded-3xl shadow-xl p-6 sm:p-8 mb-10 max-w-5xl mx-auto flex flex-col lg:flex-row gap-8">
+                        <div className="bg-white dark:bg-zinc-900/80 border border-gray-100 dark:border-indigo-500/20 rounded-3xl shadow-xl shadow-indigo-500/5 p-6 sm:p-8 mb-10 max-w-5xl mx-auto flex flex-col lg:flex-row gap-8 backdrop-blur-sm">
 
                             {/* LEFT: Product Image */}
                             <div className="flex-shrink-0">
@@ -115,7 +115,7 @@ const ProductDetails = () => {
                                 <div className="mt-6">
                                     <button
                                         onClick={() => document.getElementById('my_modal_4').showModal()}
-                                        className="cursor-pointer w-full py-1 md:py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-md md:text-lg font-semibold shadow-md hover:shadow-xl transform transition hover:scale-105 duration-300"
+                                        className="cursor-pointer w-full py-1 md:py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-md md:text-lg font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transform transition hover:scale-[1.02] duration-300"
                                     >
                                         🛒Buy Now
                                     </button>
@@ -127,14 +127,14 @@ const ProductDetails = () => {
                         </div>
                     </div>
 
-                    <div className='bg-base-300 my-3 p-3 rounded-3xl'>
+                    <div className='bg-white/50 dark:bg-zinc-900/50 border border-gray-100 dark:border-indigo-500/20 my-3 p-3 rounded-3xl'>
                         <ProductReview></ProductReview>
                     </div>
                 </div>
 
 
                 {/* Right Section: Similar Products */}
-                <div className="w-full h-fit lg:w-3/10 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl p-6 space-y-6">
+                <div className="w-full h-fit lg:w-3/10 bg-white dark:bg-zinc-900/80 rounded-3xl shadow-xl shadow-indigo-500/5 border border-gray-100 dark:border-indigo-500/20 p-6 space-y-6 backdrop-blur-sm">
 
                     <PopularProduct></PopularProduct>
 

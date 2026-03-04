@@ -67,10 +67,10 @@ const AddProduct = () => {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
                 }}
-                className="w-full max-w-4xl bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-2xl space-y-8"
+                className="w-full max-w-4xl bg-white dark:bg-zinc-900/80 p-8 rounded-3xl shadow-xl shadow-indigo-500/5 border border-gray-100 dark:border-indigo-500/20 backdrop-blur-sm space-y-8"
             >
-                <h1 className="text-2xl md:text-4xl text-center font-bold mb-8 text-[#20b2aa] dark:text-[#7fffd4]">
-                    Add Product🛒
+                <h1 className="text-2xl md:text-4xl text-center font-light mb-8 text-gray-800 dark:text-white">
+                    Add <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Product</span>
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-zinc-800 dark:text-zinc-100">
                     {/* Product Image */}
@@ -82,7 +82,7 @@ const AddProduct = () => {
                             type="text"
                             name="image"
                             placeholder="Image URL"
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
 
@@ -96,7 +96,7 @@ const AddProduct = () => {
                             id="name"
                             name="name"
                             required
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
 
@@ -110,7 +110,7 @@ const AddProduct = () => {
                             id="mainQty"
                             name="mainQty"
                             required
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
 
@@ -124,7 +124,7 @@ const AddProduct = () => {
                             id="minQty"
                             name="minQty"
                             required
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
 
@@ -137,7 +137,7 @@ const AddProduct = () => {
                             type="text"
                             id="brand"
                             name="brand"
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
 
@@ -150,7 +150,7 @@ const AddProduct = () => {
                             id="category"
                             name="category"
                             required
-                            className="select select-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="select select-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         >
                             <option value="">Select Category</option>
                             <option>electrical</option>
@@ -173,7 +173,7 @@ const AddProduct = () => {
                             id="price"
                             name="price"
                             required
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
 
@@ -194,7 +194,7 @@ const AddProduct = () => {
                                 if (value > 5) e.target.value = 5;
                                 if (value < 1) e.target.value = 1;
                             }}
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
                     {/* Owner Name */}
@@ -208,7 +208,7 @@ const AddProduct = () => {
                             name="ownerName"
                             defaultValue={user?.displayName}
                             readOnly
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
                     {/* Owner Email */}
@@ -222,7 +222,7 @@ const AddProduct = () => {
                             name="ownerEmail"
                             defaultValue={user?.email}
                             readOnly
-                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="input input-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         />
                     </div>
 
@@ -235,7 +235,7 @@ const AddProduct = () => {
                             id="description"
                             name="description"
                             rows={3}
-                            className="textarea textarea-bordered w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700"
+                            className="textarea textarea-bordered w-full bg-white dark:bg-zinc-800 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                         ></textarea>
                     </div>
 
@@ -245,7 +245,7 @@ const AddProduct = () => {
                 {/* Submit */}
                 <button
                     type="submit"
-                    className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-none w-full mt-4 rounded-full text-lg shadow-md hover:brightness-110 transition"
+                    className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none w-full mt-4 rounded-full text-lg shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 transition-all duration-300"
                 >
                     Add Product
                 </button>

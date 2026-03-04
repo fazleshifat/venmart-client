@@ -19,8 +19,8 @@ const TableView = ({ products = [], filteredProducts = [], filteredAvailableProd
             {toRender.length > 0 ? (
                 <div className="overflow-x-auto max-w-[1300px] mx-auto my-8">
                     <Fade cascade direction='left'>
-                        <table className="min-w-full border border-gray-300 dark:border-zinc-700 rounded-xl overflow-hidden">
-                            <thead className="bg-indigo-500 text-white">
+                        <table className="min-w-full border border-gray-100 dark:border-indigo-500/20 rounded-2xl overflow-hidden shadow-sm">
+                            <thead className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
                                 <tr>
                                     <th className="p-3 text-left">Image</th>
                                     <th className="p-3 text-left">Name</th>
@@ -33,9 +33,9 @@ const TableView = ({ products = [], filteredProducts = [], filteredAvailableProd
                                     <th className="p-3 text-left">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white dark:bg-zinc-800 divide-y divide-gray-200 dark:divide-zinc-700">
+                            <tbody className="bg-white dark:bg-zinc-900/80 divide-y divide-gray-50 dark:divide-zinc-800">
                                 {toRender.map((product, index) => (
-                                    <tr key={index} className="hover:bg-gray-100 dark:hover:bg-zinc-700 transition">
+                                    <tr key={index} className="hover:bg-indigo-50/50 dark:hover:bg-indigo-950/20 transition-colors duration-200">
                                         <td className="p-3">
                                             <img
                                                 src={product.image}
@@ -43,7 +43,7 @@ const TableView = ({ products = [], filteredProducts = [], filteredAvailableProd
                                                 className="w-26 object-cover rounded-md"
                                             />
                                         </td>
-                                        <td className="p-3 text-sm md:text-lg font-semibold text-[#20b2aa] dark:text-[#7fffd4]">
+                                        <td className="p-3 text-sm md:text-lg font-semibold text-gray-800 dark:text-white">
                                             {product.name}
                                         </td>
                                         <td className="hidden md:table-cell p-3 text-zinc-700 dark:text-zinc-300">{product.brand}</td>
@@ -56,13 +56,13 @@ const TableView = ({ products = [], filteredProducts = [], filteredAvailableProd
                                             <div className='flex flex-col md:flex-row gap-1'>
                                                 <Link
                                                     to={`/product/details/${product._id}`}
-                                                    className="btn btn-sm bg-sky-500 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
+                                                    className="btn btn-sm bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full hover:shadow-md transition-all duration-300"
                                                 >
                                                     View
                                                 </Link>
                                                 <Link
                                                     to={`/updateProduct/${product._id}`}
-                                                    className="btn btn-sm btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900"
+                                                    className="btn btn-sm btn-outline border-indigo-300 dark:border-indigo-400/30 text-indigo-600 dark:text-indigo-300 rounded-full hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all duration-300"
                                                 >
                                                     Update
                                                 </Link>

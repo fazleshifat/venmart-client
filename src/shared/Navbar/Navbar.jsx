@@ -62,11 +62,11 @@ const Navbar = () => {
 
 
     return (
-        <div className={`navbar fixed max-w-11/12 bg-black/10 dark:bg-indigo-700/60 backdrop-blur-md shadow-sm px-3 md:px-6 z-50 rounded-full transition-all duration-300
+        <div className={`navbar fixed max-w-11/12 bg-white/60 dark:bg-indigo-950/70 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.08)] border border-white/30 dark:border-indigo-500/20 px-3 md:px-6 z-50 rounded-full transition-all duration-500 ease-out
         left-1/2 -translate-x-1/2
-        top-auto bottom-2 
-        md:top-2 md:bottom-auto
-        ${showNavbar ? 'translate-y-0' : 'md:-translate-y-full'}
+        top-auto bottom-2
+        md:top-3 md:bottom-auto
+        ${showNavbar ? 'translate-y-0 opacity-100' : 'md:-translate-y-full md:opacity-0'}
     `}>
             <div className="flex items-center navbar-start">
                 <div className="dropdown">
@@ -86,7 +86,7 @@ const Navbar = () => {
                             className="w-10 md:w-10 h-auto"
                             alt="logo"
                         />
-                        <p id="logo" className="text-xl font-extrabold md:text-3xl text-gray-700 dark:text-indigo-400 -ml-1">
+                        <p id="logo" className="text-xl font-extrabold md:text-3xl bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent -ml-1">
                             VENMART
                         </p>
                     </div>
@@ -119,12 +119,12 @@ const Navbar = () => {
                                 !user ?
 
                                     <>
-                                        <div className='flex gap-1'>
-                                            <Link to='/logIn' className="btn bg-sky-500 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-700 transition rounded-lg">
+                                        <div className='flex gap-2'>
+                                            <Link to='/logIn' className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none hover:from-indigo-600 hover:to-purple-700 hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 rounded-full px-5">
                                                 Login
                                             </Link>
 
-                                            <Link to='/register' className="btn bg-accent hover:bg-black/10 text-white transition rounded-lg">
+                                            <Link to='/register' className="btn bg-white/80 dark:bg-white/10 text-indigo-600 dark:text-white border border-indigo-200 dark:border-indigo-400/30 hover:bg-indigo-50 dark:hover:bg-white/20 transition-all duration-300 rounded-full px-5">
                                                 Register
                                             </Link>
                                         </div>
@@ -145,7 +145,7 @@ const Navbar = () => {
                                                     tabIndex={0}
                                                     className="menu menu-sm dropdown-content bottom-10 md:top-10 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
                                                     <li className='text-md md:text-lg font-semibold'>{user?.displayName}</li>
-                                                    <button onClick={handleSignOut} className='btn bg-sky-500 text-white'>Logout</button>
+                                                    <button onClick={handleSignOut} className='btn bg-gradient-to-r from-red-500 to-pink-500 text-white border-none hover:from-red-600 hover:to-pink-600 rounded-full'>Logout</button>
                                                     {
                                                         !user &&
                                                         <div className='flex md:hidden'>

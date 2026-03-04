@@ -26,17 +26,17 @@ const NavLinks = () => {
                     <NavLink
                         to={to}
                         className={({ isActive }) =>
-                            `group relative px-2 py-1 font-semibold transition duration-300 
+                            `group relative px-2 py-1 font-medium tracking-wide transition duration-300
                              ${isActive
-                                ? 'text-indigo-400 dark:text-white'
-                                : 'text-zinc-700 dark:text-zinc-300 hover:text-indigo-500 hover:dark:text-white'}`
+                                ? 'text-indigo-600 dark:text-indigo-300'
+                                : 'text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 hover:dark:text-indigo-300'}`
                         }
                     >
                         {({ isActive }) => (
                             <span
                                 className={`
                                     relative
-                                    after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-indigo-600 dark:after:bg-white
+                                    after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-gradient-to-r after:from-indigo-500 after:to-purple-500 dark:after:from-indigo-400 dark:after:to-purple-400
                                     after:transition-all after:duration-300 after:ease-in-out
                                     ${isActive ? 'after:w-full' : 'after:w-0 group-hover:after:w-full'}
                                 `}

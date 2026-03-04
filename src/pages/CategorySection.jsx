@@ -83,8 +83,8 @@ const CategorySection = () => {
         <Fade cascade damping={0.5}>
 
             <div className="py-7 px-6 md:px-16 mx-auto max-w-[1350px]">
-                <h2 className="text-2xl md:text-4xl text-center mb-12 text-[#20b2aa] dark:text-[#7fffd4]">
-                    Categories<span className="font-extrabold text-yellow-500">|</span>
+                <h2 className="text-2xl md:text-4xl font-light text-center mb-12 text-gray-800 dark:text-white">
+                    All <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Categories</span>
                 </h2>
 
                 <motion.div
@@ -99,7 +99,7 @@ const CategorySection = () => {
                         <div
 
                             key={index}
-                            className="group bg-white h-full flex flex-col justify-between rounded-2xl shadow-md hover:shadow-xl  p-5 text-center border border-indigo-300 dark:bg-zinc-800"
+                            className="group bg-white h-full flex flex-col justify-between rounded-2xl shadow-sm hover:shadow-xl p-5 text-center border border-gray-100 dark:border-indigo-500/20 dark:bg-zinc-900/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1"
                         >
                             <div className="relative overflow-x-hidden">
                                 <img
@@ -107,12 +107,12 @@ const CategorySection = () => {
                                     alt={cat.title}
                                     className="w-full h-48 object-cover rounded-xl mb-4 transition duration-300 group-hover:scale-105"
                                 />
-                                <span className="absolute top-2 right-2 text-xs bg-indigo-600 text-white px-2 py-1 rounded-full shadow">
-                                    🔥 Popular
+                                <span className="absolute top-3 right-3 text-xs bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-3 py-1 rounded-full shadow-lg shadow-indigo-500/20 font-medium">
+                                    Popular
                                 </span>
                             </div>
 
-                            <h3 className="md:text-2xl font-bold text-[#20b2aa] dark:text-[#7fffd4]">
+                            <h3 className="md:text-xl font-semibold text-gray-800 dark:text-white mt-1">
                                 {cat.title}
                             </h3>
 
@@ -126,7 +126,7 @@ const CategorySection = () => {
                             </div>
                             <div className="mt-4 text-sm text-indigo-600 dark:text-indigo-300 font-medium flex justify-center items-center gap-2">
                                 <Link to={cat.path}
-                                    className="btn bg-sky-400 rounded-xl w-full text-white transition duration-500 hover:scale-105">
+                                    className="btn bg-gradient-to-r from-indigo-500 to-purple-600 border-none rounded-full w-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105">
                                     View Items
                                 </Link>
                             </div>

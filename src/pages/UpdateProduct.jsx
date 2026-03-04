@@ -88,9 +88,9 @@ const UpdateProduct = () => {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
                 }}
-                className="w-full max-w-5xl p-10 bg-white dark:bg-[#1e1e2f] shadow-2xl rounded-2xl transition-all duration-300 dark:border border-indigo-300">
-                <h2 className="text-2xl md:text-4xl font-bold text-center mb-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                    🛠️ Update Product Information
+                className="w-full max-w-5xl p-10 bg-white dark:bg-zinc-900/80 shadow-xl shadow-indigo-500/5 rounded-3xl transition-all duration-300 border border-gray-100 dark:border-indigo-500/20 backdrop-blur-sm">
+                <h2 className="text-2xl md:text-4xl font-light text-center mb-10 text-gray-800 dark:text-white">
+                    Update <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Product</span>
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-800 dark:text-gray-100">
@@ -100,7 +100,7 @@ const UpdateProduct = () => {
                         <input
                             type="text"
                             name="image"
-                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={image}
                         />
                     </div>
@@ -112,7 +112,7 @@ const UpdateProduct = () => {
                             type="text"
                             name="name"
                             placeholder="Enter product name"
-                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={name}
                         />
                     </div>
@@ -124,7 +124,7 @@ const UpdateProduct = () => {
                             type="text"
                             name="brand"
                             placeholder="Enter brand name"
-                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={brand}
                         />
                     </div>
@@ -134,7 +134,7 @@ const UpdateProduct = () => {
                         <label className="label font-semibold">Category</label>
                         <select
                             name="category"
-                            className="select select-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="select select-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={category}
                         >
                             <option value="">Select Category</option>
@@ -157,7 +157,7 @@ const UpdateProduct = () => {
                             name="rating"
                             min="1"
                             max="5"
-                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={rating}
 
                             onInput={(e) => {
@@ -176,7 +176,7 @@ const UpdateProduct = () => {
                             name="price"
                             step="0.01"
                             placeholder="Enter product price"
-                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={price}
                         />
                     </div>
@@ -187,7 +187,7 @@ const UpdateProduct = () => {
                         <input
                             type="number"
                             name="mainQty"
-                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={mainQty}
                         />
                     </div>
@@ -198,7 +198,7 @@ const UpdateProduct = () => {
                         <input
                             type="number"
                             name="minQty"
-                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="input input-bordered w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={minQty}
                         />
                     </div>
@@ -209,7 +209,7 @@ const UpdateProduct = () => {
                         <textarea
                             name="description"
                             placeholder="Product details..."
-                            className="textarea textarea-bordered w-full h-24 bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                            className="textarea textarea-bordered w-full h-24 bg-white dark:bg-gray-900 border-gray-200 dark:border-indigo-500/20 rounded-xl"
                             defaultValue={description}
                         ></textarea>
                     </div>
@@ -219,7 +219,7 @@ const UpdateProduct = () => {
                 <div className="text-center pt-10">
                     <button
                         type="submit"
-                        className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-none px-10 py-2 text-lg rounded-full shadow-lg hover:brightness-110 transition"
+                        className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none px-10 py-2 text-lg rounded-full shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 transition-all duration-300"
                     >
                         Update Product
                     </button>

@@ -20,13 +20,13 @@ const CartDetailsModal = ({ item }) => {
     return (
         <div>
             <dialog id="purchase_modal" className="modal p-3 min-h-fit">
-                <div className="modal-box w-11/12 min-h-fit max-w-md p-0 overflow-hidden rounded-xl bg-white dark:bg-zinc-900 shadow-xl">
+                <div className="modal-box w-11/12 min-h-fit max-w-md p-0 overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl border border-gray-100 dark:border-indigo-500/20">
                     <div className="relative p-4">
                         <form method="dialog">
                             <button className="btn btn-sm btn-circle absolute right-2 top-2 z-10">✕</button>
                         </form>
 
-                        <h2 className="text-center text-lg font-semibold bg-gradient-to-r from-green-500 to-emerald-600 text-white py-2 rounded-md">
+                        <h2 className="text-center text-lg font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2.5 rounded-xl">
                             Purchase Details
                         </h2>
 
@@ -35,7 +35,7 @@ const CartDetailsModal = ({ item }) => {
                             <h3 className="text-md font-bold text-zinc-800 dark:text-white md:mt-2">{name}</h3>
                         </div>
 
-                        <div className="md:mt-4 grid grid-cols-2 gap-2 text-sm bg-base-300 p-2 text-zinc-700 dark:text-zinc-300">
+                        <div className="md:mt-4 grid grid-cols-2 gap-2 text-sm bg-indigo-50 dark:bg-indigo-950/20 p-3 rounded-xl text-zinc-700 dark:text-zinc-300">
                             <p><strong>Brand:</strong> {brand}</p>
                             <p><strong>Category:</strong> {category}</p>
                             <p><strong>Quantity:</strong> {quantity}</p>

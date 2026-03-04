@@ -66,8 +66,8 @@ const PopularProduct = () => {
     ]
     return (
         <div>
-            <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-4">
-                Our Popular Products
+            <h2 className="text-xl font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
+                Popular Products
             </h2>
 
             {/* Similar Products List */}
@@ -88,7 +88,7 @@ const PopularProduct = () => {
                             </p>
                             <Link
                                 to='/allProducts'
-                                className="btn btn-outline btn-primary w-fit"
+                                className="btn btn-sm btn-outline border-indigo-300 dark:border-indigo-400/30 text-indigo-600 dark:text-indigo-300 rounded-full text-xs hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all duration-300 w-fit"
 
                             >
                                 View Product

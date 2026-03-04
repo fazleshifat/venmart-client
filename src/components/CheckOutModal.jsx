@@ -114,7 +114,7 @@ const CheckOutModal = ({ user, product }) => {
     return (
         <div>
             <dialog id="my_modal_4" className="modal p-3 min-h-fit">
-                <div className="modal-box w-11/12 min-h-fit max-w-sm p-0 overflow-hidden rounded-xl bg-white dark:bg-zinc-900 shadow-xl">
+                <div className="modal-box w-11/12 min-h-fit max-w-sm p-0 overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl border border-gray-100 dark:border-indigo-500/20">
                     <div className="relative p-4">
                         {/* Close Button */}
                         <form method="dialog">
@@ -124,7 +124,7 @@ const CheckOutModal = ({ user, product }) => {
                         </form>
 
                         {/* Header */}
-                        <h2 className="text-center text-lg font-semibold bg-gradient-to-r from-yellow-400 to-amber-500 text-white py-2 rounded-md">
+                        <h2 className="text-center text-lg font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2.5 rounded-xl">
                             Checkout
                         </h2>
 
@@ -139,7 +139,7 @@ const CheckOutModal = ({ user, product }) => {
                         </div>
 
                         {/* Info Grid */}
-                        <div className="md:mt-4 grid grid-cols-2 gap-2 text-sm bg-base-300 p-2 text-zinc-700 dark:text-zinc-300">
+                        <div className="md:mt-4 grid grid-cols-2 gap-2 text-sm bg-indigo-50 dark:bg-indigo-950/20 p-3 rounded-xl text-zinc-700 dark:text-zinc-300">
                             <p><strong>Brand:</strong> {brand}</p>
                             <p><strong>Category:</strong> {category}</p>
                             <p><strong>Min Quantity:</strong> {minQty}</p>
@@ -165,14 +165,14 @@ const CheckOutModal = ({ user, product }) => {
                         {/* Form */}
                         <form onSubmit={handleSubmit} className="mt-2 md:mt-4 space-y-3">
                             <div className="bg-gray-100 text-center dark:bg-zinc-800 p-3 rounded-md shadow-sm text-sm mb-4">
-                                <h2 className="font-semibold bg-indigo-400 w-fit mx-auto py-2 px-3 rounded-full text-white dark:text-white">Ordered By</h2>
+                                <h2 className="font-semibold bg-gradient-to-r from-indigo-500 to-purple-500 w-fit mx-auto py-1.5 px-4 rounded-full text-white text-sm">Ordered By</h2>
                                 <div className=''>
                                     <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Name:</span><span className='font-bold'>{user?.displayName}</span></p>
                                     <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Email:</span><span className='font-bold'>{user?.email}</span></p>
                                 </div>
 
                             </div>
-                            <button type="submit" className="btn btn-sm btn-primary w-full">Confirm Purchase</button>
+                            <button type="submit" className="btn btn-sm bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none w-full rounded-full hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300">Confirm Purchase</button>
                             <p className='text-sm text-red-500'>{errorMessage}</p>
                         </form>
                     </div>

@@ -89,14 +89,14 @@ const LogIn = () => {
                     duration: 0.8,
                     ease: [0.1, 1, 0.3, 1] // smooth cubic-bezier
                 }}
-                className="w-full flex-1 max-w-xl rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-5 md:p-12">
+                className="w-full flex-1 max-w-xl rounded-3xl border border-gray-100 dark:border-indigo-500/20 bg-white dark:bg-zinc-900/80 shadow-xl shadow-indigo-500/5 backdrop-blur-sm p-5 md:p-12">
                 {/* Title */}
-                <h1 className="text-4xl font-bold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-3">Login</h1>
+                <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-3">Login</h1>
 
                 {/* Google Login */}
                 <button
                     onClick={handleGoogleSignIn}
-                    className="btn bg-white text-black border border-gray-300 w-full flex items-center justify-center gap-2 rounded-xl mb-5 hover:shadow-md transition"
+                    className="btn bg-white dark:bg-zinc-800 text-gray-700 dark:text-white border border-gray-200 dark:border-zinc-600 w-full flex items-center justify-center gap-2 rounded-full mb-5 hover:shadow-lg hover:border-indigo-300 transition-all duration-300"
                 >
                     <svg
                         aria-label="Google logo"
@@ -152,7 +152,7 @@ const LogIn = () => {
                         <Link className="link link-hover text-sm text-indigo-500 dark:text-indigo-400">Forgot password?</Link>
                     </div>
 
-                    <button className="btn btn-primary w-full mt-2 rounded-xl shadow-md hover:shadow-lg transition">
+                    <button className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none w-full mt-2 rounded-full shadow-md hover:shadow-xl hover:shadow-indigo-500/25 transition-all duration-300">
                         {
                             load ? 'Processing...' : 'Login'
                         }

@@ -128,10 +128,10 @@ const Register = () => {
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
                 }}
-                className="w-full max-w-xl flex-1 rounded-3xl border-2 border-gray-200 dark:border-indigo-300 bg-base-100 shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-8 md:p-8">
+                className="w-full max-w-xl flex-1 rounded-3xl border border-gray-100 dark:border-indigo-500/20 bg-white dark:bg-zinc-900/80 shadow-xl shadow-indigo-500/5 backdrop-blur-sm p-8 md:p-8">
 
                 {/* Title */}
-                <h1 className="text-4xl font-bold text-center text-[#20b2aa] dark:text-[#7fffd4] mb-8">
+                <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-8">
                     Register Now
                 </h1>
 
@@ -192,7 +192,7 @@ const Register = () => {
                         errorMessage && <p className='text-red-500'>{errorMessage}</p>
                     }
 
-                    <button className="btn btn-primary w-full mt-2 rounded-xl shadow-md hover:shadow-lg transition">
+                    <button className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none w-full mt-2 rounded-full shadow-md hover:shadow-xl hover:shadow-indigo-500/25 transition-all duration-300">
                         {
                             load? 'Processing...' : 'Register'
                         }

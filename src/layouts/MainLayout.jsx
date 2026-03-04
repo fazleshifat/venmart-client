@@ -8,8 +8,8 @@ const MainLayout = () => {
     return (
         <>
             <section className='
-            bg-gradient-to-b from-[#F5F5F5] via-[#c3e3ff94] to-[#FFFFFF] 
-                dark:bg-gradient-to-b dark:from-[#123b55] dark:via-[#1A3B4D] dark:to-[#2C3E50]'
+            bg-gradient-to-br from-[#f8fafc] via-[#e8efff] to-[#f1f5f9]
+                dark:bg-gradient-to-br dark:from-[#0f172a] dark:via-[#1e1b4b] dark:to-[#0f172a]'
             >
                 <HeaderForMobile></HeaderForMobile>
                 <Navbar></Navbar>

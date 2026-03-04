@@ -8,13 +8,13 @@ const ContactSection = () => {
     }
 
     return (
-        <section id="contacts" className="relative max-w-[1300px] mx-auto rounded-3xl md:rounded-b-[20%] mb-4 py-16 px-6 md:px-16 border-b-4 border-indigo-200 bg-white dark:bg-zinc-900 shadow-lg">
+        <section id="contacts" className="relative max-w-[1300px] mx-auto rounded-3xl md:rounded-b-[20%] mb-4 py-16 px-6 md:px-16 border-b border-indigo-100 dark:border-indigo-500/20 bg-white dark:bg-zinc-900/80 shadow-xl shadow-indigo-500/5 backdrop-blur-sm">
             <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
 
                 {/* Left Side - Text Content */}
                 <div className="md:w-1/2 space-y-6">
-                    <h2 className="text-3xl md:text-5xl font-light text-[#065f46] dark:text-white">
-                        Contact with us
+                    <h2 className="text-3xl md:text-5xl font-light text-gray-800 dark:text-white">
+                        Contact <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">with us</span>
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
                         We’d love to hear from you! Whether you’re curious about products, services,
@@ -34,7 +34,7 @@ const ContactSection = () => {
                 </div>
 
                 {/* Right Side - Contact Form */}
-                <div className="md:w-1/2 w-full bg-white dark:bg-zinc-800 rounded-2xl shadow-xl p-8 space-y-6 border dark:border-zinc-700">
+                <div className="md:w-1/2 w-full bg-white dark:bg-zinc-800/80 rounded-2xl shadow-xl shadow-indigo-500/5 p-8 space-y-6 border border-gray-100 dark:border-indigo-500/20">
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div>
                             <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1 font-light">
@@ -43,7 +43,7 @@ const ContactSection = () => {
                             <input
                                 type="text"
                                 placeholder="Your Name"
-                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-[#34d399] outline-none"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400/30 outline-none transition-all duration-200"
                                 required
                             />
                         </div>
@@ -55,7 +55,7 @@ const ContactSection = () => {
                             <input
                                 type="email"
                                 placeholder="your@email.com"
-                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-[#34d399] outline-none"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400/30 outline-none transition-all duration-200"
                                 required
                             />
                         </div>
@@ -67,7 +67,7 @@ const ContactSection = () => {
                             <input
                                 type="text"
                                 placeholder="Subject"
-                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-[#34d399] outline-none"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400/30 outline-none transition-all duration-200"
                                 required
                             />
                         </div>
@@ -79,13 +79,13 @@ const ContactSection = () => {
                             <textarea
                                 rows="5"
                                 placeholder="Write your message..."
-                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-[#34d399] outline-none resize-none"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-600 bg-white dark:bg-zinc-900 text-gray-800 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400/30 outline-none transition-all duration-200 resize-none"
                             ></textarea>
                         </div>
 
                         <button
                             type="submit"
-                            className="bg-[#34d399] hover:bg-[#059669] text-white font-semibold px-6 py-3 rounded-xl transition duration-300 w-full"
+                            className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 w-full hover:shadow-lg hover:shadow-indigo-500/25"
                         >
                             Send Message
                         </button>

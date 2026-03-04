@@ -73,8 +73,8 @@ const AllProducts = () => {
                 ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
             }}
             className="min-h-screen overflow-x-hidden dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 px-4 py-7">
-            <h1 className="text-3xl md:text-4xl text-[#20b2aa] dark:text-[#7fffd4] text-center">
-                All Products🛍️
+            <h1 className="text-3xl md:text-4xl font-light text-center text-gray-800 dark:text-white">
+                All <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Products</span>
             </h1>
 
             <div className="overflow-x-hidden gap-3 my-10 max-w-[1300px] mx-auto flex flex-col md:flex-row justify-between">
@@ -83,14 +83,14 @@ const AllProducts = () => {
                     name="viewProduct"
                     value={view}
                     onChange={(e) => setView(e.target.value)}
-                    className="p-2 px-4 border-2 border-gray-400 dark:bg-black text-black dark:text-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition"
+                    className="p-2 px-4 border border-gray-200 dark:border-indigo-500/30 dark:bg-zinc-900 text-gray-700 dark:text-white rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400/30 transition-all duration-300"
                 >
                     <option value="Card">Card View</option>
                     <option value="Table">Table View</option>
                 </select>
 
-                <p className='text-black dark:text-white bg-black/10 h-fit rounded-3xl px-5 py-2 text-center'>
-                    Products which have minimum ordering quantity of <span className='text-gray-600 font-bold'>100</span> are only <span className='text-gray-600 font-bold'>Available</span>
+                <p className='text-gray-600 dark:text-gray-300 bg-indigo-50 dark:bg-indigo-950/30 h-fit rounded-full px-5 py-2 text-center text-sm border border-indigo-100 dark:border-indigo-500/20'>
+                    Products which have minimum ordering quantity of <span className='text-indigo-600 dark:text-indigo-400 font-semibold'>100</span> are only <span className='text-indigo-600 dark:text-indigo-400 font-semibold'>Available</span>
                 </p>
 
                 {/* toggle sorting function */}

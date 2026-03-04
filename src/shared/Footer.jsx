@@ -5,8 +5,8 @@ import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <footer className="bg-gradient-to-tr from-[#0f172a] to-[#1e293b] text-gray-300 px-6 py-16">
-            <div className="max-w-[1400px] mx-auto flex flex-col items-center gap-12">
+        <footer className="bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#0f172a] text-gray-300 px-6 py-20 border-t border-indigo-500/10">
+            <div className="max-w-[1400px] mx-auto flex flex-col items-center gap-14">
                 {/* Top Section: Logo, Description, Address, Social Icons */}
                 <div className="flex flex-col md:flex-row text-center justify-between w-full gap-12">
                     {/* Logo & Info */}
@@ -17,7 +17,7 @@ const Footer = () => {
                                 alt="VenMart Logo"
                                 className="w-16 h-16 object-contain rounded-lg shadow-lg mx-2"
                             />
-                            <h1 className="text-3xl font-extrabold text-white tracking-wide">
+                            <h1 className="text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent tracking-wide">
                                 VenMart
                             </h1>
                         </div>
@@ -39,7 +39,7 @@ const Footer = () => {
                                 to="https://web.facebook.com/al.fazle.shifat/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sky-600 text-3xl hover:text-[#34d399] transition-colors"
+                                className="text-indigo-400 text-3xl hover:text-purple-400 hover:scale-110 transition-all duration-300"
                                 aria-label="Facebook"
                             >
                                 <FaFacebook />
@@ -49,7 +49,7 @@ const Footer = () => {
                                 to="https://github.com/fazleshifat"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sky-600 text-3xl hover:text-[#34d399] transition-colors"
+                                className="text-indigo-400 text-3xl hover:text-purple-400 hover:scale-110 transition-all duration-300"
                                 aria-label="GitHub"
                             >
                                 <FaGithub />
@@ -59,7 +59,7 @@ const Footer = () => {
                                 to="https://www.linkedin.com/in/fazle-shifat-5490a8270/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sky-600 text-3xl hover:text-[#34d399] transition-colors"
+                                className="text-indigo-400 text-3xl hover:text-purple-400 hover:scale-110 transition-all duration-300"
                                 aria-label="LinkedIn"
                             >
                                 <FaLinkedin />
@@ -76,7 +76,7 @@ const Footer = () => {
                 </nav>
 
                 {/* Copyright */}
-                <div className="border-t border-gray-700 pt-6 text-center w-full text-gray-500 text-sm">
+                <div className="border-t border-indigo-500/20 pt-8 text-center w-full text-gray-500 text-sm">
                     &copy; {new Date().getFullYear()} VenMart Industries. All rights reserved.
                 </div>
             </div>

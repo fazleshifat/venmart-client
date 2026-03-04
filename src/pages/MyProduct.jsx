@@ -91,8 +91,8 @@ const MyProduct = () => {
                 }}
                 className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
                 <div className="text-center md:mb-10">
-                    <h1 className="text-2xl md:text-4xl text-center font-bold mb-8 text-[#20b2aa] dark:text-[#7fffd4]">
-                        My added Products📋
+                    <h1 className="text-2xl md:text-4xl text-center font-light mb-8 text-gray-800 dark:text-white">
+                        My <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Products</span>
                     </h1>
                 </div>
 
@@ -100,16 +100,16 @@ const MyProduct = () => {
                     <div className="text-center text-gray-500 text-sm md:text-lg">you haven't added any product yet
                         <br />
 
-                        <Link className='btn btn-primary mt-2' to='/addProduct'>Add your product</Link>
+                        <Link className='btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full mt-2 hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300' to='/addProduct'>Add your product</Link>
                     </div>
                 ) : (
                     <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-fit">
                         {myProducts.map((product) => (
                             <div
                                 key={product._id}
-                                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition border-2 border-gray-300"
+                                className="bg-white dark:bg-zinc-900/80 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-indigo-500/20 hover:-translate-y-1"
                             >
-                                <div className="p-4 rounded-2xl mx-auto bg-white overflow-x-hidden">
+                                <div className="p-4 rounded-2xl mx-auto bg-white dark:bg-transparent overflow-x-hidden">
                                     <div className="flex flex-col lg:flex-row gap-2 justify-center lg:justify-between">
                                         <img
                                             src={product.image}
@@ -118,7 +118,7 @@ const MyProduct = () => {
                                         />
                                         <div className="flex-1 flex flex-col justify-center md:mx-auto">
                                             <div>
-                                                <h2 className="text-2xl font-semibold text-gray-800">{product.name}</h2>
+                                                <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">{product.name}</h2>
                                                 <p className="text-sm text-gray-500 mt-1">Brand: <span className="font-medium">{product.brand}</span></p>
                                                 <p className="text-sm text-gray-500">Category: <span className="font-medium">{product.category}</span></p>
                                                 <p className="text-sm text-gray-600 mt-2 font-semibold ">Price: ${product.price}</p>
@@ -129,9 +129,9 @@ const MyProduct = () => {
                                             </div>
                                             <div className="flex flex-wrap gap-2 mt-4 w-auto">
 
-                                                <Link to={`/product/details/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 ">👁️Details</Link>
-                                                <Link to={`/updateProduct/${product._id}`} className="btn btn-outline btn-sm text-sm text-blue-600 ">✏️Edit</Link>
-                                                <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm text-sm btn-outline text-red-600 text">🗑️Remove</button>
+                                                <Link to={`/product/details/${product._id}`} className="btn btn-sm bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full text-sm hover:shadow-md transition-all duration-300">Details</Link>
+                                                <Link to={`/updateProduct/${product._id}`} className="btn btn-sm btn-outline border-indigo-300 dark:border-indigo-400/30 text-indigo-600 dark:text-indigo-300 rounded-full text-sm hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all duration-300">Edit</Link>
+                                                <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm btn-outline border-red-200 dark:border-red-500/30 text-red-500 rounded-full text-sm hover:bg-red-50 dark:hover:bg-red-500/10 transition-all duration-300">Remove</button>
                                             </div>
                                         </div>
                                     </div>

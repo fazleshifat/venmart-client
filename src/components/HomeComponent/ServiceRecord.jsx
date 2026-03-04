@@ -26,7 +26,7 @@ const ServiceRecord = () => {
             style={{ backgroundImage: 'url("/assets/providedServices.jpg")' }}
         >
             {/* Overlay for dark effect */}
-            <div className="absolute inset-0 bg-black/85 bg-opacity-60 z-0" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a]/95 via-[#1e1b4b]/90 to-[#0f172a]/95 z-0" />
 
             <div className="relative z-10 max-w-[1200px] mx-auto text-center">
                 <motion.h2
@@ -34,9 +34,9 @@ const ServiceRecord = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
                     transition={{ duration: 0.6 }}
-                    className="text-3xl md:text-4xl font-light text-[#7fffd4] mb-12"
+                    className="text-3xl md:text-4xl font-light text-white mb-12"
                 >
-                    Our Records<span className="font-extrabold text-yellow-500">|</span>
+                    Our <span className="font-semibold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Records</span>
                 </motion.h2>
 
 
@@ -51,8 +51,8 @@ const ServiceRecord = () => {
                             className="relative p-6 flex flex-col items-center text-center"
                         >
                             {/* 3D cube behind the number */}
-                            <div className="relative w-34 h-34 mb-6 border-2 border-gray-400">
-                                <div className="absolute inset-0 bg-black/60 transform border-2 border-gray-400 rotate-45 shadow-lg" />
+                            <div className="relative w-34 h-34 mb-6 border border-indigo-500/30 rounded-2xl">
+                                <div className="absolute inset-0 bg-indigo-600/20 backdrop-blur-sm transform border border-indigo-400/30 rotate-45 rounded-2xl shadow-lg shadow-indigo-500/10" />
                                 <div className="relative z-10 text-4xl font-extrabold text-white flex items-center justify-center h-full">
                                     <CountUp
                                         start={0}
@@ -65,7 +65,7 @@ const ServiceRecord = () => {
                                 </div>
                             </div>
 
-                            <h3 className="text-xl font-semibold mb-2 text-[#20b2aa]">
+                            <h3 className="text-xl font-semibold mb-2 text-indigo-300">
                                 {item.title}
                             </h3>
                             <p className="text-sm text-gray-200">

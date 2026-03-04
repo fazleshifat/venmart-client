@@ -23,7 +23,7 @@ const CardView = ({ products = [], filteredProducts = [], filteredAvailableProdu
                     {toRender.map((product, index) => (
                         <div
                             key={index}
-                            className="bg-white p-3 dark:bg-zinc-800 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex flex-col overflow-hidden"
+                            className="bg-white p-3 dark:bg-zinc-900/80 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-indigo-500/20 transition-all duration-500 transform hover:-translate-y-2 flex flex-col overflow-hidden"
                         >
                             <img
                                 src={product.image}
@@ -31,7 +31,7 @@ const CardView = ({ products = [], filteredProducts = [], filteredAvailableProdu
                                 className="h-52 w-full object-cover rounded-xl"
                             />
                             <div className="p-4 flex flex-col justify-between">
-                                <h2 className="md:text-xl font-semibold text-[#20b2aa] dark:text-[#7fffd4] flex items-center gap-2">
+                                <h2 className="md:text-lg font-semibold text-gray-800 dark:text-white flex items-center gap-2">
                                     {product.name}
                                 </h2>
                                 <div className="grid grid-cols-1">
@@ -54,15 +54,15 @@ const CardView = ({ products = [], filteredProducts = [], filteredAvailableProdu
                                 <div className="flex gap-1 flex-wrap justify-between items-center mt-4">
                                     <Link
                                         to={`/product/details/${product._id}`}
-                                        className="btn bg-sky-500 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition duration-200 transform hover:scale-105"
+                                        className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full text-sm hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
                                     >
                                         View Product
                                     </Link>
                                     <Link
                                         to={`/updateProduct/${product._id}`}
-                                        className="btn btn-outline btn-primary dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition duration-200 transform hover:scale-105"
+                                        className="btn btn-outline border-indigo-300 dark:border-indigo-400/30 text-indigo-600 dark:text-indigo-300 rounded-full text-sm hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all duration-300"
                                     >
-                                        ✏️ Update
+                                        Update
                                     </Link>
                                 </div>
                             </div>

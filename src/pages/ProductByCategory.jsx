@@ -54,8 +54,8 @@ const ProductByCategory = () => {
                 className="max-w-[1350px] mx-auto px-4 py-16">
                 {/* Page Heading */}
                 <div className="text-center mb-12">
-                    <h1 className="text-3xl md:text-5xl text-[#20b2aa] dark:text-[#7fffd4] mb-4">
-                        🛒Products of <span className='text-gray-500'>{title}</span> Category
+                    <h1 className="text-3xl md:text-5xl font-light text-gray-800 dark:text-white mb-4">
+                        Products of <span className='font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent'>{title}</span> Category
                     </h1>
                     {/* <p className="text-zinc-600 dark:text-zinc-300 text-base text-sm md:text-lg">
                         Discover top-quality tools, parts, and equipment with trusted industrial-grade assurance.

@@ -27,10 +27,10 @@ const ErrorPage = () => {
             />
 
             {/* Heading */}
-            <h1 className="text-2xl md:text-6xl font-extrabold text-primary mb-4">Oops!</h1>
+            <h1 className="text-2xl md:text-6xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">Oops!</h1>
 
             {/* Subheading */}
-            <h2 className="text-3xl font-semibold text-gray-300 mb-4">404 - Page Not Found</h2>
+            <h2 className="text-3xl font-semibold text-gray-400 mb-4">404 - Page Not Found</h2>
 
             {/* Description */}
             <p className="text-gray-600 text-base max-w-lg mb-6">
@@ -38,8 +38,8 @@ const ErrorPage = () => {
             </p>
 
             {/* Button */}
-            <Link to="/" className="btn btn-primary">
-                ⬅ Back to Home
+            <Link to="/" className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full px-8 hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300">
+                Back to Home
             </Link>
         </div>
     );

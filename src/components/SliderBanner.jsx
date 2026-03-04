@@ -38,21 +38,21 @@ const SliderBanner = () => {
 
                         {/* Text Content */}
                         <div className="space-y-6 max-w-3xl text-white text-left">
-                            <h1 className="text-3xl md:text-5xl text-[#19817b] dark:text-[#7fffd4]">
-                                Discover & Buy Premium <span className='font-bold text-red-500'>B2B</span> Products for
+                            <h1 className="text-3xl md:text-5xl font-light text-gray-800 dark:text-white/90 leading-tight">
+                                Discover & Buy Premium <span className='font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent'>B2B</span> Products for
                                 {/* <br className='hidden md:flex lg:hidden'/> */}
-                                <span className='text-indigo-300 ml-3 font-semibold'>
+                                <span className='text-indigo-500 dark:text-indigo-300 ml-3 font-semibold'>
                                     <TypeWriter></TypeWriter>
                                 </span>
 
                             </h1>
 
-                            <p className="hidden md:block text-sm md:text-lg text-gray-500">
+                            <p className="hidden md:block text-sm md:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
                                 We supply high-grade tools, machinery components, and heavy-duty equipment designed for
-                                <span className="font-semibold text-gray-400"> construction, logistics, and manufacturing sectors</span>.
-                                Experience efficient sourcing with <span className="text-indigo-300 font-semibold">fast delivery</span>,
-                                <span className="text-indigo-300 font-semibold">competitive pricing</span>, and a
-                                <span className="text-indigo-300 font-semibold">scalable inventory network</span> you can trust.
+                                <span className="font-semibold text-gray-600 dark:text-gray-300"> construction, logistics, and manufacturing sectors</span>.
+                                Experience efficient sourcing with <span className="text-indigo-500 dark:text-indigo-300 font-semibold">fast delivery</span>,
+                                <span className="text-indigo-500 dark:text-indigo-300 font-semibold"> competitive pricing</span>, and a
+                                <span className="text-indigo-500 dark:text-indigo-300 font-semibold"> scalable inventory network</span> you can trust.
                             </p>
 
                             <div className="flex flex-wrap gap-2 md:gap-4 mt-6">
@@ -63,7 +63,7 @@ const SliderBanner = () => {
                                             section.scrollIntoView({ behavior: "smooth" });
                                         }
                                     }}
-                                    className="btn bg-sky-500 text-white rounded-lg hover:bg-sky-400">
+                                    className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105 transition-all duration-300">
                                     Categories
                                 </button>
 
@@ -74,7 +74,7 @@ const SliderBanner = () => {
                                             section.scrollIntoView({ behavior: "smooth" });
                                         }
                                     }}
-                                    className="btn bg-black/10 hover:bg-gray-200 text-black dark:hover:text-black dark:text-white rounded-lg">
+                                    className="btn bg-white/70 dark:bg-white/10 text-gray-700 dark:text-white border border-gray-200 dark:border-white/20 rounded-full hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-300">
                                     Services
                                 </button>
 
@@ -86,7 +86,7 @@ const SliderBanner = () => {
                                             section.scrollIntoView({ behavior: "smooth" });
                                         }
                                     }}
-                                    className="btn bg-black/10 hover:bg-gray-200 text-black dark:hover:text-black dark:text-white rounded-lg">
+                                    className="btn bg-white/70 dark:bg-white/10 text-gray-700 dark:text-white border border-gray-200 dark:border-white/20 rounded-full hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-300">
                                     Partners
                                 </button>
 
@@ -98,7 +98,7 @@ const SliderBanner = () => {
                                             section.scrollIntoView({ behavior: "smooth" });
                                         }
                                     }}
-                                    className="btn bg-black/10 hover:bg-gray-200 text-black dark:hover:text-black dark:text-white rounded-lg">
+                                    className="btn bg-white/70 dark:bg-white/10 text-gray-700 dark:text-white border border-gray-200 dark:border-white/20 rounded-full hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-300">
                                     Records
                                 </button>
 
@@ -110,7 +110,7 @@ const SliderBanner = () => {
                                             section.scrollIntoView({ behavior: "smooth" });
                                         }
                                     }}
-                                    className="btn bg-black/10 hover:bg-gray-200 text-black dark:hover:text-black dark:text-white rounded-lg">
+                                    className="btn bg-white/70 dark:bg-white/10 text-gray-700 dark:text-white border border-gray-200 dark:border-white/20 rounded-full hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-300">
                                     Contact
                                 </button>
 
