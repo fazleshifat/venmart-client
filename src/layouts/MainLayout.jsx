@@ -7,13 +7,13 @@ import Navbar from '../shared/Navbar/Navbar';
 const MainLayout = () => {
     return (
         <>
-            <section className='
-            bg-gradient-to-br from-[#f8fafc] via-[#e8efff] to-[#f1f5f9]
+            <section className='min-h-screen
+            bg-gradient-to-br from-[#f8fafc] via-[#eef2ff] to-[#f1f5f9]
                 dark:bg-gradient-to-br dark:from-[#0f172a] dark:via-[#1e1b4b] dark:to-[#0f172a]'
             >
                 <HeaderForMobile></HeaderForMobile>
                 <Navbar></Navbar>
-                <section className='min-h-screen md:pt-19'>
+                <section className='min-h-screen md:pt-20'>
                     <Outlet></Outlet>
                 </section>
                 <Footer></Footer>

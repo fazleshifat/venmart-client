@@ -1,6 +1,14 @@
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router";
 
+const tagColors = {
+    core: "bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-500/20",
+    popular: "bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-100 dark:border-purple-500/20",
+    premium: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-100 dark:border-amber-500/20",
+    new: "bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 border-green-100 dark:border-green-500/20",
+    insight: "bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-100 dark:border-rose-500/20",
+};
+
 const services = [
     {
         title: "Product Catalog Management",
@@ -108,62 +116,73 @@ const services = [
 
 const OurServices = () => {
     return (
-        <section id="services" className="max-w-[1290px] mx-auto px-4 py-12 space-y-16">
-            <h2 className="text-2xl md:text-4xl font-light text-center mb-12 text-gray-800 dark:text-white">
-                Services We <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Offer</span>
-            </h2>
+        <section id="services" className="max-w-[1300px] mx-auto px-4 py-20 space-y-14">
+            {/* Section Header */}
+            <div className="text-center">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500 dark:text-indigo-400 mb-3">What we provide</p>
+                <h2 className="text-3xl md:text-4xl section-heading text-gray-800 dark:text-white">
+                    Services We <span className="text-gradient">Offer</span>
+                </h2>
+            </div>
 
-            <div className="grid lg:grid-cols-2 gap-7 overflow-x-hidden">
+            <div className="grid lg:grid-cols-2 gap-6">
                 {services.map((service, index) => {
                     const isEven = index % 2 === 0;
+                    const tagStyle = tagColors[service.tag] || tagColors.core;
 
                     return (
-                        <Fade key={index} direction={isEven ? "left" : "right"} className="overflow-x-hidden rounded-3xl">
+                        <Fade key={index} direction={isEven ? "left" : "right"} triggerOnce className="overflow-hidden rounded-2xl">
                             <div
-                                className={`overflow-x-hidden flex flex-col md:flex-row h-full items-center justify-center gap-4 md:gap-6 bg-white dark:bg-zinc-900/80 rounded-3xl border border-gray-100 dark:border-indigo-500/20 shadow-sm hover:shadow-xl p-4 md:p-10 transition-all duration-500 hover:-translate-y-1 ${!isEven ? "md:flex-row-reverse" : ""}`}
+                                className={`flex flex-col md:flex-row h-full items-stretch gap-0 bg-white dark:bg-slate-900/60 rounded-2xl border border-gray-100 dark:border-indigo-500/15 overflow-hidden card-hover ${!isEven ? "md:flex-row-reverse" : ""}`}
                             >
                                 {/* Image */}
-                                <div className="w-full md:w-1/2 h-52 md:h-full rounded-2xl">
+                                <div className="w-full md:w-5/12 h-52 md:h-auto">
                                     <img
                                         src={service.image}
                                         alt={service.title}
-                                        className="h-full object-cover mx-auto rounded-2xl"
+                                        className="w-full h-full object-cover"
                                     />
                                 </div>
 
                                 {/* Content */}
-                                <div className="w-full md:w-1/2 space-y-3 text-center md:text-left">
-                                    {/* Tag */}
-                                    {service.tag && (
-                                        <span className="inline-block bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 text-[10px] md:text-xs font-semibold px-2 py-1 md:px-3 md:py-1 rounded-full shadow-sm">
-                                            {service.tag.toUpperCase()}
-                                        </span>
-                                    )}
+                                <div className="w-full md:w-7/12 p-6 md:p-7 flex flex-col justify-between">
+                                    <div className="space-y-3">
+                                        {/* Tag */}
+                                        {service.tag && (
+                                            <span className={`inline-block text-[10px] font-semibold px-2.5 py-1 rounded-md border ${tagStyle}`}>
+                                                {service.tag.toUpperCase()}
+                                            </span>
+                                        )}
 
-                                    {/* Title */}
-                                    <h3 className="text-md md:text-2xl font-semibold text-gray-800 dark:text-white flex items-center justify-center md:justify-start gap-2">
-                                        <span className="text-lg md:text-xl">{service.icon}</span>
-                                        <span>{service.title}</span>
-                                    </h3>
+                                        {/* Title */}
+                                        <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white flex items-center gap-2">
+                                            <span className="text-lg">{service.icon}</span>
+                                            <span>{service.title}</span>
+                                        </h3>
 
-                                    {/* Description */}
-                                    <p className="text-sm md:text-base text-gray-700 dark:text-gray-300">
-                                        {service.description}
-                                    </p>
+                                        {/* Description */}
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                                            {service.description}
+                                        </p>
 
-                                    {/* Features */}
-                                    <ul className="text-left text-xs md:text-sm text-zinc-600 dark:text-zinc-300 list-disc list-inside space-y-1 md:space-y-2">
-                                        {service.features.map((feature, i) => (
-                                            <li key={i}>{feature}</li>
-                                        ))}
-                                    </ul>
+                                        {/* Features */}
+                                        <ul className="space-y-1.5 pt-1">
+                                            {service.features.slice(0, 4).map((feature, i) => (
+                                                <li key={i} className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                                                    <svg className="w-3.5 h-3.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
 
                                     {/* CTA */}
                                     <Link
                                         to={service.link}
-                                        className="inline-block mt-3 md:mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
+                                        className="inline-flex items-center gap-1.5 mt-5 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group/cta"
                                     >
                                         {service.cta || "Learn More"}
+                                        <svg className="w-4 h-4 group-hover/cta:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
                                     </Link>
                                 </div>
                             </div>

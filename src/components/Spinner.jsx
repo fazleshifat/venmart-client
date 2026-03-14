@@ -4,9 +4,9 @@ import Lottie from 'lottie-react';
 
 const Spinner = () => {
     return (
-        <div className="h-[90vh] w-full flex flex-col items-center justify-center">
-            {/* <span className="loading loading-dotted text-gray-500 w-10"></span> */}
-            <Lottie animationData={loadingAnimation} className='w-20'></Lottie>
+        <div className="h-[85vh] w-full flex flex-col items-center justify-center gap-3">
+            <Lottie animationData={loadingAnimation} className='w-16'></Lottie>
+            <p className="text-xs text-gray-400 dark:text-gray-500 font-medium tracking-wider uppercase animate-pulse">Loading...</p>
         </div>
     );
 };

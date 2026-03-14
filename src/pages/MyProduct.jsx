@@ -57,14 +57,12 @@ const MyProduct = () => {
             if (result.isConfirmed) {
                 axios.delete(`https://venmart-server.vercel.app/myProduct/delete/${id}/${user?.email}`, {
                     headers: { Authorization: `Bearer ${user?.accessToken}` }
-
                 })
                     .then(response => {
                         const filteredProducts = myProducts.filter(product => product._id !== id);
                         setMyProducts(filteredProducts);
                     })
                     .catch(error => {
-                        // console.error(error);
                     });
 
                 Swal.fire({
@@ -80,63 +78,63 @@ const MyProduct = () => {
     }
 
     return (
-        <Fade cascade damping={0.5}>
-
+        <Fade cascade damping={0.3}>
             <motion.section
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1]
                 }}
-                className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
-                <div className="text-center md:mb-10">
-                    <h1 className="text-2xl md:text-4xl text-center font-light mb-8 text-gray-800 dark:text-white">
-                        My <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Products</span>
+                className="p-6 md:p-10 min-h-screen max-w-[1400px] mx-auto">
+
+                {/* Header */}
+                <div className="text-center mb-10">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500 dark:text-indigo-400 mb-3">Manage your listings</p>
+                    <h1 className="text-3xl md:text-4xl section-heading text-gray-800 dark:text-white">
+                        My <span className="text-gradient">Products</span>
                     </h1>
                 </div>
 
                 {myProducts.length === 0 ? (
-                    <div className="text-center text-gray-500 text-sm md:text-lg">you haven't added any product yet
-                        <br />
-
-                        <Link className='btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full mt-2 hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300' to='/addProduct'>Add your product</Link>
+                    <div className="text-center py-16">
+                        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center">
+                            <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        </div>
+                        <p className="text-gray-500 dark:text-gray-400 font-medium mb-1">No products yet</p>
+                        <p className="text-sm text-gray-400 dark:text-gray-500 mb-4">You haven't added any products</p>
+                        <Link className='btn btn-primary-gradient rounded-xl text-sm font-medium px-6' to='/addProduct'>Add Your Product</Link>
                     </div>
                 ) : (
-                    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-h-fit">
+                    <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                         {myProducts.map((product) => (
                             <div
                                 key={product._id}
-                                className="bg-white dark:bg-zinc-900/80 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-indigo-500/20 hover:-translate-y-1"
+                                className="bg-white dark:bg-slate-900/60 rounded-2xl border border-gray-100 dark:border-indigo-500/15 overflow-hidden card-hover"
                             >
-                                <div className="p-4 rounded-2xl mx-auto bg-white dark:bg-transparent overflow-x-hidden">
-                                    <div className="flex flex-col lg:flex-row gap-2 justify-center lg:justify-between">
-                                        <img
-                                            src={product.image}
-                                            alt={product.name}
-                                            className="h-60 w-auto lg:w-6/12 object-cover my-auto rounded-xl"
-                                        />
-                                        <div className="flex-1 flex flex-col justify-center md:mx-auto">
-                                            <div>
-                                                <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">{product.name}</h2>
-                                                <p className="text-sm text-gray-500 mt-1">Brand: <span className="font-medium">{product.brand}</span></p>
-                                                <p className="text-sm text-gray-500">Category: <span className="font-medium">{product.category}</span></p>
-                                                <p className="text-sm text-gray-600 mt-2 font-semibold ">Price: ${product.price}</p>
-                                                <p className="text-sm text-gray-500">Stock: {product.quantity}</p>
-                                                <p className="text-xs text-gray-400 mt-1 italic">
-                                                    Listed on: {product.listedDate || 'N/A'}
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-4 w-auto">
-
-                                                <Link to={`/product/details/${product._id}`} className="btn btn-sm bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full text-sm hover:shadow-md transition-all duration-300">Details</Link>
-                                                <Link to={`/updateProduct/${product._id}`} className="btn btn-sm btn-outline border-indigo-300 dark:border-indigo-400/30 text-indigo-600 dark:text-indigo-300 rounded-full text-sm hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all duration-300">Edit</Link>
-                                                <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-sm btn-outline border-red-200 dark:border-red-500/30 text-red-500 rounded-full text-sm hover:bg-red-50 dark:hover:bg-red-500/10 transition-all duration-300">Remove</button>
-                                            </div>
+                                <div className="flex flex-col lg:flex-row gap-4 p-5">
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        className="h-40 lg:h-auto lg:w-5/12 object-cover rounded-xl"
+                                    />
+                                    <div className="flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">{product.name}</h2>
+                                            <p className="text-xs text-gray-400 dark:text-gray-500">{product.brand} / {product.category}</p>
+                                            <p className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mt-2">${product.price}</p>
+                                            <p className="text-xs text-gray-400 mt-1">Stock: {product.quantity}</p>
+                                            <p className="text-[10px] text-gray-400 italic mt-1">
+                                                Listed: {product.listedDate || 'N/A'}
+                                            </p>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 mt-4">
+                                            <Link to={`/product/details/${product._id}`} className="btn btn-xs btn-primary-gradient rounded-lg text-[10px] font-medium">Details</Link>
+                                            <Link to={`/updateProduct/${product._id}`} className="btn btn-xs btn-ghost-styled rounded-lg text-[10px] font-medium">Edit</Link>
+                                            <button onClick={() => handleRemoveProduct(product._id)} className="btn btn-xs rounded-lg text-[10px] font-medium border border-red-200 dark:border-red-500/20 text-red-500 bg-transparent hover:bg-red-50 dark:hover:bg-red-500/10">Remove</button>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         ))}
                     </div>

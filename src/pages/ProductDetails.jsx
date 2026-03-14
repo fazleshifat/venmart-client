@@ -22,8 +22,7 @@ const ProductDetails = () => {
     }, []);
 
     useEffect(() => {
-        window.scrollTo(0, 0); // ✅ Proper scroll method
-
+        window.scrollTo(0, 0);
 
         axios.get(`https://venmart-server.vercel.app/allProducts/${id}?email=${user?.email}`, {
             headers: {
@@ -35,7 +34,6 @@ const ProductDetails = () => {
                 setLoading(false);
             })
             .catch((err) => {
-
                 setLoading(false);
             });
     }, [id, user?.accessToken]);
@@ -47,103 +45,93 @@ const ProductDetails = () => {
 
 
     return (
-
-        <Fade cascade damping={0.5}>
-
+        <Fade cascade damping={0.3}>
             <motion.section
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1]
                 }}
-                className="max-w-[1390px] mx-auto p-3 flex flex-col my-5 lg:flex-row justify-between">
+                className="max-w-[1390px] mx-auto p-4 md:p-6 flex flex-col my-5 lg:flex-row gap-6">
+
                 {/* Left Section: Product Card */}
+                <div className="w-full lg:w-7/10 space-y-6">
+                    {/* Header */}
+                    <div className="text-center lg:text-left">
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500 dark:text-indigo-400 mb-2">Product overview</p>
+                        <h1 className="text-2xl md:text-3xl section-heading text-gray-800 dark:text-white">
+                            Product <span className="text-gradient">Details</span>
+                        </h1>
+                    </div>
 
-                <div className="w-full lg:w-6/10">
-                    <h1 className="text-2xl md:text-4xl font-light text-center text-gray-800 dark:text-white mb-5">
-                        Product <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Details</span>
-                    </h1>
+                    {/* Product Card */}
+                    <div className="bg-white dark:bg-slate-900/60 border border-gray-100 dark:border-indigo-500/15 rounded-2xl p-6 md:p-8 flex flex-col lg:flex-row gap-8">
+                        {/* Image */}
+                        <div className="flex-shrink-0">
+                            <img
+                                src={product?.image}
+                                alt="product"
+                                className="w-full lg:w-80 h-48 lg:h-64 object-cover rounded-xl"
+                            />
+                        </div>
 
-                    <div className="overflow-x-hidden">
-                        <div className="bg-white dark:bg-zinc-900/80 border border-gray-100 dark:border-indigo-500/20 rounded-3xl shadow-xl shadow-indigo-500/5 p-6 sm:p-8 mb-10 max-w-5xl mx-auto flex flex-col lg:flex-row gap-8 backdrop-blur-sm">
+                        {/* Info */}
+                        <div className="flex flex-col justify-between flex-grow">
+                            <div className="space-y-4">
+                                <h2 className="text-xl md:text-2xl font-bold text-indigo-600 dark:text-indigo-400">{product?.name}</h2>
 
-                            {/* LEFT: Product Image */}
-                            <div className="flex-shrink-0">
-                                <img
-                                    src={product?.image}
-                                    alt="product"
-                                    className="h-40 w-40 md:w-96 md:h-70 mx-auto object-cover rounded-2xl shadow-md"
-                                />
-                            </div>
-
-                            {/* RIGHT: Product Info */}
-                            <div className="flex flex-col justify-between flex-grow">
-                                <div className="space-y-4 text-zinc-800 dark:text-zinc-200">
-                                    <h2 className="md:text-3xl font-bold text-indigo-600 dark:text-indigo-400">{product?.name}</h2>
-
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <p className="md:text-lg font-semibold">
-                                            <span className="text-indigo-500">Brand:</span> {product?.brand}
-                                        </p>
-                                        <p className="md:text-lg font-semibold">
-                                            <span className="text-indigo-500">Category:</span> {product?.category}
-                                        </p>
-                                        <p className="md:text-lg font-semibold">
-                                            <span className="text-indigo-500">Owner:</span> {product?.ownerName}
-                                        </p>
-                                        <p className="text-sm md:text-lg font-semibold">
-                                            <span className="text-green-600 dark:text-green-400">Available Quantity:</span>{product?.mainQty}
-                                        </p>
-                                        <p className="text-sm md:text-lg font-semibold">
-                                            <span className="text-yellow-500">Min Order Quantity:</span>{product?.minQty}
-                                        </p>
-                                        <p className="text-sm md:text-lg font-semibold">
-                                            <span className="text-indigo-500">Rating:</span> ⭐ {product?.rating}/5
-                                        </p>
-                                        <p className="text-sm md:text-lg font-semibold">
-                                            <span className="text-indigo-500">Price:</span> 💲{product?.price}
-                                        </p>
-                                    </div>
-
-                                    <p className="text-sm md:text-md text-zinc-600 dark:text-zinc-400 mt-2">
-                                        <span className="font-semibold text-indigo-500">Description:</span> {product?.description}
-                                    </p>
+                                <div className="grid grid-cols-2 gap-3">
+                                    {[
+                                        { label: "Brand", value: product?.brand, color: "text-indigo-500" },
+                                        { label: "Category", value: product?.category, color: "text-indigo-500" },
+                                        { label: "Owner", value: product?.ownerName, color: "text-indigo-500" },
+                                        { label: "Available", value: product?.mainQty, color: "text-green-600 dark:text-green-400" },
+                                        { label: "Min Order", value: product?.minQty, color: "text-amber-500" },
+                                        { label: "Rating", value: `${product?.rating}/5`, color: "text-indigo-500" },
+                                    ].map((item, i) => (
+                                        <div key={i} className="text-sm">
+                                            <span className={`${item.color} font-medium`}>{item.label}: </span>
+                                            <span className="text-gray-700 dark:text-gray-300 font-semibold">{item.value}</span>
+                                        </div>
+                                    ))}
                                 </div>
 
-                                {/* Buy Button */}
-                                <div className="mt-6">
-                                    <button
-                                        onClick={() => document.getElementById('my_modal_4').showModal()}
-                                        className="cursor-pointer w-full py-1 md:py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-md md:text-lg font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transform transition hover:scale-[1.02] duration-300"
-                                    >
-                                        🛒Buy Now
-                                    </button>
-                                </div>
+                                <p className="text-2xl font-bold text-gray-800 dark:text-white pt-2">
+                                    ${product?.price}
+                                </p>
 
-                                {/* Optional Modal */}
-                                <CheckOutModal user={user} product={product} />
+                                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                                    {product?.description}
+                                </p>
                             </div>
+
+                            {/* Buy Button */}
+                            <div className="mt-6">
+                                <button
+                                    onClick={() => document.getElementById('my_modal_4').showModal()}
+                                    className="cursor-pointer w-full py-3 rounded-xl btn-primary-gradient text-white text-base font-semibold transition-all duration-300"
+                                >
+                                    Buy Now
+                                </button>
+                            </div>
+
+                            <CheckOutModal user={user} product={product} />
                         </div>
                     </div>
 
-                    <div className='bg-white/50 dark:bg-zinc-900/50 border border-gray-100 dark:border-indigo-500/20 my-3 p-3 rounded-3xl'>
+                    {/* Reviews */}
+                    <div className='bg-white dark:bg-slate-900/60 border border-gray-100 dark:border-indigo-500/15 p-6 rounded-2xl'>
                         <ProductReview></ProductReview>
                     </div>
                 </div>
 
-
-                {/* Right Section: Similar Products */}
-                <div className="w-full h-fit lg:w-3/10 bg-white dark:bg-zinc-900/80 rounded-3xl shadow-xl shadow-indigo-500/5 border border-gray-100 dark:border-indigo-500/20 p-6 space-y-6 backdrop-blur-sm">
-
+                {/* Right Section: Popular Products */}
+                <div className="w-full lg:w-3/10 h-fit bg-white dark:bg-slate-900/60 rounded-2xl border border-gray-100 dark:border-indigo-500/15 p-6 space-y-6 sticky top-24">
                     <PopularProduct></PopularProduct>
-
                 </div>
             </motion.section>
         </Fade>
-
-
-
     );
 };
 

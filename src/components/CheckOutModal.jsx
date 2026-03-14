@@ -28,16 +28,12 @@ const CheckOutModal = ({ user, product }) => {
     const handleIncrease = () => setQuantity(prev => prev + 1);
     const handleDecrease = () => setQuantity(prev => Math.max(1, prev - 1));
 
-    // const quantityInput = document.getElementById('buyingQuantity').value;
-    // console.log(quantityInput)
-
     const customerName = user?.displayName;
     const customerEmail = user?.email;
     const purchaseDate = new Date().toDateString()
     const purchaseTime = new Date().toLocaleTimeString();
 
     const Navigate = useNavigate();
-
 
     const handleSubmit = (e) => {
 
@@ -71,12 +67,10 @@ const CheckOutModal = ({ user, product }) => {
                     popup: 'z-[9999]'
                 }
             });
-            // document.getElementById('my_modal_4').close();
             setErrorMessage('Minimum quantity not met, Please increase your quantity')
         } else {
             setErrorMessage('')
 
-            // Send a POST request
             axios.post(`https://venmart-server.vercel.app/products/cart?email=${user?.email}`, purchaseInfo,
                 {
                     headers: { Authorization: `Bearer ${user?.accessToken}` }
@@ -93,7 +87,6 @@ const CheckOutModal = ({ user, product }) => {
                             .then()
                             .catch()
 
-                        // sweet alert after create user
                         document.getElementById('my_modal_4').close();
                         setQuantity(1);
                         Swal.fire({
@@ -114,71 +107,69 @@ const CheckOutModal = ({ user, product }) => {
     return (
         <div>
             <dialog id="my_modal_4" className="modal p-3 min-h-fit">
-                <div className="modal-box w-11/12 min-h-fit max-w-sm p-0 overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl border border-gray-100 dark:border-indigo-500/20">
-                    <div className="relative p-4">
+                <div className="modal-box w-11/12 min-h-fit max-w-sm p-0 overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-indigo-500/15 shadow-2xl">
+                    <div className="relative p-5">
                         {/* Close Button */}
                         <form method="dialog">
-                            <button className="btn btn-sm btn-circle absolute right-2 top-2 z-10">
-                                ✕
+                            <button className="absolute right-3 top-3 w-7 h-7 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500 hover:text-gray-700 dark:hover:text-white text-xs transition-colors z-10">
+                                &times;
                             </button>
                         </form>
 
                         {/* Header */}
-                        <h2 className="text-center text-lg font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2.5 rounded-xl">
-                            Checkout
-                        </h2>
+                        <div className="text-center mb-4">
+                            <h2 className="text-lg font-bold text-gradient">Checkout</h2>
+                        </div>
 
                         {/* Product Image */}
-                        <div className="text-center rounded-2xl md:mt-4">
+                        <div className="text-center mb-4">
                             <img
                                 src={image}
                                 alt={name}
-                                className="mx-auto h-24 rounded-2xl"
+                                className="mx-auto h-20 rounded-xl object-cover"
                             />
-                            <h3 className="text-md font-bold text-zinc-800 dark:text-white md:mt-2">{name}</h3>
+                            <h3 className="text-sm font-semibold text-gray-800 dark:text-white mt-2">{name}</h3>
                         </div>
 
                         {/* Info Grid */}
-                        <div className="md:mt-4 grid grid-cols-2 gap-2 text-sm bg-indigo-50 dark:bg-indigo-950/20 p-3 rounded-xl text-zinc-700 dark:text-zinc-300">
-                            <p><strong>Brand:</strong> {brand}</p>
-                            <p><strong>Category:</strong> {category}</p>
-                            <p><strong>Min Quantity:</strong> {minQty}</p>
-                            <p><strong>Main Quantity:</strong> {mainQty}</p>
-                            <p><strong>Price:</strong> ${price}</p>
-                            <p><strong>Rating:</strong> {rating}/5</p>
+                        <div className="grid grid-cols-2 gap-2 text-xs bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl text-gray-600 dark:text-gray-300 mb-4">
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Brand:</span> {brand}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Category:</span> {category}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Min Qty:</span> {minQty}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Stock:</span> {mainQty}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Price:</span> ${price}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Rating:</span> {rating}/5</p>
                         </div>
 
                         {/* Quantity Controller */}
-                        <div className="flex justify-center items-center gap-2 mt-2 md:mt-4">
-                            <label className="text-sm font-medium">Quantity:</label>
-                            <button onClick={() => (handleDecrease(), setErrorMessage(''))} type="button" className="btn btn-xs btn-outline">−</button>
-                            {/* <input
-                                type="number"
-                                className='w-auto outline-1 text-center'
-                                value={quantity}
-                                onChange={(e) => setQuantity(e.target.value)}
-                            /> */}
-                            <span className="w-6 text-center">{quantity}</span>
-                            <button onClick={() => (handleIncrease(), setErrorMessage(''))} type="button" className="btn btn-xs btn-outline">+</button>
+                        <div className="flex justify-center items-center gap-3 mb-4">
+                            <label className="text-xs font-medium text-gray-600 dark:text-gray-300">Quantity:</label>
+                            <div className="flex items-center gap-1.5 bg-gray-100 dark:bg-slate-800 rounded-lg p-1">
+                                <button onClick={() => (handleDecrease(), setErrorMessage(''))} type="button" className="w-7 h-7 rounded-md bg-white dark:bg-slate-700 text-gray-700 dark:text-white text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-600 transition-colors flex items-center justify-center">-</button>
+                                <span className="w-8 text-center text-sm font-semibold">{quantity}</span>
+                                <button onClick={() => (handleIncrease(), setErrorMessage(''))} type="button" className="w-7 h-7 rounded-md bg-white dark:bg-slate-700 text-gray-700 dark:text-white text-sm font-medium hover:bg-gray-50 dark:hover:bg-slate-600 transition-colors flex items-center justify-center">+</button>
+                            </div>
                         </div>
 
-                        {/* Form */}
-                        <form onSubmit={handleSubmit} className="mt-2 md:mt-4 space-y-3">
-                            <div className="bg-gray-100 text-center dark:bg-zinc-800 p-3 rounded-md shadow-sm text-sm mb-4">
-                                <h2 className="font-semibold bg-gradient-to-r from-indigo-500 to-purple-500 w-fit mx-auto py-1.5 px-4 rounded-full text-white text-sm">Ordered By</h2>
-                                <div className=''>
-                                    <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Name:</span><span className='font-bold'>{user?.displayName}</span></p>
-                                    <p className="text-zinc-700 dark:text-zinc-300"><span className='font-semibold'>Email:</span><span className='font-bold'>{user?.email}</span></p>
-                                </div>
+                        {/* Ordered By */}
+                        <div className="bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl text-center mb-4">
+                            <p className="text-[10px] uppercase tracking-wider text-gray-400 mb-1">Ordered By</p>
+                            <p className="text-sm font-semibold text-gray-800 dark:text-white">{user?.displayName}</p>
+                            <p className="text-xs text-gray-500">{user?.email}</p>
+                        </div>
 
-                            </div>
-                            <button type="submit" className="btn btn-sm bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none w-full rounded-full hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300">Confirm Purchase</button>
-                            <p className='text-sm text-red-500'>{errorMessage}</p>
+                        {/* Submit */}
+                        <form onSubmit={handleSubmit}>
+                            <button type="submit" className="btn btn-primary-gradient w-full rounded-xl text-sm font-medium">
+                                Confirm Purchase
+                            </button>
+                            {errorMessage && (
+                                <p className='text-xs text-red-500 text-center mt-2'>{errorMessage}</p>
+                            )}
                         </form>
                     </div>
                 </div>
             </dialog>
-            {/* {document.getElementById('my_modal_4').close()} */}
         </div>
     );
 };

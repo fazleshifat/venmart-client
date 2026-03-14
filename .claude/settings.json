@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls -la /d/ph11-projects/Assignment/venmart/venmart-client/src/components/*.jsx)"
+      "Bash(ls -la /d/ph11-projects/Assignment/venmart/venmart-client/src/components/*.jsx)",
+      "Bash(npm run:*)"
     ]
   }
 }

@@ -3,51 +3,41 @@ import React from 'react';
 const CartDetailsModal = ({ item }) => {
     if (!item) return null;
 
-    const { image,
-        name,
-        brand,
-        category,
-        quantity,
-        price,
-        purchaseDate,
-        purchaseTime,
-        customerName,
-        customerEmail
-    } = item;
-
-    
+    const { image, name, brand, category, quantity, price, purchaseDate, purchaseTime, customerName, customerEmail } = item;
 
     return (
         <div>
             <dialog id="purchase_modal" className="modal p-3 min-h-fit">
-                <div className="modal-box w-11/12 min-h-fit max-w-md p-0 overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl border border-gray-100 dark:border-indigo-500/20">
-                    <div className="relative p-4">
+                <div className="modal-box w-11/12 min-h-fit max-w-md p-0 overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-indigo-500/15 shadow-2xl">
+                    <div className="relative p-5">
                         <form method="dialog">
-                            <button className="btn btn-sm btn-circle absolute right-2 top-2 z-10">✕</button>
+                            <button className="absolute right-3 top-3 w-7 h-7 rounded-lg bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500 hover:text-gray-700 dark:hover:text-white text-xs transition-colors z-10">
+                                &times;
+                            </button>
                         </form>
 
-                        <h2 className="text-center text-lg font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2.5 rounded-xl">
-                            Purchase Details
-                        </h2>
-
-                        <div className="text-center md:mt-4">
-                            <img src={image} alt={name} className="mx-auto w-24 h-24 rounded-2xl object-contain" />
-                            <h3 className="text-md font-bold text-zinc-800 dark:text-white md:mt-2">{name}</h3>
+                        <div className="text-center mb-4">
+                            <h2 className="text-lg font-bold text-gradient">Purchase Details</h2>
                         </div>
 
-                        <div className="md:mt-4 grid grid-cols-2 gap-2 text-sm bg-indigo-50 dark:bg-indigo-950/20 p-3 rounded-xl text-zinc-700 dark:text-zinc-300">
-                            <p><strong>Brand:</strong> {brand}</p>
-                            <p><strong>Category:</strong> {category}</p>
-                            <p><strong>Quantity:</strong> {quantity}</p>
-                            <p><strong>Price:</strong> ${price}</p>
-                            <p><strong>Purchase Date:</strong> {purchaseDate}</p>
-                            <p><strong>Purchase Time:</strong> {purchaseTime}</p>
-
+                        <div className="text-center mb-4">
+                            <img src={image} alt={name} className="mx-auto w-20 h-20 rounded-xl object-contain" />
+                            <h3 className="text-sm font-semibold text-gray-800 dark:text-white mt-2">{name}</h3>
                         </div>
 
-                        <div className="bg-gray-100 text-center dark:bg-zinc-800 p-3 md:mt-4 rounded-md shadow-sm text-sm">
-                            <p className="text-zinc-700 font-semibold dark:text-zinc-300">Customer Name: {customerName}</p>
-                            <p className="text-zinc-700 font-semibold dark:text-zinc-300">Customer Email: {customerEmail}</p>
+                        <div className="grid grid-cols-2 gap-2 text-xs bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl text-gray-600 dark:text-gray-300 mb-4">
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Brand:</span> {brand}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Category:</span> {category}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Quantity:</span> {quantity}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Price:</span> ${price}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Date:</span> {purchaseDate}</p>
+                            <p><span className="font-medium text-gray-800 dark:text-gray-200">Time:</span> {purchaseTime}</p>
+                        </div>
+
+                        <div className="bg-gray-50 dark:bg-slate-800/50 p-3 rounded-xl text-center">
+                            <p className="text-[10px] uppercase tracking-wider text-gray-400 mb-1">Customer</p>
+                            <p className="text-sm font-semibold text-gray-800 dark:text-white">{customerName}</p>
+                            <p className="text-xs text-gray-500">{customerEmail}</p>
                         </div>
                     </div>
                 </div>

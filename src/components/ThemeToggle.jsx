@@ -19,13 +19,12 @@ const ThemeToggle = () => {
     }, [theme]);
 
     return (
-        <label className="swap swap-rotate">
-            {/* this hidden checkbox controls the state */}
+        <label className="swap swap-rotate hover:bg-indigo-50 dark:hover:bg-indigo-950/30 rounded-lg p-1 transition-colors">
             <input type="checkbox" onChange={handleToggle} checked={theme === "light" ? false : true} />
 
             {/* sun icon */}
             <svg
-                className="swap-on h-9 w-9 md:h-10 md:w-10 fill-current text-indigo-500"
+                className="swap-on h-7 w-7 md:h-8 md:w-8 fill-current text-indigo-500"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path
@@ -34,7 +33,7 @@ const ThemeToggle = () => {
 
             {/* moon icon */}
             <svg
-                className="swap-off h-9 w-9 md:h-10 md:w-10 fill-current text-indigo-500"
+                className="swap-off h-7 w-7 md:h-8 md:w-8 fill-current text-indigo-500"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
                 <path

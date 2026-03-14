@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router';
-import { IoSearchOutline } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
 import { MdSearchOff } from "react-icons/md";
 import { use } from 'react';
@@ -18,39 +17,33 @@ const ToggleSearchBar = () => {
         setShowSearchBar(!showSearchBar);
     }
 
-
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
-        // Clear input when route changes
         setSearchQuery('');
     }, [location.pathname]);
 
     const handleSearchItem = (e) => {
         setSearchQuery(e.target.value);
         navigate('/allProducts', { replace: true });
-        // console.log(e.target.value);
     }
 
     return (
-        <div className='relative flex '>
-            {/* for small device */}
-            <input value={searchQuery} onChange={(e) => handleSearchItem(e)} name="searchBar" type="text" placeholder="products..." className={`
-                        input input-bordered mr-10 rounded-full max-w-2/3 md:w-auto mx-auto
-                        transition-all duration-300 ease-in-out
-                        focus:outline-none focus:ring-0 focus:border-transparent
-                        ${showSearchBar ? 'opacity-100 scale-100 w-full' : 'opacity-0 scale-0 w-0'}
+        <div className='relative flex items-center'>
+            <input value={searchQuery} onChange={(e) => handleSearchItem(e)} name="searchBar" type="text" placeholder="Search products..." className={`
+                        px-4 py-2 mr-10 rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-800 dark:text-white text-sm placeholder-gray-400
+                        transition-all duration-300 ease-out
+                        focus:outline-none focus:ring-2 focus:ring-indigo-400/20 focus:border-indigo-300
+                        ${showSearchBar ? 'opacity-100 scale-100 w-full' : 'opacity-0 scale-95 w-0 pointer-events-none'}
                       `}
             />
-            <div className=''>
+            <div>
                 {
                     !showSearchBar ?
-
-                        < FiSearch onClick={handleShowSearchBar} className='absolute text-indigo-500 text-3xl right-1 mt-1 cursor-pointer' />
+                        <FiSearch onClick={handleShowSearchBar} className='absolute text-indigo-500 hover:text-indigo-600 text-2xl right-1 top-1/2 -translate-y-1/2 cursor-pointer transition-colors' />
                         :
-                        < MdSearchOff onClick={handleShowSearchBar} className='absolute text-indigo-500 text-4xl right-0 mt-1 cursor-pointer' />
-
+                        <MdSearchOff onClick={handleShowSearchBar} className='absolute text-indigo-500 hover:text-indigo-600 text-3xl right-0 top-1/2 -translate-y-1/2 cursor-pointer transition-colors' />
                 }
             </div>
         </div>

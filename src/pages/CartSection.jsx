@@ -18,10 +18,8 @@ const CartSection = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [load, setLoad] = useState(true);
 
-
-
     useEffect(() => {
-        if (!user?.email) return; // prevent calling axios with undefined email
+        if (!user?.email) return;
 
         axios.get(`https://venmart-server.vercel.app/cart?email=${user.email}`, {
             headers: {
@@ -33,11 +31,9 @@ const CartSection = () => {
                 setLoad(false);
             })
             .catch(err => {
-                // console.log(err);
                 setLoad(false);
             });
     }, [user]);
-
 
     useEffect(() => {
         if (user && cartItems) {
@@ -48,7 +44,6 @@ const CartSection = () => {
         }
     }, [user, cartItems]);
 
-
     useEffect(() => {
         if (selectedItem && Object.keys(selectedItem).length > 0) {
             const modal = document.getElementById('purchase_modal');
@@ -58,7 +53,6 @@ const CartSection = () => {
         }
     }, [selectedItem]);
 
-
     useEffect(() => {
         window.scroll(0, 0);
         document.getElementById("title").innerText = "Purchased Cart"
@@ -67,9 +61,6 @@ const CartSection = () => {
     if (load) {
         return <Spinner />;
     }
-
-
-
 
     const handleCancelOrder = (item) => {
         Swal.fire({
@@ -86,11 +77,9 @@ const CartSection = () => {
                     headers: { Authorization: `Bearer ${user?.accessToken}` }
                 })
                     .then(response => {
-
                         const filteredCart = myCarts.filter(cart => cart._id !== item?._id);
                         setMyCarts(filteredCart);
 
-                        // Send PATCH with quantity
                         axios.patch(`https://venmart-server.vercel.app/allProducts/${item?.id}/${user?.email}`, { quantity: item.quantity },
                             {
                                 headers: { Authorization: `Bearer ${user?.accessToken}` }
@@ -112,85 +101,82 @@ const CartSection = () => {
         });
     };
 
-
-
     return (
-
-        <Fade cascade damping={0.5}>
+        <Fade cascade damping={0.3}>
             <motion.section
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1]
                 }}
-                className="p-6 md:p-10 min-h-screen max-w-[1450px] mx-auto">
-                <div className="text-center md:mb-10">
-                    <h1 className="text-3xl md:text-4xl text-center font-light mb-8 text-gray-800 dark:text-white">
-                        My <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Cart</span>
+                className="p-6 md:p-10 min-h-screen max-w-[1400px] mx-auto">
+
+                {/* Header */}
+                <div className="text-center mb-10">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500 dark:text-indigo-400 mb-3">Your orders</p>
+                    <h1 className="text-3xl md:text-4xl section-heading text-gray-800 dark:text-white">
+                        My <span className="text-gradient">Cart</span>
                     </h1>
                 </div>
 
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
                     {myCarts.length === 0 ? (
-                        <div className="text-center grid col-span-4 text-gray-500 md:text-lg">
-                            you haven't purchased any product yet!
-                            <br />
-                            <Link className='btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full mt-2 w-fit mx-auto hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300' to='/allProducts'>Purchase products</Link>
+                        <div className="col-span-full text-center py-16">
+                            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center">
+                                <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+                            </div>
+                            <p className="text-gray-500 dark:text-gray-400 font-medium mb-1">Your cart is empty</p>
+                            <p className="text-sm text-gray-400 dark:text-gray-500 mb-4">You haven't purchased any products yet</p>
+                            <Link className='btn btn-primary-gradient rounded-xl text-sm font-medium px-6' to='/allProducts'>Browse Products</Link>
                         </div>
-                    ) :
-                        (
-
-                            myCarts.map((item) => (
-                                <div
-                                    key={item._id}
-                                    className="transition-opacity h-full duration-300 opacity-100 translate-y-0"
-                                >
-                                    <div className="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 dark:border-indigo-500/20 bg-white dark:bg-zinc-900/80 h-full flex flex-col hover:-translate-y-1">
-                                        <div className="p-4">
-                                            <div className="flex items-center gap-4">
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    className="w-24 rounded-xl"
-                                                />
-                                                <div className="flex-1">
-                                                    <h2 className="text-xl font-semibold text-gray-800 dark:text-white">{item.name}</h2>
-                                                    <p className="text-sm text-gray-500">Brand: {item.brand}</p>
-                                                    <p className="text-sm text-gray-500">Category: {item.category}</p>
-                                                    <p className="text-sm text-gray-500">Price: ${item.price}</p>
-                                                    <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
-                                                    <p className="text-xs text-gray-400">
-                                                        {item.purchaseDate} at {item.purchaseTime}
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex justify-between items-center mt-4">
-                                                <button
-                                                    onClick={() => {
-                                                        setSelectedItem(item);
-                                                        document.getElementById('purchase_modal')?.showModal();
-                                                    }}
-                                                    className="btn btn-sm bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full text-sm flex items-center hover:shadow-md transition-all duration-300"
-                                                >
-                                                    View
-                                                </button>
-                                                <button onClick={() => handleCancelOrder(item)}
-                                                    className="btn btn-sm btn-outline border-red-200 dark:border-red-500/30 text-red-500 rounded-full text-sm flex items-center hover:bg-red-50 dark:hover:bg-red-500/10 transition-all duration-300">
-                                                    <span>Cancel Order</span>
-                                                </button>
+                    ) : (
+                        myCarts.map((item) => (
+                            <div
+                                key={item._id}
+                                className="bg-white dark:bg-slate-900/60 rounded-2xl border border-gray-100 dark:border-indigo-500/15 overflow-hidden card-hover h-full flex flex-col"
+                            >
+                                <div className="p-5 flex flex-col h-full">
+                                    <div className="flex items-start gap-4 mb-4">
+                                        <img
+                                            src={item.image}
+                                            alt={item.name}
+                                            className="w-20 h-20 object-cover rounded-xl flex-shrink-0"
+                                        />
+                                        <div className="flex-1 min-w-0">
+                                            <h2 className="text-base font-semibold text-gray-800 dark:text-white truncate">{item.name}</h2>
+                                            <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{item.brand} / {item.category}</p>
+                                            <div className="flex items-center gap-3 mt-2">
+                                                <span className="text-base font-bold text-indigo-600 dark:text-indigo-400">${item.price}</span>
+                                                <span className="text-xs text-gray-400 bg-gray-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">x{item.quantity}</span>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <p className="text-[10px] text-gray-400 dark:text-gray-500 mb-4 mt-auto">
+                                        {item.purchaseDate} at {item.purchaseTime}
+                                    </p>
+
+                                    <div className="flex gap-2">
+                                        <button
+                                            onClick={() => {
+                                                setSelectedItem(item);
+                                                document.getElementById('purchase_modal')?.showModal();
+                                            }}
+                                            className="btn btn-sm btn-primary-gradient rounded-lg text-xs font-medium flex-1"
+                                        >
+                                            View Details
+                                        </button>
+                                        <button onClick={() => handleCancelOrder(item)}
+                                            className="btn btn-sm rounded-lg text-xs font-medium border border-red-200 dark:border-red-500/20 text-red-500 bg-transparent hover:bg-red-50 dark:hover:bg-red-500/10 transition-all">
+                                            Cancel
+                                        </button>
+                                    </div>
                                 </div>
-                            ))
-
-                        )}
+                            </div>
+                        ))
+                    )}
                 </div>
-
-
             </motion.section>
             <CartDetailsModal item={selectedItem}></CartDetailsModal>
         </Fade>

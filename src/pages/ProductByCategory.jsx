@@ -39,47 +39,45 @@ const ProductByCategory = () => {
 
     if (load) return <Spinner />;
 
-
     return (
-
-        <Fade cascade damping={0.5}>
-
+        <Fade cascade damping={0.3}>
             <motion.section
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1]
                 }}
-                className="max-w-[1350px] mx-auto px-4 py-16">
+                className="max-w-[1350px] mx-auto px-4 py-10">
+
                 {/* Page Heading */}
                 <div className="text-center mb-12">
-                    <h1 className="text-3xl md:text-5xl font-light text-gray-800 dark:text-white mb-4">
-                        Products of <span className='font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent'>{title}</span> Category
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500 dark:text-indigo-400 mb-3">Category</p>
+                    <h1 className="text-3xl md:text-4xl section-heading text-gray-800 dark:text-white">
+                        Products of <span className='text-gradient'>{title}</span>
                     </h1>
-                    {/* <p className="text-zinc-600 dark:text-zinc-300 text-base text-sm md:text-lg">
-                        Discover top-quality tools, parts, and equipment with trusted industrial-grade assurance.
-                    </p> */}
                 </div>
 
                 {/* Product Cards */}
                 {
                     products.length > 0 ?
                         (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {products.map((product, index) => <DisplayCategory key={index} product={product}></DisplayCategory>)}
                             </div>
                         ) :
                         (
-                            <div className="mx-auto text-center">
-                                <p>🚫no product added for this category</p>
+                            <div className="text-center py-16">
+                                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center">
+                                    <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                                </div>
+                                <p className="text-gray-500 dark:text-gray-400 font-medium">No products in this category</p>
+                                <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">Check back later for new listings</p>
                             </div>
                         )
                 }
             </motion.section>
         </Fade>
-
-
     );
 };
 

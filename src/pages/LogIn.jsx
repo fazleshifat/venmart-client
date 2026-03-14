@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthProvider/AuthContext';
 import { Link, useLocation, useNavigate, useNavigation } from 'react-router';
 import Spinner from '../components/Spinner';
-import { Fade } from 'react-awesome-reveal';
 import { motion } from "framer-motion";
 import { useEffect } from 'react';
 import loginAnimation from '../../public/assets/animations/login.json'
@@ -22,12 +21,8 @@ const LogIn = () => {
 
     const { user, logInUser, setUser, setLoading, googleLoginUser, errorMessage, setErrorMessage } = use(AuthContext);
 
-
     const location = useLocation();
     const navigate = useNavigate();
-    // console.log(location)
-
-
 
     window.scrollTo(0, 0);
 
@@ -37,11 +32,8 @@ const LogIn = () => {
 
         const form = e.target;
         const formData = new FormData(form);
-
         const { email, password } = Object.fromEntries(formData.entries());
 
-
-        // sign in user with firebase auth
         logInUser(email, password)
             .then((result) => {
                 navigate(location?.state || '/');
@@ -55,8 +47,7 @@ const LogIn = () => {
                 });
             })
             .catch((error) => {
-                // setErrorMessage(error.code);
-                setLoading(false); // not needed here if using finally
+                setLoading(false);
             })
             .finally(() => {
                 setLoad(false);
@@ -74,34 +65,36 @@ const LogIn = () => {
             });
     }
 
-
     useEffect(() => {
         document.getElementById("title").innerText = "Login"
     }, [])
 
     return (
-
-        <div className="min-h-screen flex py-8 flex-col md:flex-row items-center justify-center px-4">
+        <div className="min-h-screen flex py-10 flex-col md:flex-row items-center justify-center px-4 gap-8">
             <motion.div
-                initial={{ opacity: 0, y: 0, scale: 0 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{
-                    duration: 0.8,
-                    ease: [0.1, 1, 0.3, 1] // smooth cubic-bezier
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1]
                 }}
-                className="w-full flex-1 max-w-xl rounded-3xl border border-gray-100 dark:border-indigo-500/20 bg-white dark:bg-zinc-900/80 shadow-xl shadow-indigo-500/5 backdrop-blur-sm p-5 md:p-12">
+                className="w-full flex-1 max-w-md rounded-2xl border border-gray-100 dark:border-indigo-500/15 bg-white dark:bg-slate-900/60 p-8 md:p-10">
+
                 {/* Title */}
-                <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-3">Login</h1>
+                <div className="text-center mb-8">
+                    <h1 className="text-3xl font-bold text-gradient mb-2">Welcome Back</h1>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Sign in to your account</p>
+                </div>
 
                 {/* Google Login */}
                 <button
                     onClick={handleGoogleSignIn}
-                    className="btn bg-white dark:bg-zinc-800 text-gray-700 dark:text-white border border-gray-200 dark:border-zinc-600 w-full flex items-center justify-center gap-2 rounded-full mb-5 hover:shadow-lg hover:border-indigo-300 transition-all duration-300"
+                    className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-700 dark:text-white text-sm font-medium hover:border-indigo-300 dark:hover:border-indigo-500/30 hover:shadow-sm transition-all duration-300 mb-6"
                 >
                     <svg
                         aria-label="Google logo"
-                        width="20"
-                        height="20"
+                        width="18"
+                        height="18"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
                     >
@@ -117,64 +110,57 @@ const LogIn = () => {
                 </button>
 
                 {/* Separator */}
-                <div className="flex items-center gap-4 mb-8">
-                    <hr className="flex-grow border-gray-300 dark:border-zinc-600" />
-                    <span className="text-sm text-gray-500 dark:text-zinc-400">or</span>
-                    <hr className="flex-grow border-gray-300 dark:border-zinc-600" />
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="flex-grow h-px bg-gray-200 dark:bg-slate-700" />
+                    <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider">or</span>
+                    <div className="flex-grow h-px bg-gray-200 dark:bg-slate-700" />
                 </div>
 
-
                 {/* Login Form */}
-                <form onSubmit={handleSignIn} className="space-y-5">
+                <form onSubmit={handleSignIn} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Email</label>
+                        <label className="block text-xs font-medium mb-1.5 text-gray-500 dark:text-gray-400 uppercase tracking-wider">Email</label>
                         <input
                             type="email"
                             name="email"
-                            className="input input-bordered w-full rounded-xl"
-                            placeholder="enter your email"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-800 dark:text-white text-sm placeholder-gray-400"
+                            placeholder="you@example.com"
                             required
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Password</label>
+                        <label className="block text-xs font-medium mb-1.5 text-gray-500 dark:text-gray-400 uppercase tracking-wider">Password</label>
                         <input
                             type="password"
                             name="password"
-                            className="input input-bordered w-full rounded-xl"
-                            placeholder="enter your password"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-800 dark:text-white text-sm placeholder-gray-400"
+                            placeholder="Enter your password"
                             required
                         />
                     </div>
 
                     <div className="text-right">
-                        <Link className="link link-hover text-sm text-indigo-500 dark:text-indigo-400">Forgot password?</Link>
+                        <Link className="text-xs text-indigo-500 dark:text-indigo-400 hover:underline font-medium">Forgot password?</Link>
                     </div>
 
-                    <button className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none w-full mt-2 rounded-full shadow-md hover:shadow-xl hover:shadow-indigo-500/25 transition-all duration-300">
-                        {
-                            load ? 'Processing...' : 'Login'
-                        }
+                    <button className="btn btn-primary-gradient w-full rounded-xl text-sm font-medium mt-2">
+                        {load ? 'Signing in...' : 'Sign In'}
                     </button>
                 </form>
 
-                {/* Register Prompt */}
-                <p className="text-sm text-center mt-6 text-gray-600 dark:text-zinc-400">
+                <p className="text-xs text-center mt-6 text-gray-500 dark:text-gray-400">
                     Don't have an account?{" "}
-                    <Link to="/register" className="link link-hover text-indigo-500 font-medium">
-                        Register here
+                    <Link to="/register" className="text-indigo-500 font-medium hover:underline">
+                        Create one
                     </Link>
                 </p>
             </motion.div>
 
-            <div className='flex-1 w-2/3 md:max-w-2xl'>
-                <Lottie animationData={loginAnimation} loop={true}/>
+            <div className='flex-1 w-2/3 md:max-w-lg'>
+                <Lottie animationData={loginAnimation} loop={true} />
             </div>
         </div>
-
-
-
     );
 };
 

@@ -10,61 +10,62 @@ const DisplayCategory = ({ product }) => {
     }
 
     return (
-        <div
-            className="relative group rounded-3xl bg-white dark:bg-zinc-900/80 p-5 shadow-sm hover:shadow-xl border border-gray-100 dark:border-indigo-500/20 hover:-translate-y-2 transition-all duration-500"
-        >
-            <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-56 object-cover rounded-xl mb-4 border border-gray-100 dark:border-indigo-500/20"
-            />
+        <div className="group relative bg-white dark:bg-slate-900/60 rounded-2xl overflow-hidden border border-gray-100 dark:border-indigo-500/15 card-hover flex flex-col">
+            {/* Image */}
+            <div className="relative overflow-hidden">
+                <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="absolute top-3 right-3 text-[10px] bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm text-indigo-600 dark:text-indigo-400 px-2.5 py-1 rounded-md font-semibold border border-indigo-100 dark:border-indigo-500/20">
+                    {product.category}
+                </span>
+            </div>
 
-            <div>
-                <div className="flex items-center justify-between mb-3">
-                    <h2 className="md:text-lg font-semibold text-gray-800 dark:text-white">
+            {/* Content */}
+            <div className="p-5 flex flex-col flex-grow">
+                <div className="flex items-start justify-between mb-3">
+                    <h2 className="text-lg font-semibold text-gray-800 dark:text-white leading-snug">
                         {product.name}
                     </h2>
-                    <span className="text-xs font-semibold bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 px-3 py-1 rounded-full shadow-sm whitespace-nowrap">
-                        {product.category}
-                    </span>
                 </div>
 
-                <p className="text-sm mb-1">
-                    🏷️ <span className="font-semibold">Brand:</span>{' '}
-                    <span className="text-indigo-600 dark:text-indigo-300">{product.brand}</span>
-                </p>
-                <p className="text-sm mb-4">
-                    📦 <span className="font-semibold">Min Qty:</span>{' '}
-                    <span className="text-indigo-600 dark:text-indigo-300">{product.minQty}</span>
-                </p>
+                <div className="space-y-1.5 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <p>
+                        <span className="font-medium text-gray-600 dark:text-gray-300">Brand:</span>{' '}
+                        <span className="text-indigo-600 dark:text-indigo-400">{product.brand}</span>
+                    </p>
+                    <p>
+                        <span className="font-medium text-gray-600 dark:text-gray-300">Min Qty:</span>{' '}
+                        <span className="text-indigo-600 dark:text-indigo-400">{product.minQty}</span>
+                    </p>
+                </div>
 
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-4 leading-relaxed">
+                <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 leading-relaxed mb-4 flex-grow">
                     {product.description}
                 </p>
-            </div>
 
-            <div>
-                <div className="flex items-center justify-between mt-6 border-t border-zinc-300 dark:border-zinc-700 pt-4">
-                    <span className="text-xl font-bold text-green-600 dark:text-green-400">
-                        💲{product.price}
-                    </span>
-                    <span id="react-stars" className="text-yellow-500 font-medium flex items-center gap-1 text-sm">
-                        {
-                            star.map((item) => item)
-                        }
-                    </span>
+                {/* Bottom section */}
+                <div className="border-t border-gray-100 dark:border-slate-800 pt-4 mt-auto">
+                    <div className="flex items-center justify-between mb-4">
+                        <span className="text-xl font-bold text-green-600 dark:text-green-400">
+                            ${product.price}
+                        </span>
+                        <span className="text-yellow-500 font-medium flex items-center gap-0.5 text-sm">
+                            {star.map((item) => item)}
+                        </span>
+                    </div>
+
+                    <Link
+                        to={`/product/details/${product._id}`}
+                        className="w-full btn btn-primary-gradient rounded-xl text-sm font-medium"
+                    >
+                        View Details
+                    </Link>
                 </div>
-
-                <Link
-                    to={`/product/details/${product._id}`}
-                    className="w-full mt-6 btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none rounded-full hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300"
-                >
-                    🔍 View Details
-                </Link>
             </div>
-
-            {/* Glow Effect on Hover */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl pointer-events-none bg-gradient-to-tr from-indigo-500/5 via-purple-500/5 to-pink-500/5"></div>
         </div>
     );
 };

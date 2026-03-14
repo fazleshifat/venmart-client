@@ -15,14 +15,14 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [showNavbar, setShowNavbar] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-    // const [isActive, setIsActive] = useState(false)
-
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             setShowNavbar(currentScrollY < lastScrollY || currentScrollY < 10);
             setLastScrollY(currentScrollY);
+            setScrolled(currentScrollY > 20);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -42,7 +42,6 @@ const Navbar = () => {
             if (result.isConfirmed) {
                 userSignOut().then(() => {
 
-                    // navigate('/signIn')
                 }).catch((error) => {
 
                 });
@@ -62,31 +61,34 @@ const Navbar = () => {
 
 
     return (
-        <div className={`navbar fixed max-w-11/12 bg-white/60 dark:bg-indigo-950/70 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.08)] border border-white/30 dark:border-indigo-500/20 px-3 md:px-6 z-50 rounded-full transition-all duration-500 ease-out
+        <div className={`navbar fixed max-w-11/12 backdrop-blur-2xl px-4 md:px-6 z-50 rounded-2xl transition-all duration-500 ease-out
         left-1/2 -translate-x-1/2
         top-auto bottom-2
         md:top-3 md:bottom-auto
+        ${scrolled
+                ? 'bg-white/80 dark:bg-slate-900/80 shadow-lg shadow-indigo-500/5 border border-white/40 dark:border-indigo-500/15'
+                : 'bg-white/60 dark:bg-indigo-950/50 shadow-[0_4px_30px_rgba(0,0,0,0.06)] border border-white/30 dark:border-indigo-500/10'}
         ${showNavbar ? 'translate-y-0 opacity-100' : 'md:-translate-y-full md:opacity-0'}
     `}>
             <div className="flex items-center navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn cursor-pointer rounded-full lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                    <div tabIndex={0} role="button" className="btn btn-ghost cursor-pointer rounded-xl lg:hidden hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bottom-12 md:top-12 h-fit bg-base-100 rounded-box z-1 mt-0 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bottom-14 md:top-14 h-fit bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl z-1 mt-0 w-56 p-3 shadow-xl shadow-indigo-500/10 border border-gray-100 dark:border-indigo-500/20">
                         <NavLinks></NavLinks>
                     </ul>
                 </div>
-                <Link className='hidden md:flex items-center'>
-                    <div className="flex absolute items-center">
+                <Link to='/' className='hidden md:flex items-center group'>
+                    <div className="flex items-center gap-0.5">
                         <img
                             src="/assets/logo.png"
-                            className="w-10 md:w-10 h-auto"
+                            className="w-9 h-auto transition-transform duration-300 group-hover:scale-110"
                             alt="logo"
                         />
-                        <p id="logo" className="text-xl font-extrabold md:text-3xl bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent -ml-1">
+                        <p id="logo" className="text-2xl bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent tracking-wider">
                             VENMART
                         </p>
                     </div>
@@ -98,11 +100,11 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="flex md:gap-8 font-semibold">
+                <ul className="flex md:gap-6 font-medium">
                     <NavLinks></NavLinks>
                 </ul>
             </div>
-            <div className="gap-1 navbar-end flex">
+            <div className="gap-2 navbar-end flex items-center">
 
                 <div className="hidden md:flex">
                     <ToggleSearchBar></ToggleSearchBar>
@@ -120,11 +122,11 @@ const Navbar = () => {
 
                                     <>
                                         <div className='flex gap-2'>
-                                            <Link to='/logIn' className="btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white border-none hover:from-indigo-600 hover:to-purple-700 hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 rounded-full px-5">
+                                            <Link to='/logIn' className="btn btn-sm md:btn-md btn-primary-gradient rounded-xl px-5 text-sm font-medium">
                                                 Login
                                             </Link>
 
-                                            <Link to='/register' className="btn bg-white/80 dark:bg-white/10 text-indigo-600 dark:text-white border border-indigo-200 dark:border-indigo-400/30 hover:bg-indigo-50 dark:hover:bg-white/20 transition-all duration-300 rounded-full px-5">
+                                            <Link to='/register' className="btn btn-sm md:btn-md btn-ghost-styled rounded-xl px-5 text-sm font-medium">
                                                 Register
                                             </Link>
                                         </div>
@@ -132,20 +134,21 @@ const Navbar = () => {
 
                                     :
                                     <>
-                                        <div className="flex gap-1 md:gap-3">
+                                        <div className="flex gap-1 md:gap-3 items-center">
                                             <div className="dropdown dropdown-hover dropdown-end">
-                                                <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                                    <div className="w-10 rounded-full">
+                                                <div tabIndex={0} className="btn btn-ghost btn-circle avatar ring-2 ring-indigo-200 dark:ring-indigo-500/30 ring-offset-2 ring-offset-white dark:ring-offset-slate-900 hover:ring-indigo-400 dark:hover:ring-indigo-400/50 transition-all duration-300">
+                                                    <div className="w-9 rounded-full">
                                                         <img
-                                                            alt="Tailwind CSS Navbar component"
+                                                            alt="User avatar"
                                                             src={user?.photoURL} />
                                                     </div>
                                                 </div>
                                                 <ul
                                                     tabIndex={0}
-                                                    className="menu menu-sm dropdown-content bottom-10 md:top-10 h-fit bg-base-300 rounded-box z-1 w-34 md:w-52 p-2 shadow gap-3">
-                                                    <li className='text-md md:text-lg font-semibold'>{user?.displayName}</li>
-                                                    <button onClick={handleSignOut} className='btn bg-gradient-to-r from-red-500 to-pink-500 text-white border-none hover:from-red-600 hover:to-pink-600 rounded-full'>Logout</button>
+                                                    className="menu menu-sm dropdown-content bottom-12 md:top-12 h-fit bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl z-1 w-48 md:w-56 p-4 shadow-xl shadow-indigo-500/10 border border-gray-100 dark:border-indigo-500/20 space-y-3">
+                                                    <li className='text-sm md:text-base font-semibold text-gray-800 dark:text-white px-1'>{user?.displayName}</li>
+                                                    <li className='text-xs text-gray-500 dark:text-gray-400 px-1 -mt-2'>{user?.email}</li>
+                                                    <button onClick={handleSignOut} className='btn btn-sm bg-gradient-to-r from-red-500 to-rose-500 text-white border-none hover:from-red-600 hover:to-rose-600 rounded-xl text-xs font-medium'>Logout</button>
                                                     {
                                                         !user &&
                                                         <div className='flex md:hidden'>
